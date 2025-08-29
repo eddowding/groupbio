@@ -6,7 +6,7 @@ import { Navbar } from "@/components/layout/navbar"
 import { Users, Shield, Settings, MapPin, FileText, MessageSquare, Zap, CheckCircle } from "lucide-react"
 import { dummyGroups } from "@/lib/dummy-data"
 import { TestimonialsColumn, testimonials } from "@/components/ui/testimonials-columns-1"
-import { motion } from "motion/react"
+import { motion } from "framer-motion"
 
 export default function Home() {
   const features = [
