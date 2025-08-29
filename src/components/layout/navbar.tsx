@@ -28,7 +28,7 @@ export function Navbar() {
 
   if (isPublic) {
     return (
-      <nav className="border-b bg-white">
+      <nav className="border-b bg-header-bg">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 justify-between">
             <div className="flex">
@@ -65,7 +65,7 @@ export function Navbar() {
   ] : []
 
   return (
-    <nav className="border-b bg-white">
+    <nav className="border-b bg-header-bg">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 justify-between">
           <div className="flex">

@@ -70,7 +70,7 @@ export default function Home() {
   ]
 
   return (
-    <div className="min-h-screen bg-[#FCF5EB]">
+    <div className="min-h-screen hero-background">
       <Navbar />
       
       {/* Hero Section */}
@@ -79,7 +79,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h1 className="text-5xl md:text-7xl font-bold mb-8 text-gray-900 leading-tight">
             WhatsApp groups{" "}
-            <span className="text-[#25D366]">missing toolbox</span>
+            <span className="text-primary">missing toolbox</span>
           </h1>
           
           <p className="text-2xl md:text-3xl text-gray-600 mb-16 font-light leading-relaxed">
@@ -88,12 +88,12 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/join">
-              <Button size="lg" className="text-xl px-12 py-6 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-200">
+              <Button size="lg" className="text-xl px-12 py-6 bg-primary hover:bg-primary/80 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-200">
                 Try Demo Group
               </Button>
             </Link>
             <Link href="/auth">
-              <Button variant="outline" size="lg" className="text-xl px-12 py-6 border-2 border-gray-300 hover:border-[#25D366] text-gray-700 hover:text-[#25D366] rounded-full font-medium transition-all duration-200">
+              <Button variant="outline" size="lg" className="text-xl px-12 py-6 border-2 border-gray-300 hover:border-primary text-gray-700 hover:text-primary rounded-full font-medium transition-all duration-200">
                 Create Your Group
               </Button>
             </Link>
@@ -104,17 +104,17 @@ export default function Home() {
       {/* Features */}
       {features.map((feature, index) => (
         <div key={index}>
-          <section className={`py-20 px-4 ${index % 2 === 0 ? 'bg-white' : 'bg-[#F6FDF8]'}`}>
+          <section className={`py-20 px-4 ${index % 2 === 0 ? 'bg-white' : 'feature-section-alt'}`}>
             <div className="max-w-7xl mx-auto">
               <div className={`grid md:grid-cols-2 gap-16 items-center ${index % 2 === 1 ? 'md:grid-cols-2' : ''}`}>
                 <div className={index % 2 === 1 ? 'md:order-2' : ''}>
-                  <div className="w-16 h-16 bg-[#25D366] rounded-2xl flex items-center justify-center mb-6">
+                  <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
                     <feature.icon className="h-8 w-8 text-white" />
                   </div>
                   <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
                     {feature.title}
                   </h2>
-                  <p className="text-xl md:text-2xl text-[#25D366] mb-6 font-medium">
+                  <p className="text-xl md:text-2xl text-primary mb-6 font-medium">
                     {feature.benefit}
                   </p>
                   <p className="text-xl text-gray-600 leading-relaxed">
@@ -139,21 +139,21 @@ export default function Home() {
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-12 h-12 bg-[#25D366] rounded-xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mx-auto mb-4">
                 <Shield className="h-6 w-6 text-white" />
               </div>
               <h3 className="font-semibold mb-2">Privacy First</h3>
               <p className="text-gray-600">Members control what they share with each group</p>
             </div>
             <div className="text-center">
-              <div className="w-12 h-12 bg-[#25D366] rounded-xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mx-auto mb-4">
                 <Zap className="h-6 w-6 text-white" />
               </div>
               <h3 className="font-semibold mb-2">60 Second Setup</h3>
               <p className="text-gray-600">Create group, share link, done</p>
             </div>
             <div className="text-center">
-              <div className="w-12 h-12 bg-[#25D366] rounded-xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mx-auto mb-4">
                 <Settings className="h-6 w-6 text-white" />
               </div>
               <h3 className="font-semibold mb-2">Free Start</h3>
@@ -164,11 +164,11 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 px-4 bg-[#F6FDF8]">
+      <section className="py-20 px-4 testimonial-section">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-block border border-[#25D366]/30 py-2 px-4 rounded-full mb-6">
-              <span className="text-[#25D366] font-medium">Testimonials</span>
+            <div className="inline-block border border-primary/30 py-2 px-4 rounded-full mb-6">
+              <span className="text-primary font-medium">Testimonials</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
               What our users say
@@ -220,7 +220,7 @@ export default function Home() {
       <footer className="py-8 px-4 text-center bg-white border-t">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center justify-center gap-3 mb-2">
-            <div className="w-6 h-6 bg-[#25D366] rounded-lg flex items-center justify-center">
+            <div className="w-6 h-6 bg-primary rounded-lg flex items-center justify-center">
               <MessageSquare className="h-3 w-3 text-white" />
             </div>
             <span className="font-semibold text-gray-900">GroupBio</span>
