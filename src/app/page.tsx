@@ -51,21 +51,21 @@ export default function Home() {
   const features = [
     {
       icon: Users,
-      title: "BIOS",
-      description: "Put faces and context to phone numbers. Finally know which Sarah is which.",
-      benefit: "Know WHO these people are"
+      title: "Individual Bios",
+      description: "See who's in the group at a glance — names, photos, and a few key details. No more guessing which Sarah is which, or asking people to re-introduce themselves.",
+      benefit: "Put faces to phone numbers."
     },
     {
       icon: MapPin,
-      title: "MAPS",
-      description: "Know who's nearby for carpools and meetups. You have their number, now know their location.",
-      benefit: "See WHERE people are located"
+      title: "Maps",
+      description: "A simple group map shows where members are based (only if they choose to share). Perfect for carpools, local meetups, or finding the closest helping hand.",
+      benefit: "Know who's nearby."
     },
     {
       icon: FileText,
-      title: "WIKI", 
-      description: "Stop explaining the same things to new members. Rules, schedules, resources in one place.",
-      benefit: "Find HOW information is organized"
+      title: "Documents", 
+      description: "Stop repeating yourself. Group rules, schedules, links, and resources live in a shared wiki that every member can find instantly. New joiners get up to speed without bothering the group.",
+      benefit: "Shared and collaborative docs."
     }
   ]
 
@@ -77,13 +77,18 @@ export default function Home() {
       <section className="py-24 md:py-32 px-4 relative overflow-hidden">
         <ParticlesBackground />
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h1 className="text-5xl md:text-7xl font-bold mb-8 text-gray-900 leading-tight">
-            WhatsApp groups{" "}
-            <span className="text-primary">missing toolbox</span>
+          <h1 className="text-6xl md:text-7xl font-bold mb-8 text-gray-900 leading-tight">
+           The <span className="text-primary">missing toolbox</span> for WhatsApp groups{" "}
+            
           </h1>
           
-          <p className="text-2xl md:text-3xl text-gray-600 mb-16 font-light leading-relaxed">
-            Turn 50 random phone numbers into an actual community.
+          <p className="text-2xl md:text-3xl text-gray-600 mb-6 leading-relaxed">
+            Turn those 87 random phone numbers into an actual community.
+          </p>
+          
+          <p className="text-lg text-gray-700 mb-16">
+            GroupBio adds profiles, maps, and wikis to any WhatsApp group in 60 seconds. <br/>
+            <span className="font-bold"> Free for up to 10 members, £10/yr for unlimited.</span>
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -131,6 +136,40 @@ export default function Home() {
         </div>
       ))}
 
+      {/* Pricing */}
+      <section className="py-20 px-4 feature-section-alt">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900">
+            Simple Pricing
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+            <div className="bg-white rounded-2xl p-8 border-2 border-gray-200">
+              <h3 className="text-xl font-bold mb-4">Free</h3>
+              <div className="text-3xl font-bold text-gray-900 mb-4">£0</div>
+              <p className="text-gray-600 mb-6">Perfect for small groups</p>
+              <ul className="text-left space-y-2 mb-6">
+                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-primary mr-2" />Up to 10 members</li>
+                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-primary mr-2" />All core features</li>
+                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-primary mr-2" />Community support</li>
+              </ul>
+            </div>
+            <div className="bg-primary rounded-2xl p-8 text-white relative">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-white text-primary px-4 py-1 rounded-full text-sm font-medium">
+                Popular
+              </div>
+              <h3 className="text-xl font-bold mb-4">Unlimited</h3>
+              <div className="text-3xl font-bold mb-4">£10<span className="text-lg">/year</span></div>
+              <p className="text-primary-100 mb-6">For growing communities</p>
+              <ul className="text-left space-y-2 mb-6">
+                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-white mr-2" />Unlimited members</li>
+                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-white mr-2" />All core features</li>
+                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-white mr-2" />Priority support</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Reassuring Details */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-4xl mx-auto text-center">
@@ -157,7 +196,7 @@ export default function Home() {
                 <Settings className="h-6 w-6 text-white" />
               </div>
               <h3 className="font-semibold mb-2">Free Start</h3>
-              <p className="text-gray-600">10 people free, then £5/year</p>
+              <p className="text-gray-600">10 people free, then £10/year</p>
             </div>
           </div>
         </div>
@@ -204,7 +243,7 @@ export default function Home() {
             Get started free
           </h2>
           <p className="text-4xl mb-12 opacity-95">
-            Every group can have 10 people for free. Upgrade to £5/year for unlimited members.
+            Every group can have 10 people for free. Upgrade to £10/year for unlimited members.
           </p>
           <div className="flex justify-center">
             <Link href="/auth">

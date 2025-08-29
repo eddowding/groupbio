@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GroupBio - One Profile. Multiple Groups. Total Control.",
-  description: "Share your information selectively with different groups while maintaining your privacy. Perfect for parent groups, sports teams, and professional networks.",
+  title: "GroupBio - WhatsApp Groups Missing Toolbox",
+  description: "Turn those 87 random phone numbers into an actual community. Add bios, maps, and wikis to your WhatsApp groups. 10 people free, then £5/year.",
 };
 
 export default function RootLayout({

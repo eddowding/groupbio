@@ -78,6 +78,39 @@ export function ParticlesBackground({ className = '' }: ParticlesBackgroundProps
       ctx.stroke()
     }
 
+    const applyEdgeRepulsion = (particle: Particle) => {
+      const repulsionStrength = 0.5
+      const edgeDistance = 80 // Distance from edge where repulsion starts
+      
+      // Left edge repulsion
+      if (particle.x < edgeDistance) {
+        const force = (edgeDistance - particle.x) / edgeDistance
+        particle.vx += force * repulsionStrength
+      }
+      
+      // Right edge repulsion
+      if (particle.x > canvas.width - edgeDistance) {
+        const force = (particle.x - (canvas.width - edgeDistance)) / edgeDistance
+        particle.vx -= force * repulsionStrength
+      }
+      
+      // Top edge repulsion
+      if (particle.y < edgeDistance) {
+        const force = (edgeDistance - particle.y) / edgeDistance
+        particle.vy += force * repulsionStrength
+      }
+      
+      // Bottom edge repulsion
+      if (particle.y > canvas.height - edgeDistance) {
+        const force = (particle.y - (canvas.height - edgeDistance)) / edgeDistance
+        particle.vy -= force * repulsionStrength
+      }
+      
+      // Dampen velocity to prevent excessive acceleration
+      particle.vx *= 0.95
+      particle.vy *= 0.95
+    }
+
     const updateParticles = (elapsed: number) => {
       const particles = particlesRef.current
       
@@ -93,8 +126,19 @@ export function ParticlesBackground({ className = '' }: ParticlesBackgroundProps
             particle.x += particle.vx * (1 - progress * 2)
             particle.y += particle.vy * (1 - progress * 2)
             
-            if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1
-            if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1
+            // Soft boundary repulsion to keep particles in view
+            const margin = 50
+            if (particle.x < margin) {
+              particle.vx = Math.abs(particle.vx) * 0.5 // gentle push right
+            } else if (particle.x > canvas.width - margin) {
+              particle.vx = -Math.abs(particle.vx) * 0.5 // gentle push left
+            }
+            
+            if (particle.y < margin) {
+              particle.vy = Math.abs(particle.vy) * 0.5 // gentle push down
+            } else if (particle.y > canvas.height - margin) {
+              particle.vy = -Math.abs(particle.vy) * 0.5 // gentle push up
+            }
           } else {
             particle.phase = 'connecting'
           }
@@ -113,13 +157,20 @@ export function ParticlesBackground({ className = '' }: ParticlesBackgroundProps
           const finalX = driftCenterX + Math.cos(angle) * radiusX
           const finalY = driftCenterY + Math.sin(angle) * radiusY
           
-          particle.targetX = Math.max(50, Math.min(canvas.width - 50, finalX))
-          particle.targetY = Math.max(50, Math.min(canvas.height - 50, finalY))
+          // Add slight randomness to prevent clustering - no hard boundaries
+          const randomOffsetX = (Math.random() - 0.5) * 20
+          const randomOffsetY = (Math.random() - 0.5) * 20
           
-          // Slow gradual movement towards targets
-          const moveStrength = easeInOut * 0.015
+          particle.targetX = finalX + randomOffsetX
+          particle.targetY = finalY + randomOffsetY
+          
+          // Slow gradual movement towards targets with slight variation
+          const moveStrength = easeInOut * (0.015 + Math.random() * 0.005)
           particle.x = particle.x + (particle.targetX - particle.x) * moveStrength
           particle.y = particle.y + (particle.targetY - particle.y) * moveStrength
+          
+          // Apply edge repulsion to prevent clustering at edges
+          applyEdgeRepulsion(particle)
           
           // Connections appear gradually
           particle.connections = []
@@ -153,15 +204,18 @@ export function ParticlesBackground({ className = '' }: ParticlesBackgroundProps
           const radiusX = (cloudWidth / 2) * (0.5 + Math.sin(elapsed / 4000 + i) * 0.5)
           const radiusY = (cloudHeight / 2) * (0.5 + Math.cos(elapsed / 3500 + i * 0.8) * 0.5)
           
-          particle.targetX = driftCenterX + Math.cos(angle) * radiusX
-          particle.targetY = driftCenterY + Math.sin(angle) * radiusY
+          // Add slight randomness to prevent clustering in coalesced phase - no hard boundaries
+          const randomOffsetX2 = (Math.random() - 0.5) * 25
+          const randomOffsetY2 = (Math.random() - 0.5) * 25
           
-          // Keep particles within bounds
-          particle.targetX = Math.max(50, Math.min(canvas.width - 50, particle.targetX))
-          particle.targetY = Math.max(50, Math.min(canvas.height - 50, particle.targetY))
+          particle.targetX = driftCenterX + Math.cos(angle) * radiusX + randomOffsetX2
+          particle.targetY = driftCenterY + Math.sin(angle) * radiusY + randomOffsetY2
           
-          particle.x = particle.x + (particle.targetX - particle.x) * 0.01
-          particle.y = particle.y + (particle.targetY - particle.y) * 0.01
+          particle.x = particle.x + (particle.targetX - particle.x) * (0.01 + Math.random() * 0.005)
+          particle.y = particle.y + (particle.targetY - particle.y) * (0.01 + Math.random() * 0.005)
+          
+          // Apply edge repulsion in coalesced phase too
+          applyEdgeRepulsion(particle)
           
           particle.connections = []
           particles.forEach((other, j) => {

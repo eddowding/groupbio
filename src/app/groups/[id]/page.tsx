@@ -253,10 +253,10 @@ export default function GroupDetail() {
     <div className="min-h-screen bg-background">
       <Navbar />
       
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Header */}
-        <div className="mb-8">
-          <div className="flex items-start justify-between mb-6">
+      {/* Fixed Group Header */}
+      <div className="sticky top-16 z-40 bg-background border-b">
+        <div className="max-w-7xl mx-auto px-4 py-6">
+          <div className="flex items-start justify-between">
             <div>
               <div className="flex items-center gap-3 mb-3">
                 <div className="text-4xl">
@@ -311,14 +311,22 @@ export default function GroupDetail() {
             </div>
           </div>
         </div>
+      </div>
 
-        <Tabs defaultValue="members" className="space-y-6">
-          <TabsList>
-            <TabsTrigger value="members">Members</TabsTrigger>
-            <TabsTrigger value="sharing">My Sharing</TabsTrigger>
-            <TabsTrigger value="info">Group Info</TabsTrigger>
-          </TabsList>
+      <Tabs defaultValue="members" className="w-full">
+        {/* Navigation Tabs */}
+        <div className="sticky top-[180px] z-30 bg-background border-b">
+          <div className="max-w-7xl mx-auto px-4">
+            <TabsList>
+              <TabsTrigger value="members">Members</TabsTrigger>
+              <TabsTrigger value="sharing">My Sharing</TabsTrigger>
+              <TabsTrigger value="info">Group Info</TabsTrigger>
+            </TabsList>
+          </div>
+        </div>
 
+        {/* Tab Content */}
+        <div className="max-w-7xl mx-auto px-4 py-8">
           <TabsContent value="members">
             <div className="space-y-6">
               {/* Search and View Controls */}
@@ -452,8 +460,8 @@ export default function GroupDetail() {
               )}
             </div>
           </TabsContent>
-        </Tabs>
-      </div>
+        </div>
+      </Tabs>
     </div>
   )
 }

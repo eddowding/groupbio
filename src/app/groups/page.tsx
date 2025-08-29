@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -19,6 +20,11 @@ import { getUserGroups } from "@/lib/dummy-data"
 // Simulate logged in user (John Doe - id: "1")
 const currentUserId = "1"
 const userGroups = getUserGroups(currentUserId)
+
+export const metadata: Metadata = {
+  title: "Your Groups - GroupBio",
+  description: "Manage your GroupBio memberships and privacy settings. View all your WhatsApp group communities in one place.",
+}
 
 export default function Groups() {
   const getGroupTypeIcon = (type: string) => {

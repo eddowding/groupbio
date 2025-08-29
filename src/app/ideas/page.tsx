@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -24,6 +25,11 @@ import {
   Heart,
   ArrowRight
 } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Ideas & Roadmap - GroupBio",
+  description: "Explore upcoming features and innovative ideas that will make GroupBio the ultimate platform for group coordination and member connections.",
+}
 
 export default function Ideas() {
   const coreFeatures = [

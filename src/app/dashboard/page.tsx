@@ -10,9 +10,7 @@ import {
   Users, 
   MapPin, 
   Plus, 
-  TrendingUp, 
-  Clock,
-  UserPlus
+  Clock
 } from "lucide-react"
 import { getUserGroups, dummyUsers } from "@/lib/dummy-data"
 
@@ -22,28 +20,6 @@ const currentUser = dummyUsers.find(u => u.id === currentUserId)!
 const userGroups = getUserGroups(currentUserId)
 
 export default function Dashboard() {
-  const stats = [
-    {
-      label: "Groups",
-      value: userGroups.length,
-      icon: Users,
-      color: "text-blue-600"
-    },
-    {
-      label: "Connections",
-      value: 24,
-      icon: UserPlus,
-      color: "text-green-600"
-    },
-    {
-      label: "Profile Views",
-      value: 12,
-      icon: TrendingUp,
-      color: "text-purple-600"
-    }
-  ]
-
-
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -76,22 +52,6 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Stats */}
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
-          {stats.map((stat, index) => (
-            <Card key={index}>
-              <CardContent className="flex items-center p-6">
-                <div className={`p-3 rounded-full bg-gray-100 mr-4`}>
-                  <stat.icon className={`h-6 w-6 ${stat.color}`} />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main Content */}
@@ -99,7 +59,7 @@ export default function Dashboard() {
             {/* Your Groups */}
             <div>
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-semibold">Your Groups</h2>
+                <h2 className="text-2xl font-semibold">Your Groups ({userGroups.length})</h2>
                 <Link href="/groups">
                   <Button variant="outline" size="sm">
                     View All
@@ -202,11 +162,18 @@ export default function Dashboard() {
                   </div>
                 </div>
                 
-                <Link href="/profile" className="mt-4 block">
-                  <Button variant="outline" size="sm" className="w-full">
-                    Edit Profile
-                  </Button>
-                </Link>
+                <div className="mt-4 space-y-2">
+                  <Link href="/profile" className="block">
+                    <Button variant="outline" size="sm" className="w-full">
+                      Edit Profile
+                    </Button>
+                  </Link>
+                  <Link href="/profile/preview" className="block">
+                    <Button variant="ghost" size="sm" className="w-full">
+                      View as others see you
+                    </Button>
+                  </Link>
+                </div>
               </CardContent>
             </Card>
 
