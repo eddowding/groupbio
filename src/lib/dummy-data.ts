@@ -1289,6 +1289,13 @@ export const dummyGroupMembers: GroupMember[] = [
     joinedAt: "2024-03-18",
     sharedFields: ["name", "phone", "location", "bio", "interests"],
     role: "member"
+  },
+  {
+    userId: "1", 
+    groupId: "2",
+    joinedAt: "2024-02-20",
+    sharedFields: ["name", "phone", "bio"],
+    role: "member"
   }
 ]
 

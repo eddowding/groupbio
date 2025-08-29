@@ -71,134 +71,110 @@ export default function Groups() {
         </div>
 
         {/* Groups Grid */}
-        <div className="grid gap-6">
+        <div className="grid gap-4">
           {userGroups.map((group) => (
             <Card key={group.id} className="hover:shadow-md transition-shadow">
-              <CardHeader>
+              <CardContent className="p-6">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="text-3xl">
+                  <div className="flex items-center gap-4 flex-1">
+                    <div className="text-2xl">
                       {getGroupTypeIcon(group.type)}
                     </div>
-                    <div>
-                      <CardTitle className="text-xl flex items-center gap-2">
-                        {group.name}
-                        <Badge variant={group.membership.role === "admin" ? "default" : "secondary"}>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="text-lg font-semibold">{group.name}</h3>
+                        <Badge variant={group.membership.role === "admin" ? "default" : "secondary"} className="text-xs">
                           {group.membership.role}
                         </Badge>
-                      </CardTitle>
-                      <CardDescription className="text-base">
-                        {group.description}
-                      </CardDescription>
-                    </div>
-                  </div>
-                  <div className="flex gap-2">
-                    {group.membership.role === "admin" && (
-                      <Link href={`/admin/groups/${group.id}`}>
-                        <Button variant="outline" size="sm">
-                          <Settings className="h-4 w-4 mr-2" />
-                          Manage
-                        </Button>
-                      </Link>
-                    )}
-                    <Link href={`/groups/${group.id}`}>
-                      <Button size="sm">View</Button>
-                    </Link>
-                  </div>
-                </div>
-              </CardHeader>
-              
-              <CardContent>
-                <div className="grid md:grid-cols-2 gap-6">
-                  {/* Group Stats */}
-                  <div className="space-y-4">
-                    <h4 className="font-medium">Group Details</h4>
-                    <div className="space-y-3 text-sm">
-                      <div className="flex items-center gap-2 text-muted-foreground">
-                        <Users className="h-4 w-4" />
-                        <span>{group.memberCount} members</span>
                       </div>
-                      <div className="flex items-center gap-2 text-muted-foreground">
-                        <Calendar className="h-4 w-4" />
-                        <span>Created {new Date(group.createdAt).toLocaleDateString()}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-muted-foreground">
-                        <Clock className="h-4 w-4" />
-                        <span>Joined {new Date(group.membership.joinedAt).toLocaleDateString()}</span>
-                      </div>
-                      {group.settings.allowMap && (
-                        <div className="flex items-center gap-2 text-muted-foreground">
-                          <MapPin className="h-4 w-4" />
-                          <span>Map view enabled</span>
-                        </div>
-                      )}
+                      <p className="text-muted-foreground text-sm">{group.description}</p>
                     </div>
                   </div>
 
-                  {/* Your Sharing Status */}
-                  <div className="space-y-4">
-                    <h4 className="font-medium">Your Sharing Status</h4>
-                    <div className="space-y-3">
+                  <div className="flex items-center gap-6">
+                    {/* Group Details - Compact */}
+                    <div className="text-sm text-muted-foreground space-y-1">
+                      <div className="flex items-center gap-2">
+                        <Users className="h-3 w-3" />
+                        <span>{group.memberCount} members</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Calendar className="h-3 w-3" />
+                        <span>Created {new Date(group.createdAt).toLocaleDateString()}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Clock className="h-3 w-3" />
+                        <span>Joined {new Date(group.membership.joinedAt).toLocaleDateString()}</span>
+                      </div>
+                    </div>
+
+                    {/* Your Sharing Status - Compact */}
+                    <div className="text-sm space-y-1">
+                      <div className="text-muted-foreground font-medium">Your Sharing Status</div>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-muted-foreground">Fields shared:</span>
-                        <Badge variant="outline">
+                        <span className="text-muted-foreground">Fields shared:</span>
+                        <Badge variant="outline" className="text-xs">
                           {group.membership.sharedFields.length}/{group.settings.requiredFields.length + group.settings.optionalFields.length}
                         </Badge>
                       </div>
-                      
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-muted-foreground">Required fields:</span>
-                        <Badge variant={
-                          group.settings.requiredFields.every(field => 
-                            group.membership.sharedFields.includes(field)
-                          ) ? "default" : "destructive"
-                        }>
+                        <span className="text-muted-foreground">Required fields:</span>
+                        <Badge 
+                          variant={
+                            group.settings.requiredFields.every(field => 
+                              group.membership.sharedFields.includes(field)
+                            ) ? "default" : "destructive"
+                          }
+                          className="text-xs"
+                        >
                           {group.settings.requiredFields.filter(field => 
                             group.membership.sharedFields.includes(field)
                           ).length}/{group.settings.requiredFields.length}
                         </Badge>
                       </div>
-
-                      <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="w-24 bg-gray-200 rounded-full h-1.5 mt-2">
                         <div 
-                          className="bg-primary h-2 rounded-full transition-all" 
+                          className="bg-primary h-1.5 rounded-full transition-all" 
                           style={{
                             width: `${(group.membership.sharedFields.length / (group.settings.requiredFields.length + group.settings.optionalFields.length)) * 100}%`
                           }}
                         ></div>
                       </div>
                     </div>
-                  </div>
-                </div>
 
-                {/* Quick Actions */}
-                <div className="flex flex-wrap gap-2 mt-6 pt-4 border-t">
-                  <Link href={`/groups/${group.id}`}>
-                    <Button variant="ghost" size="sm">
-                      <Users className="h-4 w-4 mr-2" />
-                      View Members
-                    </Button>
-                  </Link>
-                  {group.settings.allowMap && (
-                    <Link href={`/groups/${group.id}/map`}>
-                      <Button variant="ghost" size="sm">
-                        <MapPin className="h-4 w-4 mr-2" />
-                        Map View
-                      </Button>
-                    </Link>
-                  )}
-                  <Link href={`/groups/${group.id}/wiki`}>
-                    <Button variant="ghost" size="sm">
-                      <FileText className="h-4 w-4 mr-2" />
-                      Wiki
-                    </Button>
-                  </Link>
-                  <Link href={`/groups/${group.id}/sharing`}>
-                    <Button variant="ghost" size="sm">
-                      <Settings className="h-4 w-4 mr-2" />
-                      Privacy Settings
-                    </Button>
-                  </Link>
+                    {/* Actions */}
+                    <div className="flex gap-2">
+                      <Link href={`/groups/${group.id}`}>
+                        <Button variant="ghost" size="sm">
+                          <Users className="h-4 w-4 mr-2" />
+                          View Members
+                        </Button>
+                      </Link>
+                      {group.settings.allowMap && (
+                        <Link href={`/groups/${group.id}/map`}>
+                          <Button variant="ghost" size="sm">
+                            <MapPin className="h-4 w-4 mr-2" />
+                            Map
+                          </Button>
+                        </Link>
+                      )}
+                      <Link href={`/groups/${group.id}/wiki`}>
+                        <Button variant="ghost" size="sm">
+                          <FileText className="h-4 w-4 mr-2" />
+                          Wiki
+                        </Button>
+                      </Link>
+                      <Link href={`/groups/${group.id}/sharing`}>
+                        <Button variant="ghost" size="sm">
+                          <Settings className="h-4 w-4 mr-2" />
+                          Privacy Settings
+                        </Button>
+                      </Link>
+                      <Link href={`/groups/${group.id}`}>
+                        <Button size="sm" className="bg-black text-white hover:bg-gray-800">View</Button>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
