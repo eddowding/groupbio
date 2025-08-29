@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, Suspense } from "react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -11,7 +11,7 @@ import { Navbar } from "@/components/layout/navbar"
 import { Mail, ArrowRight, Github, Chrome } from "lucide-react"
 import { getGroupById } from "@/lib/dummy-data"
 
-export default function Auth() {
+function AuthContent() {
   const [email, setEmail] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [emailSent, setEmailSent] = useState(false)
@@ -217,5 +217,13 @@ export default function Auth() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function Auth() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AuthContent />
+    </Suspense>
   )
 }

@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
+import { useState, Suspense } from "react"
 import { useParams, useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -23,7 +23,7 @@ import {
 } from "lucide-react"
 import { getGroupById } from "@/lib/dummy-data"
 
-export default function NewWikiDocument() {
+function NewWikiDocumentContent() {
   const params = useParams()
   const searchParams = useSearchParams()
   const groupId = params.id as string
@@ -318,5 +318,13 @@ List any tools, services, or platforms the group uses for communication and coll
         </form>
       </div>
     </div>
+  )
+}
+
+export default function NewWikiDocument() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <NewWikiDocumentContent />
+    </Suspense>
   )
 }

@@ -307,3 +307,8 @@ export function getUserGroups(userId: string): (Group & { membership: GroupMembe
 export function getWikiDocs(groupId: string): WikiDoc[] {
   return dummyWikiDocs.filter(doc => doc.groupId === groupId)
 }
+
+// Get current logged-in user (in real app this would come from auth)
+export function getCurrentUser(): User {
+  return getUserById("1")! // John Doe is our demo user
+}
