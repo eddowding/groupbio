@@ -193,17 +193,17 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-4 text-center bg-[#25D366] text-white">
+      <section className="py-24 px-4 text-center bg-[#111B21] text-white">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
+          <h2 className="text-8xl md:text-9xl font-bold mb-8 leading-tight">
             Get started free
           </h2>
-          <p className="text-xl mb-12 opacity-95">
+          <p className="text-4xl mb-12 opacity-95">
             Every group can have 10 people for free. Upgrade to £5/year for unlimited members.
           </p>
           <div className="flex justify-center">
             <Link href="/auth">
-              <Button size="lg" className="text-2xl px-16 py-6 bg-white text-[#25D366] hover:bg-gray-50 rounded-full font-medium shadow-xl hover:shadow-2xl transition-all duration-200">
+              <Button size="lg" className="text-4xl px-32 py-12 bg-white text-[#111B21] hover:bg-gray-50 rounded-full font-medium shadow-xl hover:shadow-2xl transition-all duration-200">
                 Create Free Group
               </Button>
             </Link>
