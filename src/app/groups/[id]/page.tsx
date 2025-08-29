@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Navbar } from "@/components/layout/navbar"
+import { GroupHeader } from "@/components/layout/group-header"
 import { 
   Users, 
   MapPin, 
@@ -253,69 +254,11 @@ export default function GroupDetail() {
     <div className="min-h-screen bg-background">
       <Navbar />
       
-      {/* Fixed Group Header */}
-      <div className="sticky top-16 z-40 bg-background border-b">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <div className="flex items-start justify-between">
-            <div>
-              <div className="flex items-center gap-3 mb-3">
-                <div className="text-4xl">
-                  {group.type === "parent" ? "👨‍👩‍👧‍👦" : 
-                   group.type === "sports" ? "⚽" : 
-                   group.type === "professional" ? "💼" : "👥"}
-                </div>
-                <div>
-                  <h1 className="text-3xl font-bold">{group.name}</h1>
-                  <p className="text-muted-foreground text-lg">{group.description}</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-6 text-sm text-muted-foreground">
-                <div className="flex items-center gap-1">
-                  <Users className="h-4 w-4" />
-                  <span>{group.memberCount} members</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Calendar className="h-4 w-4" />
-                  <span>Created {new Date(group.createdAt).toLocaleDateString()}</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Badge variant="secondary">{group.code}</Badge>
-                </div>
-              </div>
-            </div>
-            
-            <div className="flex gap-3">
-              {group.settings.allowMap && (
-                <Link href={`/groups/${group.id}/map`}>
-                  <Button variant="outline">
-                    <MapPin className="mr-2 h-4 w-4" />
-                    Map View
-                  </Button>
-                </Link>
-              )}
-              <Link href={`/groups/${group.id}/wiki`}>
-                <Button variant="outline">
-                  <FileText className="mr-2 h-4 w-4" />
-                  Wiki
-                </Button>
-              </Link>
-              {isAdmin && (
-                <Link href={`/admin/groups/${group.id}`}>
-                  <Button>
-                    <Settings className="mr-2 h-4 w-4" />
-                    Manage
-                  </Button>
-                </Link>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
+      <GroupHeader group={group} currentMembership={currentMembership} />
 
       <Tabs defaultValue="members" className="w-full">
-        {/* Navigation Tabs */}
-        <div className="sticky top-[180px] z-30 bg-background border-b">
+        {/* Secondary Navigation Tabs */}
+        <div className="sticky top-[220px] z-30 bg-background border-b">
           <div className="max-w-7xl mx-auto px-4">
             <TabsList>
               <TabsTrigger value="members">Members</TabsTrigger>
@@ -330,23 +273,23 @@ export default function GroupDetail() {
           <TabsContent value="members">
             <div className="space-y-6">
               {/* Search and View Controls */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
+              <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 mb-6">
+                <div className="w-full lg:flex-1 max-w-2xl">
                   <div className="relative">
-                    <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                     <Input
                       placeholder="Search members..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pl-10 w-80"
+                      className="pl-12 pr-4 py-3 text-base bg-white w-full border-2 focus:border-primary"
                     />
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="mt-2 text-sm text-muted-foreground">
                     {filteredMembers.length} of {members.length} members
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 lg:flex-shrink-0">
                   <Button
                     variant={viewMode === "grid" ? "default" : "ghost"}
                     size="sm"

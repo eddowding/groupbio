@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Input } from "@/components/ui/input"
 import { Navbar } from "@/components/layout/navbar"
+import { GroupHeader } from "@/components/layout/group-header"
 import { 
   ArrowLeft,
   MapPin,
@@ -38,6 +39,9 @@ export default function GroupMap() {
   if (!group) {
     return <div>Group not found</div>
   }
+
+  // Mock current membership for header
+  const currentMembership = { role: "member" }
 
   // Get user's location on component mount
   useEffect(() => {
@@ -271,31 +275,13 @@ export default function GroupMap() {
     <div className="min-h-screen bg-background">
       <Navbar />
       
+      <GroupHeader group={group} currentMembership={currentMembership} />
+      
       <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Header */}
         <div className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <Link href={`/groups/${group.id}`}>
-              <Button variant="ghost" size="sm">
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Back to Group
-              </Button>
-            </Link>
-          </div>
-          
           <div className="flex items-start justify-between">
             <div className="flex-1">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="p-3 rounded-full bg-green-100">
-                  <MapPin className="h-8 w-8 text-green-600" />
-                </div>
-                <div className="flex-1">
-                  <h1 className="text-3xl font-bold">{group.name} Map</h1>
-                  <p className="text-muted-foreground text-lg">
-                    See where your group members are located
-                  </p>
-                </div>
-              </div>
+              
               
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 <div className="flex items-center gap-1">
@@ -313,20 +299,20 @@ export default function GroupMap() {
               </div>
 
               {/* Search Bar */}
-              <div className="relative max-w-md">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <div className="relative w-full max-w-2xl">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
                 <Input
                   placeholder="Search members by name, location, or bio..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 pr-10"
+                  className="pl-12 pr-12 py-3 text-base bg-white w-full border-2 focus:border-primary"
                 />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery("")}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
                   >
-                    <X className="h-4 w-4" />
+                    <X className="h-5 w-5" />
                   </button>
                 )}
               </div>

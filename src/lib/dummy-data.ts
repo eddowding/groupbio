@@ -1326,6 +1326,61 @@ export const dummyWikiDocs: WikiDoc[] = [
     lastModified: "2024-02-12",
     lastModifiedBy: "Mike Chen",
     category: "resources"
+  },
+  // Group 4 (Downtown Book Club) documents
+  {
+    id: "4",
+    groupId: "4",
+    title: "Welcome to Downtown Book Club",
+    content: "# Welcome to Our Literary Community! 📚\n\nWelcome to the Downtown Book Club! We're a passionate group of readers who love exploring diverse stories and engaging in thoughtful discussions.\n\n## About Us\nFounded in March 2024, we meet monthly to discuss our selected books. Our members bring different perspectives and reading experiences, making for rich conversations.\n\n## What We Offer\n- Monthly book discussions\n- Author events and readings\n- Book swaps and recommendations\n- Literary-themed social events\n- Online discussion forum\n\n## Meeting Details\n- **When**: Second Saturday of each month, 2:00 PM\n- **Where**: Downtown Public Library, Community Room B\n- **Duration**: 2 hours with optional coffee after\n\n## Getting Started\n1. Join our WhatsApp group for updates\n2. Check out our current book selection\n3. Attend your first meeting (newcomers always welcome!)\n4. Consider hosting a future discussion\n\nLooking forward to many great book discussions together!",
+    lastModified: "2024-03-10",
+    lastModifiedBy: "Emma Thompson",
+    category: "general"
+  },
+  {
+    id: "5",
+    groupId: "4",
+    title: "Book Club Guidelines & Etiquette",
+    content: "# Book Club Guidelines 📖\n\n## Discussion Rules\n- **Respect all opinions**: Every member's perspective is valuable\n- **No spoilers**: Always warn before discussing plot points\n- **Stay on topic**: Keep discussions focused on the current book\n- **Active listening**: Let everyone share their thoughts\n- **Be prepared**: Try to finish the book before our meeting\n\n## Meeting Etiquette\n- Arrive on time or message the group\n- Turn phones to silent during discussions\n- Bring your copy of the book for reference\n- Take turns speaking - don't dominate the conversation\n- Ask questions to encourage participation\n\n## Book Selection Process\n1. Suggestions are collected monthly\n2. We vote democratically on 3 finalist books\n3. Consider diverse authors and genres\n4. Keep books under 400 pages when possible\n5. Avoid books members have recently read\n\n## Hosting Guidelines\nWhen it's your turn to host a discussion:\n- Prepare 5-7 discussion questions\n- Research the author's background\n- Bring snacks or refreshments (optional)\n- Keep discussion flowing and inclusive\n- Send recap notes to the group afterward\n\n## Library Partnership\nThanks to our partnership with Downtown Public Library:\n- Multiple copies available for checkout\n- Quiet discussion space reserved monthly\n- Access to author biography resources\n- Book club discount at library café",
+    lastModified: "2024-03-12",
+    lastModifiedBy: "Emma Thompson",
+    category: "rules"
+  },
+  {
+    id: "6",
+    groupId: "4",
+    title: "2024 Reading Schedule",
+    content: "# 2024 Reading Calendar 📅\n\n## Completed Books\n\n### March - \"The Seven Husbands of Evelyn Hugo\" by Taylor Jenkins Reid\n- **Discussion Date**: March 16, 2024\n- **Host**: Emma Thompson\n- **Rating**: ⭐⭐⭐⭐⭐ (Group average: 4.2/5)\n- **Notes**: Fantastic debut book! Great discussion about Hollywood glamour and hidden truths.\n\n## Upcoming Books\n\n### April - \"Klara and the Sun\" by Kazuo Ishiguro\n- **Discussion Date**: April 13, 2024\n- **Host**: John Doe (volunteered!)\n- **Genre**: Science Fiction/Literary Fiction\n- **Pages**: 303\n- **Why we chose it**: Exploration of AI consciousness and human connection\n\n### May - \"The Midnight Library\" by Matt Haig\n- **Discussion Date**: May 11, 2024\n- **Host**: TBD\n- **Genre**: Contemporary Fiction/Philosophy\n- **Pages**: 288\n- **Why we chose it**: Thought-provoking concept about life choices\n\n### June - \"Educated\" by Tara Westover\n- **Discussion Date**: June 8, 2024\n- **Host**: TBD\n- **Genre**: Memoir\n- **Pages**: 334\n- **Why we chose it**: Powerful story of education and family\n\n## Book Selection Ideas for Later\n- \"Circe\" by Madeline Miller\n- \"The Invisible Bridge\" by Julie Orringer\n- \"Homegoing\" by Yaa Gyasi\n- \"The Silent Patient\" by Alex Michaelides\n- \"Anxious People\" by Fredrik Backman\n\n## Special Events\n- **May 25**: Author reading at Bookstore Downtown (optional group outing)\n- **July**: Summer picnic with book swap\n- **December**: Holiday party and book gift exchange",
+    lastModified: "2024-03-25",
+    lastModifiedBy: "John Doe",
+    category: "general"
+  },
+  {
+    id: "7",
+    groupId: "4",
+    title: "Discussion Questions: Klara and the Sun",
+    content: "# Discussion Questions: \"Klara and the Sun\" 🤖\n\n*For our April 13th meeting - hosted by John*\n\n## Character & Perspective Questions\n1. What did you think of Ishiguro's choice to tell the story from Klara's perspective? How did this affect your reading experience?\n\n2. How did Klara's understanding of the world differ from human understanding? What did this reveal about both AI and human nature?\n\n3. Discuss Josie's character development. How did her illness shape her relationships and worldview?\n\n4. What role did the Mother play in the story? How did her fears and hopes drive the plot?\n\n## Themes & Ideas\n5. What does the novel suggest about the nature of love and sacrifice? Consider both Klara's sacrifices and those made by the human characters.\n\n6. How does the book explore themes of faith and belief? What different belief systems do we see?\n\n7. Discuss the concept of \"being lifted\" - what are the social implications of this genetic enhancement?\n\n8. What does the sun represent in the novel? How do different characters relate to it?\n\n## Broader Discussion\n9. How realistic did you find Ishiguro's vision of AI companionship? What aspects seemed most/least believable?\n\n10. What ethical questions does the book raise about AI consciousness and rights?\n\n11. How does this book compare to other AI fiction you've read or seen?\n\n12. What do you think the ending suggests about Klara's future and the nature of memory?\n\n## Fun Questions\n- If you could have an Artificial Friend like Klara, would you want one?\n- Which scene or passage affected you most emotionally?\n- What questions would you ask Kazuo Ishiguro about this book?\n\n*Bring your favorite quotes to share!*",
+    lastModified: "2024-03-28",
+    lastModifiedBy: "John Doe",
+    category: "resources"
+  },
+  {
+    id: "8",
+    groupId: "4",
+    title: "Book Recommendations & Reviews",
+    content: "# Member Book Recommendations 💎\n\n*Books recommended by our members (not for club reading, just personal suggestions)*\n\n## Emma's Picks\n**\"The Atlas Six\" by Olivie Blake**\n- Genre: Dark Academia/Fantasy\n- Emma's review: \"Mind-bending magic system and complex characters. Perfect if you loved 'The Secret History'\"\n- Rating: ⭐⭐⭐⭐\n\n**\"Mexican Gothic\" by Silvia Moreno-Garcia**\n- Genre: Gothic Horror\n- Emma's review: \"Atmospheric and creepy. Great blend of horror and historical fiction.\"\n- Rating: ⭐⭐⭐⭐⭐\n\n## John's Picks\n**\"Project Hail Mary\" by Andy Weir**\n- Genre: Science Fiction\n- John's review: \"If you liked 'The Martian', you'll love this. Humor, science, and heart.\"\n- Rating: ⭐⭐⭐⭐⭐\n\n**\"The Thursday Murder Club\" by Richard Osman**\n- Genre: Mystery/Cozy Crime\n- John's review: \"Delightful characters and clever mysteries. Perfect comfort read.\"\n- Rating: ⭐⭐⭐⭐\n\n## Genre Wishlists\n\n### Historical Fiction Lovers\n- \"The Nightingale\" by Kristin Hannah\n- \"All the Light We Cannot See\" by Anthony Doerr\n- \"The Book Thief\" by Markus Zusak\n\n### Mystery/Thriller Fans\n- \"Gone Girl\" by Gillian Flynn\n- \"The Girl with the Dragon Tattoo\" by Stieg Larsson\n- \"In the Woods\" by Tana French\n\n### Literary Fiction\n- \"A Little Life\" by Hanya Yanagihara\n- \"The Goldfinch\" by Donna Tartt\n- \"Normal People\" by Sally Rooney\n\n### Non-Fiction\n- \"Sapiens\" by Yuval Noah Harari\n- \"Born a Crime\" by Trevor Noah\n- \"Wild\" by Cheryl Strayed\n\n## Book Swap Corner\n*Available for borrowing from members:*\n- \"Where the Crawdads Sing\" - Emma\n- \"The Vanishing Half\" - John\n- \"Dune\" (complete series) - Emma\n- \"Becoming\" by Michelle Obama - John\n\n*Want to add your books to the swap? Message the group!*",
+    lastModified: "2024-03-30",
+    lastModifiedBy: "Emma Thompson",
+    category: "resources"
+  },
+  {
+    id: "9",
+    groupId: "4",
+    title: "Frequently Asked Questions",
+    content: "# Book Club FAQ ❓\n\n## Getting Started\n\n**Q: I'm new to book clubs. What should I expect?**\nA: Book clubs are relaxed, friendly discussions! Come with an open mind, and don't worry if you haven't finished the book - we welcome all levels of participation.\n\n**Q: What if I didn't like the book?**\nA: That's perfectly fine! Differing opinions make for the best discussions. We value honest perspectives.\n\n**Q: Do I need to prepare anything before meetings?**\nA: Just read (or attempt to read) the book. If you want to take notes or mark passages, great! But it's not required.\n\n## Practical Questions\n\n**Q: What if I can't make a meeting?**\nA: No problem! We understand life happens. We'll send you a summary of the discussion.\n\n**Q: How are books chosen?**\nA: Members suggest books, we vote democratically, and try to rotate genres to keep things interesting.\n\n**Q: Can I bring a friend?**\nA: Absolutely! New members are always welcome. Just give us a heads up so we know to expect them.\n\n**Q: What about refreshments?**\nA: The host usually provides light snacks, but it's not required. We sometimes grab coffee together after meetings.\n\n## Book Selection\n\n**Q: How long should books be?**\nA: We try to keep them under 400 pages when possible, but we make exceptions for exceptional books.\n\n**Q: What genres do we read?**\nA: We read everything! Literary fiction, mysteries, sci-fi, memoirs, historical fiction - variety is key.\n\n**Q: Can we read classics?**\nA: Yes! We love revisiting classics with fresh eyes and adult perspectives.\n\n## Group Dynamics\n\n**Q: What if someone dominates the conversation?**\nA: Our hosts are trained to facilitate inclusive discussions. We encourage everyone to participate.\n\n**Q: Is there homework besides reading?**\nA: Nope! Just show up ready to chat about the book.\n\n**Q: How big is the group?**\nA: We currently have 8 active members, which is perfect for intimate discussions.\n\n*Have other questions? Don't hesitate to ask in our group chat!*",
+    lastModified: "2024-03-15",
+    lastModifiedBy: "Emma Thompson",
+    category: "faq"
   }
 ]
 

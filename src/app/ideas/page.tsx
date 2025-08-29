@@ -32,127 +32,78 @@ export const metadata: Metadata = {
 }
 
 export default function Ideas() {
-  const coreFeatures = [
+  // Identity Pillar - Connections
+  const identityFeatures = [
     {
       icon: Users,
       title: "Smart Introductions",
-      description: "AI-powered suggestions for connecting members based on shared interests and proximity.",
+      description: "The core wedge → AI-powered suggestions connecting members based on shared interests and proximity.",
       status: "planned",
-      priority: "high"
-    },
-    {
-      icon: Calendar,
-      title: "Group Activity Feed", 
-      description: "Real-time updates when members update profiles, join groups, or share new information.",
-      status: "in-development",
       priority: "high"
     },
     {
       icon: Layers,
-      title: "Subgroups & Circles",
-      description: "Create smaller groups within main groups (like 'Defenders' within 'Soccer Team').",
+      title: "Cross-Group Graph",
+      description: "\"Emma is in your Street group + Parents group → stronger tie.\" See overlapping group connections.",
       status: "planned",
       priority: "medium"
-    },
-    {
-      icon: Clock,
-      title: "Time-Bound Sharing",
-      description: "Share information temporarily (phone number for 48 hours during events).",
-      status: "research",
-      priority: "medium"
-    }
-  ]
-
-  const engagementFeatures = [
-    {
-      icon: Zap,
-      title: "Quick Actions",
-      description: "One-tap creation of WhatsApp groups, contact exports, and availability polls.",
-      status: "planned",
-      priority: "high"
-    },
-    {
-      icon: TrendingUp,
-      title: "Profile Completeness Gamification",
-      description: "Progress tracking and gentle nudges to help members complete their profiles.",
-      status: "in-development", 
-      priority: "medium"
-    },
-    {
-      icon: Search,
-      title: "Discovery Mode",
-      description: "Find common interests and suggest connections within your groups.",
-      status: "research",
-      priority: "medium"
-    },
-    {
-      icon: Bell,
-      title: "Smart Notifications",
-      description: "Intelligent alerts about relevant group activity and member updates.",
-      status: "planned",
-      priority: "low"
-    }
-  ]
-
-  const adminTools = [
-    {
-      icon: BarChart3,
-      title: "Group Insights Dashboard",
-      description: "Analytics on member engagement, field completion rates, and group health metrics.",
-      status: "planned",
-      priority: "high"
-    },
-    {
-      icon: Target,
-      title: "Bulk Operations",
-      description: "Message members with incomplete profiles, export data, and manage permissions at scale.",
-      status: "research",
-      priority: "medium"
-    },
-    {
-      icon: Sparkles,
-      title: "Field Templates",
-      description: "Pre-built field sets for different group types with smart suggestions.",
-      status: "in-development",
-      priority: "high"
-    },
-    {
-      icon: Shield,
-      title: "Advanced Safety Features", 
-      description: "Member verification, reporting tools, and audit logs for secure group management.",
-      status: "planned",
-      priority: "high"
-    }
-  ]
-
-  const innovativeFeatures = [
-    {
-      icon: FileText,
-      title: "Collaborative Group Wiki",
-      description: "Shared documentation, meeting notes, and resources with version control.",
-      status: "live",
-      priority: "high"
-    },
-    {
-      icon: Map,
-      title: "Enhanced Location Features",
-      description: "Neighborhood clustering, distance calculations, and event-based location sharing.",
-      status: "in-development",
-      priority: "medium"
-    },
-    {
-      icon: Brain,
-      title: "AI Field Suggestions",
-      description: "Smart recommendations for what information to share based on group context.",
-      status: "research", 
-      priority: "low"
     },
     {
       icon: Heart,
-      title: "Network Map",
-      description: "Interactive visualization showing member connections based on shared groups and common interests.",
-      status: "in-development",
+      title: "Affinity Tags",
+      description: "\"Looking for a babysitter? These 3 parents also offer swaps.\" Smart matching for specific needs.",
+      status: "planned",
       priority: "medium"
+    }
+  ]
+
+  // Coordination Pillar
+  const coordinationFeatures = [
+    {
+      icon: Calendar,
+      title: "Event RSVPs",
+      description: "Super lightweight: \"Picnic Sat 2pm? 8 going, 3 maybe.\" Simple event coordination.",
+      status: "planned",
+      priority: "high"
+    },
+    {
+      icon: Clock,
+      title: "Shared Calendar",
+      description: "Recurring things like \"bin day, nursery rota, football fixtures\" pinned outside the chat scroll.",
+      status: "planned",
+      priority: "high"
+    },
+    {
+      icon: BarChart3,
+      title: "Availability Polls",
+      description: "Not doodle-style heavy, just \"Which evening works? Tue/Thu/Fri.\" Quick consensus building.",
+      status: "planned",
+      priority: "medium"
+    }
+  ]
+
+  // Exchange Pillar - Jobs To Be Done
+  const exchangeFeatures = [
+    {
+      icon: Target,
+      title: "Task Board",
+      description: "Micro-tasks inside the group (e.g. \"bring juice\", \"host next week\"). Just a 3-column board: to do / doing / done.",
+      status: "planned",
+      priority: "high"
+    },
+    {
+      icon: MessageSquare,
+      title: "Ask/Offer Board",
+      description: "Structured version of \"Does anyone have a ladder?\" / \"Free cot available.\" Makes barter/reuse easy.",
+      status: "planned",
+      priority: "high"
+    },
+    {
+      icon: FileText,
+      title: "Resource Vault",
+      description: "Rules, FAQs, links → a real memory for the group, not lost in WhatsApp scroll.",
+      status: "live",
+      priority: "high"
     }
   ]
 
@@ -221,10 +172,11 @@ export default function Ideas() {
             <div className="p-3 rounded-full bg-yellow-100">
               <Lightbulb className="h-8 w-8 text-yellow-600" />
             </div>
-            <h1 className="text-4xl font-bold">Ideas & Roadmap</h1>
+            <h1 className="text-4xl font-bold">The Operating System for Groups</h1>
           </div>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Explore upcoming features and innovative ideas that will make GroupBio the ultimate platform for group coordination and member connections.
+          <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+            Beyond "tidy directory" → GroupBio tackles real coordination jobs inside communities. 
+            Three pillars turn us from bolt-on to indispensable: <strong>Identity</strong>, <strong>Coordination</strong>, and <strong>Exchange</strong>.
           </p>
         </div>
 
@@ -248,11 +200,22 @@ export default function Ideas() {
           </div>
         </div>
 
-        {/* Feature Categories */}
-        <FeatureGrid features={coreFeatures} title="🎯 Core Features" />
-        <FeatureGrid features={engagementFeatures} title="⚡ Engagement & Discovery" />
-        <FeatureGrid features={adminTools} title="🛠️ Admin Tools" />
-        <FeatureGrid features={innovativeFeatures} title="🚀 Innovation Lab" />
+        {/* Three Pillars */}
+        <FeatureGrid features={identityFeatures} title="🧑‍🤝‍🧑 Identity → Connections" />
+        <FeatureGrid features={coordinationFeatures} title="📅 Coordination → Events + Tasks + Connections" />
+        <FeatureGrid features={exchangeFeatures} title="🛠 Exchange → Jobs To Be Done" />
+
+        {/* Vision Statement */}
+        <Card className="mb-12 border-2 border-primary/20 bg-primary/5">
+          <CardContent className="p-8 text-center">
+            <h2 className="text-2xl font-bold mb-4">The Vision</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              If we nail these three pillars — <strong>Identity</strong> (Smart Introductions + Graph), 
+              <strong> Coordination</strong> (Events + Calendar + Polls), and <strong>Exchange</strong> (Tasks + Ask/Offer) — 
+              then GroupBio stops being a bolt-on directory and becomes <strong>the operating system for groups</strong>.
+            </p>
+          </CardContent>
+        </Card>
 
         {/* Privacy Promise */}
         <Card className="mb-12 border-2 border-green-200 bg-green-50">

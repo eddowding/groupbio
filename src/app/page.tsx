@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -23,7 +24,7 @@ export default function Home() {
       role: "Youth Coach",
     },
     {
-      text: "Game changer for our neighborhood group. The map feature for carpools alone is worth the £5.",
+      text: "Game changer for our neighborhood group. The map feature for carpools alone is worth the £10.",
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
       name: "Emma Rodriguez",
       role: "Community Organizer",
@@ -41,7 +42,7 @@ export default function Home() {
       role: "Playgroup Mom",
     },
     {
-      text: "Best £5 we've spent. Our hiking group wiki has all the trail info, no more repeated questions.",
+      text: "Best £10 we've spent. Our hiking group wiki has all the trail info, no more repeated questions.",
       image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face",
       name: "James Wilson",
       role: "Hiking Group Leader",
@@ -53,19 +54,22 @@ export default function Home() {
       icon: Users,
       title: "Individual Bios",
       description: "See who's in the group at a glance — names, photos, and a few key details. No more guessing which Sarah is which, or asking people to re-introduce themselves.",
-      benefit: "Put faces to phone numbers."
+      benefit: "Put faces to phone numbers.",
+      image: "/bio.jpg"
     },
     {
       icon: MapPin,
       title: "Maps",
       description: "A simple group map shows where members are based (only if they choose to share). Perfect for carpools, local meetups, or finding the closest helping hand.",
-      benefit: "Know who's nearby."
+      benefit: "Know who's nearby.",
+      image: "/map.jpg"
     },
     {
       icon: FileText,
       title: "Documents", 
       description: "Stop repeating yourself. Group rules, schedules, links, and resources live in a shared wiki that every member can find instantly. New joiners get up to speed without bothering the group.",
-      benefit: "Shared and collaborative docs."
+      benefit: "Shared and collaborative docs.",
+      image: "/docs.png"
     }
   ]
 
@@ -126,8 +130,14 @@ export default function Home() {
                     {feature.description}
                   </p>
                 </div>
-                <div className={`bg-gray-200 rounded-3xl h-96 flex items-center justify-center ${index % 2 === 1 ? 'md:order-1' : ''}`}>
-                  <div className="text-gray-500 text-lg font-medium">Feature Screenshot</div>
+                <div className={`relative rounded-3xl h-96 overflow-hidden shadow-2xl ${index % 2 === 1 ? 'md:order-1' : ''}`}>
+                  <Image
+                    src={feature.image}
+                    alt={`${feature.title} screenshot`}
+                    fill
+                    className="object-cover"
+                    priority={index === 0}
+                  />
                 </div>
               </div>
             </div>

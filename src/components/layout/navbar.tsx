@@ -57,12 +57,6 @@ export function Navbar() {
     )
   }
 
-  // Group-specific navigation items
-  const groupNavigation = group ? [
-    { name: "Members", href: `/groups/${group.id}`, icon: Users },
-    { name: "Wiki", href: `/groups/${group.id}/wiki`, icon: FileText },
-    { name: "Map", href: `/groups/${group.id}/map`, icon: Map },
-  ] : []
 
   return (
     <nav className="border-b bg-header-bg">
@@ -82,30 +76,6 @@ export function Navbar() {
                   <Badge variant="secondary" className="text-sm">
                     {group.name}
                   </Badge>
-                </div>
-                <div className="ml-6 flex space-x-6">
-                  {groupNavigation.map((item) => {
-                    const Icon = item.icon
-                    const isActive = pathname === item.href || 
-                      (item.name === "Members" && pathname === `/groups/${group.id}`) ||
-                      (item.name === "Wiki" && pathname.startsWith(`/groups/${group.id}/wiki`)) ||
-                      (item.name === "Map" && pathname.startsWith(`/groups/${group.id}/map`))
-                    
-                    return (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        className={`inline-flex items-center gap-2 px-1 pt-1 text-sm font-medium ${
-                          isActive
-                            ? "border-b-2 border-primary text-gray-900"
-                            : "text-gray-500 hover:text-gray-700"
-                        }`}
-                      >
-                        <Icon className="h-4 w-4" />
-                        {item.name}
-                      </Link>
-                    )
-                  })}
                 </div>
               </div>
             )}

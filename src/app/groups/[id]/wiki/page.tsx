@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Navbar } from "@/components/layout/navbar"
+import { GroupHeader } from "@/components/layout/group-header"
 import { 
   FileText, 
   Plus, 
@@ -34,6 +35,9 @@ export default function GroupWiki() {
   if (!group) {
     return <div>Group not found</div>
   }
+
+  // Mock current membership for header
+  const currentMembership = { role: "member" }
 
   const categories = [
     { id: "all", label: "All Documents", icon: BookOpen, count: wikiDocs.length },
@@ -74,18 +78,10 @@ export default function GroupWiki() {
     <div className="min-h-screen bg-background">
       <Navbar />
       
+      <GroupHeader group={group} currentMembership={currentMembership} />
+      
       <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Header */}
         <div className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <Link href={`/groups/${group.id}`}>
-              <Button variant="ghost" size="sm">
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Back to Group
-              </Button>
-            </Link>
-          </div>
-          
           <div className="flex items-start justify-between">
             <div>
               <div className="flex items-center gap-3 mb-3">
@@ -93,8 +89,8 @@ export default function GroupWiki() {
                   <FileText className="h-8 w-8 text-primary" />
                 </div>
                 <div>
-                  <h1 className="text-3xl font-bold">{group.name} Wiki</h1>
-                  <p className="text-muted-foreground text-lg">
+                  <h1 className="text-2xl font-bold">Documents</h1>
+                  <p className="text-muted-foreground">
                     Collaborative documentation for your group
                   </p>
                 </div>
@@ -175,17 +171,17 @@ export default function GroupWiki() {
           {/* Main Content */}
           <div className="lg:col-span-3 space-y-6">
             {/* Search */}
-            <div className="flex items-center justify-between">
-              <div className="relative flex-1 max-w-md">
-                <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+            <div className="mb-6">
+              <div className="relative w-full max-w-2xl">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
                   placeholder="Search documents..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10"
+                  className="pl-12 pr-4 py-3 text-base bg-white w-full border-2 focus:border-primary"
                 />
               </div>
-              <div className="text-sm text-muted-foreground">
+              <div className="mt-2 text-sm text-muted-foreground">
                 {filteredDocs.length} document{filteredDocs.length !== 1 ? 's' : ''}
               </div>
             </div>
