@@ -9,13 +9,10 @@ import { Navbar } from "@/components/layout/navbar"
 import { 
   Users, 
   MapPin, 
-  Calendar, 
   Plus, 
   TrendingUp, 
   Clock,
-  UserPlus,
-  MessageSquare,
-  FileText
+  UserPlus
 } from "lucide-react"
 import { getUserGroups, dummyUsers } from "@/lib/dummy-data"
 
@@ -46,32 +43,6 @@ export default function Dashboard() {
     }
   ]
 
-  const recentActivity = [
-    {
-      type: "new_member",
-      message: "3 new members joined Sunshine Nursery Parents",
-      time: "2 hours ago",
-      icon: UserPlus
-    },
-    {
-      type: "profile_view",
-      message: "Sarah Wilson viewed your profile",
-      time: "5 hours ago", 
-      icon: TrendingUp
-    },
-    {
-      type: "wiki_update",
-      message: "Team rules updated in FC Thunder Squad",
-      time: "1 day ago",
-      icon: FileText
-    },
-    {
-      type: "message",
-      message: "New discussion in TechCo Remote Team",
-      time: "2 days ago",
-      icon: MessageSquare
-    }
-  ]
 
   return (
     <div className="min-h-screen bg-background">
@@ -85,7 +56,7 @@ export default function Dashboard() {
                 Welcome back, {currentUser.name}
               </h1>
               <p className="text-muted-foreground">
-                Here's what's happening with your groups
+                Here&apos;s what&apos;s happening with your groups
               </p>
             </div>
             <div className="flex gap-3">
@@ -185,27 +156,6 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* Recent Activity */}
-            <div>
-              <h2 className="text-2xl font-semibold mb-6">Recent Activity</h2>
-              <Card>
-                <CardContent className="p-0">
-                  {recentActivity.map((activity, index) => (
-                    <div key={index} className={`p-4 ${index !== recentActivity.length - 1 ? 'border-b' : ''}`}>
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
-                          <activity.icon className="h-5 w-5 text-gray-600" />
-                        </div>
-                        <div className="flex-1">
-                          <p className="text-sm">{activity.message}</p>
-                          <p className="text-xs text-muted-foreground">{activity.time}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
-            </div>
           </div>
 
           {/* Sidebar */}
@@ -260,32 +210,6 @@ export default function Dashboard() {
               </CardContent>
             </Card>
 
-            {/* Quick Actions */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Quick Actions</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <Link href="/groups/1/wiki">
-                  <Button variant="outline" size="sm" className="w-full justify-start">
-                    <FileText className="mr-2 h-4 w-4" />
-                    View Group Wiki
-                  </Button>
-                </Link>
-                <Link href="/groups/1/map">
-                  <Button variant="outline" size="sm" className="w-full justify-start">
-                    <MapPin className="mr-2 h-4 w-4" />
-                    See Member Map
-                  </Button>
-                </Link>
-                <Link href="/profile">
-                  <Button variant="outline" size="sm" className="w-full justify-start">
-                    <Users className="mr-2 h-4 w-4" />
-                    Update Privacy Settings
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
 
             {/* Tips */}
             <Card className="bg-blue-50 border-blue-200">
