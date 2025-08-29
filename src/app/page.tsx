@@ -15,16 +15,16 @@ export default function Home() {
       benefit: "Know WHO these people are"
     },
     {
-      icon: FileText,
-      title: "WIKI", 
-      description: "Stop explaining the same things to new members. Rules, schedules, resources in one place.",
-      benefit: "Find HOW information is organized"
-    },
-    {
       icon: MapPin,
       title: "MAPS",
       description: "Know who's nearby for carpools and meetups. You have their number, now know their location.",
       benefit: "See WHERE people are located"
+    },
+    {
+      icon: FileText,
+      title: "WIKI", 
+      description: "Stop explaining the same things to new members. Rules, schedules, resources in one place.",
+      benefit: "Find HOW information is organized"
     }
   ]
 
