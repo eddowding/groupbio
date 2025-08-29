@@ -201,14 +201,9 @@ export default function Home() {
           <p className="text-xl mb-12 opacity-95">
             Every group can have 10 people for free. Upgrade to £5/year for unlimited members.
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link href="/join">
-              <Button size="lg" className="text-xl px-12 py-6 bg-white text-[#25D366] hover:bg-gray-50 rounded-full font-medium shadow-lg">
-                Try Demo Group
-              </Button>
-            </Link>
+          <div className="flex justify-center">
             <Link href="/auth">
-              <Button variant="outline" size="lg" className="text-xl px-12 py-6 border-2 border-white text-white hover:bg-white/10 rounded-full font-medium">
+              <Button size="lg" className="text-2xl px-16 py-6 bg-white text-[#25D366] hover:bg-gray-50 rounded-full font-medium shadow-xl hover:shadow-2xl transition-all duration-200">
                 Create Free Group
               </Button>
             </Link>
