@@ -831,6 +831,46 @@ export const dummyGroups: Group[] = [
         { id: "timezone", name: "Timezone", type: "select", required: false, options: ["PST", "MST", "CST", "EST", "GMT"] }
       ]
     }
+  },
+  {
+    id: "4",
+    name: "Downtown Book Club",
+    code: "BOOK01", 
+    description: "Monthly book discussions and literary events",
+    type: "social",
+    adminId: "4",
+    memberCount: 8,
+    createdAt: "2024-03-10",
+    settings: {
+      requiredFields: ["name", "email"],
+      optionalFields: ["bio", "interests", "favoriteGenres"],
+      allowMap: true,
+      customFields: [
+        { id: "favoriteGenres", name: "Favorite Genres", type: "textarea", required: false },
+        { id: "readingGoal", name: "Annual Reading Goal", type: "number", required: false }
+      ]
+    }
+  },
+  {
+    id: "5", 
+    name: "Community Garden Collective",
+    code: "GARDEN1",
+    description: "Urban gardening enthusiasts and sustainability advocates",
+    type: "social",
+    adminId: "5",
+    memberCount: 15,
+    createdAt: "2024-03-15",
+    settings: {
+      requiredFields: ["name", "phone"],
+      optionalFields: ["location", "bio", "interests", "gardeningExperience"],
+      allowMap: true,
+      customFields: [
+        { id: "gardeningExperience", name: "Gardening Experience", type: "select", required: false, options: ["Beginner", "Intermediate", "Advanced", "Expert"] },
+        { id: "plotAssignment", name: "Plot Assignment", type: "text", required: false },
+        { id: "specialties", name: "Plant Specialties", type: "textarea", required: false }
+      ],
+      terms: "Members are responsible for maintaining their assigned plots and contributing to community areas."
+    }
   }
 ]
 
@@ -1210,6 +1250,45 @@ export const dummyGroupMembers: GroupMember[] = [
     joinedAt: "2024-01-08", 
     sharedFields: ["name", "email", "linkedin", "website", "role", "skillsets"],
     role: "admin"
+  },
+  {
+    userId: "1",
+    groupId: "3",
+    joinedAt: "2024-02-15",
+    sharedFields: ["name", "email", "linkedin"],
+    role: "member"
+  },
+
+  // Group 4 (Downtown Book Club)
+  {
+    userId: "4",
+    groupId: "4",
+    joinedAt: "2024-03-10",
+    sharedFields: ["name", "email", "bio", "interests", "favoriteGenres"],
+    role: "admin"
+  },
+  {
+    userId: "1",
+    groupId: "4",
+    joinedAt: "2024-03-12",
+    sharedFields: ["name", "email", "bio", "interests"],
+    role: "member"
+  },
+
+  // Group 5 (Community Garden Collective)
+  {
+    userId: "5",
+    groupId: "5",
+    joinedAt: "2024-03-15",
+    sharedFields: ["name", "phone", "location", "bio", "gardeningExperience", "specialties"],
+    role: "admin"
+  },
+  {
+    userId: "1",
+    groupId: "5",
+    joinedAt: "2024-03-18",
+    sharedFields: ["name", "phone", "location", "bio", "interests"],
+    role: "member"
   }
 ]
 
