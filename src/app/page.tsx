@@ -58,7 +58,7 @@ export default function Home() {
   ]
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#FCF5EB]">
       <Navbar />
       
       {/* Hero Section */}
@@ -75,8 +75,8 @@ export default function Home() {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 text-gray-900 leading-tight">
-              The toolbox WhatsApp groups{" "}
-              <span className="font-medium text-[#25D366]">should have come with</span>
+               WhatsApp groups{" "}
+              <span className="font-medium text-[#25D366]">missing toolbox</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
@@ -114,7 +114,7 @@ export default function Home() {
       </section>
 
       {/* How It Works */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-20 px-4 bg-[#F6FDF8]">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-light mb-6 text-gray-900">How It Works</h2>
@@ -213,7 +213,7 @@ export default function Home() {
       </section>
 
       {/* Additional Features Section */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-20 px-4 bg-[#F6FDF8]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-light mb-6 text-gray-900">
@@ -246,7 +246,7 @@ export default function Home() {
       </section>
 
       {/* Sample Groups */}
-      <section className="py-20 px-4 bg-[#25D366]/5">
+      <section className="py-20 px-4 bg-[#F6FDF8]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-light mb-6 text-gray-900">
