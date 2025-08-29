@@ -103,29 +103,70 @@ export default function Home() {
 
       {/* Features */}
       {features.map((feature, index) => (
-        <section key={index} className={`py-20 px-4 ${index % 2 === 0 ? 'bg-white' : 'bg-[#F6FDF8]'}`}>
-          <div className="max-w-7xl mx-auto">
-            <div className={`grid md:grid-cols-2 gap-16 items-center ${index % 2 === 1 ? 'md:grid-cols-2' : ''}`}>
-              <div className={index % 2 === 1 ? 'md:order-2' : ''}>
-                <div className="w-16 h-16 bg-[#25D366] rounded-2xl flex items-center justify-center mb-6">
-                  <feature.icon className="h-8 w-8 text-white" />
+        <div key={index}>
+          <section className={`py-20 px-4 ${index % 2 === 0 ? 'bg-white' : 'bg-[#F6FDF8]'}`}>
+            <div className="max-w-7xl mx-auto">
+              <div className={`grid md:grid-cols-2 gap-16 items-center ${index % 2 === 1 ? 'md:grid-cols-2' : ''}`}>
+                <div className={index % 2 === 1 ? 'md:order-2' : ''}>
+                  <div className="w-16 h-16 bg-[#25D366] rounded-2xl flex items-center justify-center mb-6">
+                    <feature.icon className="h-8 w-8 text-white" />
+                  </div>
+                  <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+                    {feature.title}
+                  </h2>
+                  <p className="text-xl md:text-2xl text-[#25D366] mb-6 font-medium">
+                    {feature.benefit}
+                  </p>
+                  <p className="text-xl text-gray-600 leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-                  {feature.title}
-                </h2>
-                <p className="text-xl md:text-2xl text-[#25D366] mb-6 font-medium">
-                  {feature.benefit}
-                </p>
-                <p className="text-xl text-gray-600 leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-              <div className={`bg-gray-200 rounded-3xl h-96 flex items-center justify-center ${index % 2 === 1 ? 'md:order-1' : ''}`}>
-                <div className="text-gray-500 text-lg font-medium">Feature Screenshot</div>
+                <div className={`bg-gray-200 rounded-3xl h-96 flex items-center justify-center ${index % 2 === 1 ? 'md:order-1' : ''}`}>
+                  <div className="text-gray-500 text-lg font-medium">Feature Screenshot</div>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+
+          {/* Privacy Notice after MAPS feature */}
+          {feature.title === 'MAPS' && (
+            <section className="py-12 px-4 bg-[#F6FDF8]">
+              <div className="max-w-4xl mx-auto">
+                <div className="bg-blue-50 border-2 border-blue-200 rounded-3xl p-8">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                      <MapPin className="h-4 w-4 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-blue-900">Privacy Notice</h3>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 gap-6 text-blue-800">
+                    <div className="space-y-4">
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <p>Only members who chose to share their location are shown</p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <p>Locations are static - no live tracking</p>
+                      </div>
+                    </div>
+                    <div className="space-y-4">
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <p>You can update your location sharing in privacy settings</p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <p>Admins cannot see locations of members who haven't opted in</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
+        </div>
       ))}
 
       {/* Reassuring Details */}
