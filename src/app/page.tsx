@@ -58,118 +58,116 @@ export default function Home() {
   ]
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Navbar />
       
       {/* Hero Section */}
-      <section className="py-20 px-4 text-center bg-gradient-to-b from-green-50 via-blue-50 to-background">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <MessageSquare className="h-8 w-8 text-green-600" />
-            <Badge variant="secondary" className="text-sm px-3 py-1">
-              The Missing Toolbox for WhatsApp Groups
-            </Badge>
-          </div>
-          
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
-            The toolbox WhatsApp groups{" "}
-            <span className="text-primary">should have come with</span>
-          </h1>
-          
-          <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            You have their numbers. But who ARE these people? 
-            Turn 50 random phone numbers into an actual community.
-          </p>
-
-          {/* Problem Highlights */}
-          <div className="bg-white/80 backdrop-blur rounded-lg p-6 mb-8 max-w-2xl mx-auto border">
-            <h3 className="text-lg font-semibold mb-4 text-gray-700">Sound familiar?</h3>
-            <div className="space-y-2">
-              {whatsappProblems.map((problem, index) => (
-                <div key={index} className="flex items-center gap-2 text-gray-600">
-                  <MessageSquare className="h-4 w-4 text-green-600" />
-                  <span className="text-sm">"{problem}"</span>
-                </div>
-              ))}
+      <section className="py-16 md:py-24 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <div className="w-12 h-12 bg-[#25D366] rounded-2xl flex items-center justify-center">
+                <MessageSquare className="h-6 w-6 text-white" />
+              </div>
+              <Badge variant="secondary" className="text-sm px-4 py-2 bg-gray-100 text-gray-700">
+                The Missing Toolbox for WhatsApp Groups
+              </Badge>
             </div>
-          </div>
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 text-gray-900 leading-tight">
+              The toolbox WhatsApp groups{" "}
+              <span className="font-medium text-[#25D366]">should have come with</span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
+              You have their numbers. But who ARE these people? 
+              Turn 50 random phone numbers into an actual community.
+            </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/join">
-              <Button size="lg" className="text-lg px-8 bg-green-600 hover:bg-green-700">
-                Try with a Demo Group
-              </Button>
-            </Link>
-            <Link href="/auth">
-              <Button variant="outline" size="lg" className="text-lg px-8">
-                Create Your Group
-              </Button>
-            </Link>
+            {/* Problem Highlights */}
+            <div className="bg-white rounded-2xl shadow-sm border p-8 mb-12 max-w-3xl mx-auto">
+              <h3 className="text-xl font-medium mb-6 text-gray-800">Sound familiar?</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                {whatsappProblems.map((problem, index) => (
+                  <div key={index} className="flex items-start gap-3 text-left">
+                    <div className="w-2 h-2 bg-[#25D366] rounded-full mt-2 flex-shrink-0"></div>
+                    <span className="text-gray-600 text-lg">"{problem}"</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/join">
+                <Button size="lg" className="text-lg px-8 py-4 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-200">
+                  Try with a Demo Group
+                </Button>
+              </Link>
+              <Link href="/auth">
+                <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-2 border-gray-300 hover:border-[#25D366] text-gray-700 hover:text-[#25D366] rounded-full font-medium transition-all duration-200">
+                  Create Your Group
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
       {/* How It Works */}
-      <section className="py-16 px-4 bg-white border-t border-b">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">How It Works</h2>
-            <p className="text-xl text-muted-foreground">Simple setup, instant organization</p>
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-light mb-6 text-gray-900">How It Works</h2>
+            <p className="text-xl text-gray-600 font-light">Simple setup, instant organization</p>
           </div>
           
-          <div className="grid md:grid-cols-4 gap-8 items-center">
+          <div className="grid md:grid-cols-3 gap-12 mb-16">
             <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-green-200">
-                <span className="text-2xl font-bold text-green-600">1</span>
+              <div className="w-20 h-20 bg-[#25D366] rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <span className="text-3xl font-medium text-white">1</span>
               </div>
-              <h3 className="font-semibold mb-2">Admin creates group</h3>
-              <p className="text-sm text-gray-600">60 seconds, £5/year</p>
-            </div>
-
-            <div className="hidden md:block text-center">
-              <div className="w-full h-1 bg-gray-200 rounded">
-                <div className="w-full h-1 bg-primary rounded"></div>
-              </div>
+              <h3 className="text-xl font-medium mb-3 text-gray-900">Admin creates group</h3>
+              <p className="text-gray-600">60 seconds, £5/year</p>
             </div>
             
             <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-blue-200">
-                <span className="text-2xl font-bold text-blue-600">2</span>
+              <div className="w-20 h-20 bg-[#128C7E] rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <span className="text-3xl font-medium text-white">2</span>
               </div>
-              <h3 className="font-semibold mb-2">Drop link in WhatsApp</h3>
-              <p className="text-sm text-gray-600">Members add their bio once</p>
-            </div>
-
-            <div className="hidden md:block text-center">
-              <div className="w-full h-1 bg-gray-200 rounded">
-                <div className="w-full h-1 bg-primary rounded"></div>
-              </div>
+              <h3 className="text-xl font-medium mb-3 text-gray-900">Drop link in WhatsApp</h3>
+              <p className="text-gray-600">Members add their bio once</p>
             </div>
             
             <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-purple-200">
-                <CheckCircle className="h-8 w-8 text-purple-600" />
+              <div className="w-20 h-20 bg-[#075E54] rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <CheckCircle className="h-10 w-10 text-white" />
               </div>
-              <h3 className="font-semibold mb-2">Everyone knows everyone</h3>
-              <p className="text-sm text-gray-600">Searchable directory, wiki, map forever</p>
+              <h3 className="text-xl font-medium mb-3 text-gray-900">Everyone knows everyone</h3>
+              <p className="text-gray-600">Searchable directory, wiki, map forever</p>
             </div>
           </div>
 
-          <div className="text-center mt-12">
-            <div className="inline-block bg-blue-50 border border-blue-200 rounded-lg p-6">
-              <h4 className="font-semibold text-blue-900 mb-2">What you get for £5/year:</h4>
-              <div className="grid md:grid-cols-3 gap-4 text-sm text-blue-800">
-                <div className="flex items-center gap-2">
-                  <Users className="h-4 w-4" />
-                  <span>WHO these people are</span>
+          <div className="text-center">
+            <div className="inline-block bg-white border border-gray-200 rounded-2xl shadow-sm p-8">
+              <h4 className="text-xl font-medium text-gray-900 mb-6">What you get for £5/year:</h4>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="flex items-center justify-center gap-3">
+                  <div className="w-10 h-10 bg-[#25D366] rounded-xl flex items-center justify-center">
+                    <Users className="h-5 w-5 text-white" />
+                  </div>
+                  <span className="text-gray-700 font-medium">WHO these people are</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <FileText className="h-4 w-4" />
-                  <span>HOW to find info</span>
+                <div className="flex items-center justify-center gap-3">
+                  <div className="w-10 h-10 bg-[#25D366] rounded-xl flex items-center justify-center">
+                    <FileText className="h-5 w-5 text-white" />
+                  </div>
+                  <span className="text-gray-700 font-medium">HOW to find info</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4" />
-                  <span>WHERE they are</span>
+                <div className="flex items-center justify-center gap-3">
+                  <div className="w-10 h-10 bg-[#25D366] rounded-xl flex items-center justify-center">
+                    <MapPin className="h-5 w-5 text-white" />
+                  </div>
+                  <span className="text-gray-700 font-medium">WHERE they are</span>
                 </div>
               </div>
             </div>
@@ -178,39 +176,35 @@ export default function Home() {
       </section>
 
       {/* Core Functionality Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-light mb-6 text-gray-900">
               Core Toolbox - £5/year per group
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 font-light max-w-3xl mx-auto">
               The essential functionality every WhatsApp group needs
             </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {coreFeatures.map((feature, index) => (
-              <Card key={index} className="text-center border-2 border-primary/20 bg-primary/5">
-                <CardHeader>
-                  <div className="mx-auto w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4">
-                    <feature.icon className="h-8 w-8 text-white" />
-                  </div>
-                  <CardTitle className="text-2xl text-primary">{feature.title}</CardTitle>
-                  <div className="text-sm text-muted-foreground font-medium">{feature.benefit}</div>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base">
-                    {feature.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+              <div key={index} className="bg-white rounded-3xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 p-8 text-center">
+                <div className="mx-auto w-16 h-16 bg-[#25D366] rounded-2xl flex items-center justify-center mb-6">
+                  <feature.icon className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-medium text-gray-900 mb-2">{feature.title}</h3>
+                <div className="text-sm text-[#25D366] font-medium mb-4 uppercase tracking-wide">{feature.benefit}</div>
+                <p className="text-gray-600 leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
             ))}
           </div>
 
           <div className="text-center">
-            <div className="inline-block bg-green-100 border border-green-200 rounded-lg p-4 mb-8">
-              <p className="text-green-800 font-semibold">
+            <div className="inline-block bg-[#25D366]/5 border border-[#25D366]/20 rounded-2xl p-6">
+              <p className="text-[#075E54] font-medium text-lg">
                 £5/year per group • Split 20 ways = 25p each • Less than a coffee, solves daily frustration
               </p>
             </div>
@@ -220,142 +214,149 @@ export default function Home() {
 
       {/* Additional Features Section */}
       <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-light mb-6 text-gray-900">
               Additional Features
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 font-light max-w-3xl mx-auto">
               Advanced tools to help your group thrive and stay engaged
             </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
             {additionalFeatures.map((feature, index) => (
-              <Card key={index} className="text-center relative">
-                <div className="absolute top-4 right-4">
-                  <Badge variant="outline" className="text-xs">
+              <div key={index} className="bg-white rounded-3xl border border-gray-200 shadow-sm p-8 text-center relative">
+                <div className="absolute top-6 right-6">
+                  <Badge variant="outline" className="text-xs px-3 py-1 bg-amber-50 border-amber-200 text-amber-700">
                     {feature.status}
                   </Badge>
                 </div>
-                <CardHeader>
-                  <div className="mx-auto w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
-                    <feature.icon className="h-6 w-6 text-secondary-foreground" />
-                  </div>
-                  <CardTitle>{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base">
-                    {feature.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+                <div className="mx-auto w-14 h-14 bg-gray-100 rounded-2xl flex items-center justify-center mb-6">
+                  <feature.icon className="h-7 w-7 text-gray-600" />
+                </div>
+                <h3 className="text-xl font-medium text-gray-900 mb-4">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Sample Groups */}
-      <section className="py-20 px-4 bg-green-50">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-20 px-4 bg-[#25D366]/5">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-light mb-6 text-gray-900">
               See Your Group Organized
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-gray-600 font-light">
               Try our demo groups - finally know who these people are
             </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
             {dummyGroups.map((group) => (
-              <Card key={group.id} className="bg-white hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                      <MessageSquare className="h-5 w-5 text-green-600" />
+              <div key={group.id} className="bg-white rounded-3xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
+                <div className="p-8">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-12 bg-[#25D366] rounded-2xl flex items-center justify-center">
+                      <MessageSquare className="h-6 w-6 text-white" />
                     </div>
-                    <div>
-                      <CardTitle className="text-left">{group.name}</CardTitle>
-                      <Badge variant="secondary" className="text-xs">
+                    <div className="text-left">
+                      <h3 className="font-medium text-gray-900 text-lg">{group.name}</h3>
+                      <Badge variant="secondary" className="text-xs mt-1 bg-gray-100 text-gray-600">
                         {group.type === 'parent' ? 'Parent Group' : 
                          group.type === 'sports' ? 'Sports Team' : 
                          group.type === 'professional' ? 'Work Team' : 'Social Group'}
                       </Badge>
                     </div>
                   </div>
-                  <CardDescription className="text-left">
+                  <p className="text-gray-600 mb-6 leading-relaxed text-left">
                     {group.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
+                  </p>
+                  
+                  <div className="space-y-4">
                     <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">WhatsApp members:</span>
-                      <span className="font-medium">{group.memberCount}</span>
+                      <span className="text-gray-500">WhatsApp members:</span>
+                      <span className="font-medium text-gray-900">{group.memberCount}</span>
                     </div>
-                    <div className="text-xs text-green-600 bg-green-50 p-2 rounded">
-                      Demo Code: <span className="font-mono font-bold">{group.code}</span>
+                    <div className="bg-[#25D366]/10 border border-[#25D366]/20 p-4 rounded-2xl">
+                      <div className="text-xs text-[#075E54] font-medium">
+                        Demo Code: <span className="font-mono font-bold text-lg">{group.code}</span>
+                      </div>
                     </div>
                   </div>
-                  <Link href="/join" className="mt-4 block">
-                    <Button variant="outline" size="sm" className="w-full border-green-200 hover:bg-green-50">
+                </div>
+                <div className="px-8 pb-8">
+                  <Link href="/join" className="block">
+                    <Button variant="outline" size="sm" className="w-full border-[#25D366]/30 hover:bg-[#25D366]/10 hover:border-[#25D366] text-[#075E54] rounded-full font-medium">
                       Explore This Demo
                     </Button>
                   </Link>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 text-center bg-gradient-to-r from-green-600 to-blue-600 text-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+      <section className="py-24 px-4 text-center bg-gradient-to-br from-[#25D366] via-[#128C7E] to-[#075E54] text-white">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-light mb-8 leading-tight">
             Stop Wondering "Which Sarah Is That?"
           </h2>
-          <p className="text-xl mb-8 opacity-90">
+          <p className="text-xl md:text-2xl mb-12 opacity-95 font-light max-w-3xl mx-auto leading-relaxed">
             Give your WhatsApp group the toolbox it should have come with. £5/year per group.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
             <Link href="/join">
-              <Button size="lg" className="text-lg px-8 bg-white text-gray-900 hover:bg-gray-100">
+              <Button size="lg" className="text-lg px-10 py-4 bg-white text-[#075E54] hover:bg-gray-50 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-200">
                 Try a Demo Group
               </Button>
             </Link>
             <Link href="/admin/create">
-              <Button variant="outline" size="lg" className="text-lg px-8 border-white text-white hover:bg-white/10">
+              <Button variant="outline" size="lg" className="text-lg px-10 py-4 border-2 border-white/30 text-white hover:bg-white/10 hover:border-white rounded-full font-medium transition-all duration-200">
                 Create Your Group - £5/year
               </Button>
             </Link>
           </div>
-          <div className="mt-8 grid md:grid-cols-3 gap-4 text-sm opacity-90">
-            <div className="flex items-center justify-center gap-2">
-              <Users className="h-4 w-4" />
-              <span>Bios: WHO they are</span>
+          <div className="grid md:grid-cols-3 gap-8 opacity-95">
+            <div className="flex items-center justify-center gap-3">
+              <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
+                <Users className="h-5 w-5" />
+              </div>
+              <span className="text-lg font-light">Bios: WHO they are</span>
             </div>
-            <div className="flex items-center justify-center gap-2">
-              <FileText className="h-4 w-4" />
-              <span>Wiki: HOW to find info</span>
+            <div className="flex items-center justify-center gap-3">
+              <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
+                <FileText className="h-5 w-5" />
+              </div>
+              <span className="text-lg font-light">Wiki: HOW to find info</span>
             </div>
-            <div className="flex items-center justify-center gap-2">
-              <MapPin className="h-4 w-4" />
-              <span>Maps: WHERE they are</span>
+            <div className="flex items-center justify-center gap-3">
+              <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
+                <MapPin className="h-5 w-5" />
+              </div>
+              <span className="text-lg font-light">Maps: WHERE they are</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t py-8 px-4 text-center text-muted-foreground bg-gray-50">
+      <footer className="border-t py-12 px-4 text-center bg-white">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <MessageSquare className="h-4 w-4 text-green-600" />
-            <span className="font-semibold">GroupBio</span>
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-8 h-8 bg-[#25D366] rounded-xl flex items-center justify-center">
+              <MessageSquare className="h-4 w-4 text-white" />
+            </div>
+            <span className="font-medium text-gray-900 text-lg">GroupBio</span>
           </div>
-          <p>&copy; 2024 GroupBio. The toolbox WhatsApp groups should have come with.</p>
+          <p className="text-gray-600">&copy; 2024 GroupBio. The toolbox WhatsApp groups should have come with.</p>
         </div>
       </footer>
     </div>
