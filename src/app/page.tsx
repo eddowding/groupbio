@@ -5,9 +5,48 @@ import { Badge } from "@/components/ui/badge"
 import { Navbar } from "@/components/layout/navbar"
 import { Users, Shield, Settings, MapPin, FileText, MessageSquare, Zap, CheckCircle } from "lucide-react"
 import { dummyGroups } from "@/lib/dummy-data"
-import { TestimonialsColumn, testimonials } from "@/components/ui/testimonials-columns-1"
+import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1"
 
 export default function Home() {
+  const testimonials = [
+    {
+      text: "Finally! No more awkward 'Wait, which Sarah?' moments. Our parent group actually feels like a community now.",
+      image: "https://images.unsplash.com/photo-1494790108755-2616b612b1b4?w=150&h=150&fit=crop&crop=face",
+      name: "Sarah Mitchell",
+      role: "Parent Group Admin",
+    },
+    {
+      text: "Our football team went from chaos to organized in minutes. Parents know who's who, where to meet, everything.",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+      name: "Mike Thompson",
+      role: "Youth Coach",
+    },
+    {
+      text: "Game changer for our neighborhood group. The map feature for carpools alone is worth the £5.",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+      name: "Emma Rodriguez",
+      role: "Community Organizer",
+    },
+    {
+      text: "Our work WhatsApp was a mess. Now everyone has context on who does what. Simple brilliance.",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+      name: "David Chen",
+      role: "Team Lead",
+    },
+    {
+      text: "Set up took literally 60 seconds. Kids' playgroup parents finally know each other's names!",
+      image: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=150&h=150&fit=crop&crop=face",
+      name: "Lisa Park",
+      role: "Playgroup Mom",
+    },
+    {
+      text: "Best £5 we've spent. Our hiking group wiki has all the trail info, no more repeated questions.",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face",
+      name: "James Wilson",
+      role: "Hiking Group Leader",
+    },
+  ];
+
   const features = [
     {
       icon: Users,
