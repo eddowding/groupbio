@@ -48,10 +48,35 @@ export default function GroupDetail() {
   const currentMembership = members.find(m => m.id === currentUserId)?.membership
   const isAdmin = currentMembership?.role === "admin"
 
-  const filteredMembers = members.filter(member => 
-    member.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    member.email.toLowerCase().includes(searchQuery.toLowerCase())
-  )
+  const filteredMembers = members.filter(member => {
+    const query = searchQuery.toLowerCase()
+    
+    // Search in basic fields
+    if (member.name.toLowerCase().includes(query) ||
+        member.email.toLowerCase().includes(query) ||
+        (member.phone && member.phone.toLowerCase().includes(query)) ||
+        (member.bio && member.bio.toLowerCase().includes(query)) ||
+        (member.location?.address && member.location.address.toLowerCase().includes(query))) {
+      return true
+    }
+    
+    // Search in interests
+    if (member.interests && member.interests.some((interest: string) => 
+      interest.toLowerCase().includes(query))) {
+      return true
+    }
+    
+    // Search in custom fields
+    if (member.customFields) {
+      for (const [key, value] of Object.entries(member.customFields)) {
+        if (value && typeof value === 'string' && value.toLowerCase().includes(query)) {
+          return true
+        }
+      }
+    }
+    
+    return false
+  })
 
   const getSharedFieldValue = (member: any, fieldName: string) => {
     if (!member.membership.sharedFields.includes(fieldName)) {
@@ -176,12 +201,6 @@ export default function GroupDetail() {
               </div>
             )}
 
-            {/* Sharing Status */}
-            <div className="pt-2 border-t">
-              <div className="text-xs text-muted-foreground">
-                Sharing {member.membership.sharedFields.length} of {group.settings.requiredFields.length + group.settings.optionalFields.length} fields
-              </div>
-            </div>
           </div>
         </CardContent>
       </Card>
