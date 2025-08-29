@@ -6,6 +6,7 @@ import { Navbar } from "@/components/layout/navbar"
 import { Users, Shield, Settings, MapPin, FileText, MessageSquare, Zap, CheckCircle } from "lucide-react"
 import { dummyGroups } from "@/lib/dummy-data"
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1"
+import { ParticlesBackground } from "@/components/ui/particles-background"
 
 export default function Home() {
   const testimonials = [
@@ -73,8 +74,9 @@ export default function Home() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="py-24 md:py-32 px-4">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="py-24 md:py-32 px-4 relative overflow-hidden">
+        <ParticlesBackground />
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <h1 className="text-5xl md:text-7xl font-bold mb-8 text-gray-900 leading-tight">
             WhatsApp groups{" "}
             <span className="text-[#25D366]">missing toolbox</span>
