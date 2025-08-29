@@ -1,12 +1,13 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Input } from "@/components/ui/input"
 import { Navbar } from "@/components/layout/navbar"
 import { 
   ArrowLeft,
@@ -17,30 +18,80 @@ import {
   Eye,
   EyeOff,
   Phone,
-  Mail
+  Mail,
+  Search,
+  X
 } from "lucide-react"
-import { getGroupById, getGroupMembers } from "@/lib/dummy-data"
+import { getGroupById, getGroupMembers, getCurrentUser } from "@/lib/dummy-data"
 
 export default function GroupMap() {
   const params = useParams()
   const groupId = params.id as string
   const group = getGroupById(groupId)
   const members = getGroupMembers(groupId)
+  const currentUser = getCurrentUser()
   const [selectedMember, setSelectedMember] = useState<any>(null)
   const [showLabels, setShowLabels] = useState(true)
+  const [searchQuery, setSearchQuery] = useState("")
+  const [userLocation, setUserLocation] = useState<{lat: number, lng: number} | null>(null)
 
   if (!group) {
     return <div>Group not found</div>
   }
 
+  // Get user's location on component mount
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setUserLocation({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          })
+        },
+        (error) => {
+          // Fallback to current user's location from profile or default NYC location
+          if (currentUser.location) {
+            setUserLocation({
+              lat: currentUser.location.lat,
+              lng: currentUser.location.lng
+            })
+          } else {
+            setUserLocation({ lat: 40.7589, lng: -73.9851 }) // Default to NYC
+          }
+        }
+      )
+    } else {
+      // Fallback for browsers without geolocation
+      if (currentUser.location) {
+        setUserLocation({
+          lat: currentUser.location.lat,
+          lng: currentUser.location.lng
+        })
+      } else {
+        setUserLocation({ lat: 40.7589, lng: -73.9851 }) // Default to NYC
+      }
+    }
+  }, [currentUser])
+
   // Filter members who have shared their location
-  const membersWithLocation = members.filter(member => 
+  const allMembersWithLocation = members.filter(member => 
     member.location && member.membership.sharedFields.includes("location")
   )
 
-  // Calculate center point for map view
-  const centerLat = membersWithLocation.reduce((sum, member) => sum + member.location.lat, 0) / membersWithLocation.length
-  const centerLng = membersWithLocation.reduce((sum, member) => sum + member.location.lng, 0) / membersWithLocation.length
+  // Filter by search query
+  const filteredMembers = allMembersWithLocation.filter(member =>
+    member.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    member.location.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    member.bio?.toLowerCase().includes(searchQuery.toLowerCase())
+  )
+
+  // Limit to 38 users for map display
+  const membersWithLocation = filteredMembers.slice(0, 38)
+
+  // Calculate center point for map view - use user's location if available, otherwise use average of member locations
+  const centerLat = userLocation ? userLocation.lat : (membersWithLocation.length > 0 ? membersWithLocation.reduce((sum, member) => sum + member.location.lat, 0) / membersWithLocation.length : 40.7589)
+  const centerLng = userLocation ? userLocation.lng : (membersWithLocation.length > 0 ? membersWithLocation.reduce((sum, member) => sum + member.location.lng, 0) / membersWithLocation.length : -73.9851)
 
   // Simulate map view with positioned member cards
   const MapView = () => (
@@ -69,17 +120,40 @@ export default function GroupMap() {
         </svg>
       </div>
 
+      {/* User Location Pin (Your Location) */}
+      {userLocation && (
+        <div
+          className="absolute z-20"
+          style={{ left: 400, top: 300 }}
+        >
+          <div className="relative">
+            <div className="w-10 h-10 bg-red-500 rounded-full border-4 border-white shadow-lg flex items-center justify-center animate-pulse">
+              <div className="w-4 h-4 bg-white rounded-full"></div>
+            </div>
+            <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-red-500 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
+              Your Location
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Member Pins */}
       {membersWithLocation.map((member, index) => {
-        // Position members based on their coordinates (simplified)
-        const x = ((member.location.lng - centerLng) * 1000) + 400 + (index * 100)
-        const y = ((centerLat - member.location.lat) * 1000) + 300 + (index * 80)
+        // Position members based on their coordinates relative to center (user's location or calculated center)
+        const offsetX = ((member.location.lng - centerLng) * 1000)
+        const offsetY = ((centerLat - member.location.lat) * 1000)
+        
+        // Create a spread pattern around the center with some randomization for better visual distribution
+        const angle = (index * 2.5) + (Math.random() * 0.5 - 0.25) 
+        const radius = 50 + (index * 8) + (Math.random() * 30)
+        const x = 400 + offsetX * 0.3 + Math.cos(angle) * radius
+        const y = 300 + offsetY * 0.3 + Math.sin(angle) * radius
         
         return (
           <div
             key={member.id}
-            className="absolute cursor-pointer group"
-            style={{ left: Math.max(20, Math.min(x, 800)), top: Math.max(20, Math.min(y, 500)) }}
+            className="absolute cursor-pointer group z-10"
+            style={{ left: Math.max(20, Math.min(x, 750)), top: Math.max(20, Math.min(y, 500)) }}
             onClick={() => setSelectedMember(selectedMember?.id === member.id ? null : member)}
           >
             {/* Pin */}
@@ -172,9 +246,22 @@ export default function GroupMap() {
       {/* Map Legend */}
       <div className="absolute bottom-4 left-4 bg-white p-3 rounded-lg shadow">
         <div className="text-sm font-medium mb-2">Legend</div>
-        <div className="flex items-center gap-2 text-sm">
-          <div className="w-4 h-4 bg-primary rounded-full border-2 border-white"></div>
-          <span>Group Members ({membersWithLocation.length})</span>
+        <div className="space-y-1">
+          {userLocation && (
+            <div className="flex items-center gap-2 text-sm">
+              <div className="w-4 h-4 bg-red-500 rounded-full border-2 border-white animate-pulse"></div>
+              <span>Your Location</span>
+            </div>
+          )}
+          <div className="flex items-center gap-2 text-sm">
+            <div className="w-4 h-4 bg-primary rounded-full border-2 border-white"></div>
+            <span>Group Members ({membersWithLocation.length})</span>
+          </div>
+          {searchQuery && (
+            <div className="text-xs text-muted-foreground mt-1">
+              Filtered by: "{searchQuery}"
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -197,12 +284,12 @@ export default function GroupMap() {
           </div>
           
           <div className="flex items-start justify-between">
-            <div>
+            <div className="flex-1">
               <div className="flex items-center gap-3 mb-3">
                 <div className="p-3 rounded-full bg-green-100">
                   <MapPin className="h-8 w-8 text-green-600" />
                 </div>
-                <div>
+                <div className="flex-1">
                   <h1 className="text-3xl font-bold">{group.name} Map</h1>
                   <p className="text-muted-foreground text-lg">
                     See where your group members are located
@@ -210,16 +297,48 @@ export default function GroupMap() {
                 </div>
               </div>
               
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
+              <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 <div className="flex items-center gap-1">
                   <Users className="h-4 w-4" />
-                  <span>{membersWithLocation.length} of {members.length} members sharing location</span>
+                  <span>
+                    {membersWithLocation.length} of {allMembersWithLocation.length} members shown
+                    {searchQuery && ` (filtered from ${allMembersWithLocation.length})`}
+                    {allMembersWithLocation.length !== members.length && ` • ${members.length - allMembersWithLocation.length} not sharing location`}
+                  </span>
                 </div>
                 <div className="flex items-center gap-1">
                   <Navigation className="h-4 w-4" />
                   <span>Click pins for contact info</span>
                 </div>
               </div>
+
+              {/* Search Bar */}
+              <div className="relative max-w-md">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                <Input
+                  placeholder="Search members by name, location, or bio..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10 pr-10"
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery("")}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                )}
+              </div>
+
+              {searchQuery && (
+                <div className="mt-2 text-sm text-muted-foreground">
+                  {filteredMembers.length > 0 
+                    ? `Found ${filteredMembers.length} member${filteredMembers.length === 1 ? '' : 's'} matching "${searchQuery}"${filteredMembers.length > 38 ? ` (showing first 38)` : ''}`
+                    : `No members found matching "${searchQuery}"`
+                  }
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -239,35 +358,60 @@ export default function GroupMap() {
             {/* Members List */}
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Members on Map</CardTitle>
+                <CardTitle className="text-lg">
+                  Members on Map
+                  {searchQuery && (
+                    <span className="text-sm font-normal text-muted-foreground ml-2">
+                      (filtered)
+                    </span>
+                  )}
+                </CardTitle>
                 <CardDescription>
-                  {membersWithLocation.length} members sharing location
+                  {membersWithLocation.length} of {allMembersWithLocation.length} members shown
+                  {filteredMembers.length > 38 && (
+                    <span className="text-xs block mt-1 text-amber-600">
+                      Showing first 38 results
+                    </span>
+                  )}
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-0">
-                <div className="space-y-1">
-                  {membersWithLocation.map((member) => (
-                    <button
-                      key={member.id}
-                      onClick={() => setSelectedMember(selectedMember?.id === member.id ? null : member)}
-                      className={`w-full text-left px-4 py-3 flex items-center gap-3 hover:bg-muted transition-colors ${
-                        selectedMember?.id === member.id ? 'bg-muted' : ''
-                      }`}
+                {membersWithLocation.length === 0 && searchQuery ? (
+                  <div className="px-4 py-8 text-center text-muted-foreground">
+                    <Search className="h-8 w-8 mx-auto mb-2 opacity-50" />
+                    <p>No members found matching "{searchQuery}"</p>
+                    <button 
+                      onClick={() => setSearchQuery("")}
+                      className="text-primary hover:underline text-sm mt-1"
                     >
-                      <Avatar className="w-8 h-8">
-                        <AvatarFallback className="text-sm">
-                          {member.name.split(' ').map((n: string) => n[0]).join('').toUpperCase()}
-                        </AvatarFallback>
-                      </Avatar>
-                      <div className="flex-1 min-w-0">
-                        <div className="font-medium truncate">{member.name}</div>
-                        <div className="text-sm text-muted-foreground truncate">
-                          {member.location.address}
-                        </div>
-                      </div>
+                      Clear search
                     </button>
-                  ))}
-                </div>
+                  </div>
+                ) : (
+                  <div className="space-y-1 max-h-96 overflow-y-auto">
+                    {membersWithLocation.map((member) => (
+                      <button
+                        key={member.id}
+                        onClick={() => setSelectedMember(selectedMember?.id === member.id ? null : member)}
+                        className={`w-full text-left px-4 py-3 flex items-center gap-3 hover:bg-muted transition-colors ${
+                          selectedMember?.id === member.id ? 'bg-muted' : ''
+                        }`}
+                      >
+                        <Avatar className="w-8 h-8">
+                          <AvatarFallback className="text-sm">
+                            {member.name.split(' ').map((n: string) => n[0]).join('').toUpperCase()}
+                          </AvatarFallback>
+                        </Avatar>
+                        <div className="flex-1 min-w-0">
+                          <div className="font-medium truncate">{member.name}</div>
+                          <div className="text-sm text-muted-foreground truncate">
+                            {member.location.address}
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                )}
               </CardContent>
             </Card>
 
