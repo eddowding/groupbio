@@ -415,23 +415,6 @@ export default function GroupMap() {
               </CardContent>
             </Card>
 
-            {/* Privacy Notice */}
-            <Card className="bg-blue-50 border-blue-200">
-              <CardHeader>
-                <CardTitle className="text-blue-900 flex items-center gap-2">
-                  <MapPin className="h-5 w-5" />
-                  Privacy Notice
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-blue-800 space-y-2 text-sm">
-                  <p>• Only members who chose to share their location are shown</p>
-                  <p>• Locations are static - no live tracking</p>
-                  <p>• You can update your location sharing in privacy settings</p>
-                  <p>• Admins cannot see locations of members who haven't opted in</p>
-                </div>
-              </CardContent>
-            </Card>
 
             {/* Quick Actions */}
             <Card>
@@ -459,6 +442,41 @@ export default function GroupMap() {
                 </Link>
               </CardContent>
             </Card>
+          </div>
+        </div>
+
+        {/* Privacy Notice - Below Map */}
+        <div className="mt-8">
+          <div className="bg-blue-50 border-2 border-blue-200 rounded-3xl p-8">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                <MapPin className="h-4 w-4 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-blue-900">Privacy Notice</h3>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6 text-blue-800">
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <p>Only members who chose to share their location are shown</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <p>Locations are static - no live tracking</p>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <p>You can update your location sharing in privacy settings</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <p>Admins cannot see locations of members who haven't opted in</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
