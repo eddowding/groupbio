@@ -143,10 +143,10 @@ export default function Ideas() {
     },
     {
       icon: Heart,
-      title: "Relationship Mapping",
-      description: "Visual representation of connections and interactions within groups.",
-      status: "research",
-      priority: "low"
+      title: "Network Map",
+      description: "Interactive visualization showing member connections based on shared groups and common interests.",
+      status: "in-development",
+      priority: "medium"
     }
   ]
 
