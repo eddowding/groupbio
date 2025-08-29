@@ -6,7 +6,6 @@ import { Navbar } from "@/components/layout/navbar"
 import { Users, Shield, Settings, MapPin, FileText, MessageSquare, Zap, CheckCircle } from "lucide-react"
 import { dummyGroups } from "@/lib/dummy-data"
 import { TestimonialsColumn, testimonials } from "@/components/ui/testimonials-columns-1"
-import { motion } from "framer-motion"
 
 export default function Home() {
   const features = [
@@ -123,13 +122,7 @@ export default function Home() {
       {/* Testimonials */}
       <section className="py-20 px-4 bg-[#F6FDF8]">
         <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <div className="inline-block border border-[#25D366]/30 py-2 px-4 rounded-full mb-6">
               <span className="text-[#25D366] font-medium">Testimonials</span>
             </div>
@@ -139,7 +132,7 @@ export default function Home() {
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Real stories from group admins who solved their "Which Sarah?" problem
             </p>
-          </motion.div>
+          </div>
 
           <div className="flex justify-center gap-6 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[600px] overflow-hidden">
             <TestimonialsColumn 

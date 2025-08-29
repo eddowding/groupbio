@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
 
 const testimonials = [
   {
@@ -46,25 +45,21 @@ export const TestimonialsColumn = (props: {
   testimonials: typeof testimonials;
   duration?: number;
 }) => {
+  const animationDuration = props.duration || 15;
+
   return (
     <div className={props.className}>
-      <motion.div
-        animate={{
-          translateY: "-50%",
+      <div 
+        className="flex flex-col gap-6 pb-6 animate-scroll-up"
+        style={{
+          animation: `scroll-up ${animationDuration}s linear infinite`
         }}
-        transition={{
-          duration: props.duration || 10,
-          repeat: Infinity,
-          ease: "linear",
-          repeatType: "loop",
-        }}
-        className="flex flex-col gap-6 pb-6 bg-background"
       >
         {[
           ...new Array(2).fill(0).map((_, index) => (
             <React.Fragment key={index}>
               {props.testimonials.map(({ text, image, name, role }, i) => (
-                <div className="p-6 rounded-2xl border border-gray-200 shadow-sm bg-white max-w-xs w-full" key={i}>
+                <div className="p-6 rounded-2xl border border-gray-200 shadow-sm bg-white max-w-xs w-full" key={`${index}-${i}`}>
                   <div className="text-gray-700 mb-4 leading-relaxed">"{text}"</div>
                   <div className="flex items-center gap-3">
                     <img
@@ -84,7 +79,18 @@ export const TestimonialsColumn = (props: {
             </React.Fragment>
           )),
         ]}
-      </motion.div>
+      </div>
+      
+      <style jsx>{`
+        @keyframes scroll-up {
+          0% {
+            transform: translateY(0);
+          }
+          100% {
+            transform: translateY(-50%);
+          }
+        }
+      `}</style>
     </div>
   );
 };
