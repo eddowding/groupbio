@@ -8,43 +8,52 @@ import { dummyGroups } from "@/lib/dummy-data"
 
 export default function Home() {
   const whatsappProblems = [
-    "Who has everyone's contact info?",
-    "Where did we put that important document?",
-    "What's the coach's phone number again?",
-    "Can someone share the group rules?",
-    "Where does everyone live for carpools?"
+    "Wait, which Sarah is that?",
+    "Who's the treasurer again?", 
+    "Where did we put the group rules?",
+    "Anyone live near me for carpools?",
+    "I don't know anyone here..."
   ]
 
-  const features = [
+  const coreFeatures = [
     {
       icon: Users,
-      title: "Smart Member Directory",
-      description: "Everyone's info in one place - contacts, roles, and custom details your group needs"
-    },
-    {
-      icon: Shield,
-      title: "Privacy That Actually Works", 
-      description: "Share your phone with the soccer team, but not your work colleagues. You control what each group sees."
+      title: "BIOS",
+      description: "Put faces and context to phone numbers. Finally know which Sarah is which.",
+      benefit: "WHO these people are"
     },
     {
       icon: FileText,
-      title: "Group Knowledge Base",
-      description: "Rules, schedules, resources - keep everything organized and easy to find"
+      title: "WIKI",
+      description: "Stop explaining the same things to new members. Rules, schedules, resources in one place.",
+      benefit: "HOW to find info"
     },
     {
       icon: MapPin,
-      title: "Find Each Other",
-      description: "Optional location sharing for meetups and carpools (privacy-first, no tracking)"
+      title: "MAPS",
+      description: "Know who's nearby for carpools and meetups. You have their number, now know their location.",
+      benefit: "WHERE they are"
+    }
+  ]
+
+  const additionalFeatures = [
+    {
+      icon: CheckCircle,
+      title: "EVENTS",
+      description: "Proper planning with RSVPs, not buried in chat. Make group activities visible and organized.",
+      status: "Coming Soon"
+    },
+    {
+      icon: MessageSquare,
+      title: "INTRODUCTIONS",
+      description: "Get shy members talking and build group confidence. Turn lurkers into participants.",
+      status: "Coming Soon"
     },
     {
       icon: Settings,
-      title: "Fits Your Group",
-      description: "Soccer teams need jersey numbers, parent groups need emergency contacts - customize what matters"
-    },
-    {
-      icon: Zap,
-      title: "Works With WhatsApp",
-      description: "Keep using WhatsApp for chat, use GroupBio for everything else that groups need"
+      title: "ROLES & TASKS",
+      description: "Clear responsibilities so work gets spread. Same 3 people don't do everything.",
+      status: "Coming Soon"
     }
   ]
 
@@ -63,13 +72,13 @@ export default function Home() {
           </div>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
-            WhatsApp is for chatting.{" "}
-            <span className="text-primary">GroupBio is for everything else.</span>
+            The toolbox WhatsApp groups{" "}
+            <span className="text-primary">should have come with</span>
           </h1>
           
           <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            Tired of asking "Who has the coach's number?" in your WhatsApp group? 
-            GroupBio gives your group the member directory, document storage, and organization tools WhatsApp is missing.
+            You have their numbers. But who ARE these people? 
+            Turn 50 random phone numbers into an actual community.
           </p>
 
           {/* Problem Highlights */}
@@ -101,56 +110,137 @@ export default function Home() {
       </section>
 
       {/* How It Works */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8">Keep WhatsApp. Add GroupBio.</h2>
+      <section className="py-16 px-4 bg-white border-t border-b">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">How It Works</h2>
+            <p className="text-xl text-muted-foreground">Simple setup, instant organization</p>
+          </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MessageSquare className="h-6 w-6 text-green-600" />
+          <div className="grid md:grid-cols-4 gap-8 items-center">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-green-200">
+                <span className="text-2xl font-bold text-green-600">1</span>
               </div>
-              <h3 className="font-semibold mb-2">1. Keep Using WhatsApp</h3>
-              <p className="text-sm text-gray-600">Your group chats stay exactly the same</p>
+              <h3 className="font-semibold mb-2">Admin creates group</h3>
+              <p className="text-sm text-gray-600">60 seconds, £5/year</p>
+            </div>
+
+            <div className="hidden md:block text-center">
+              <div className="w-full h-1 bg-gray-200 rounded">
+                <div className="w-full h-1 bg-primary rounded"></div>
+              </div>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-6 w-6 text-blue-600" />
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-blue-200">
+                <span className="text-2xl font-bold text-blue-600">2</span>
               </div>
-              <h3 className="font-semibold mb-2">2. Create Your GroupBio</h3>
-              <p className="text-sm text-gray-600">Add the info your group needs to stay organized</p>
+              <h3 className="font-semibold mb-2">Drop link in WhatsApp</h3>
+              <p className="text-sm text-gray-600">Members add their bio once</p>
+            </div>
+
+            <div className="hidden md:block text-center">
+              <div className="w-full h-1 bg-gray-200 rounded">
+                <div className="w-full h-1 bg-primary rounded"></div>
+              </div>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="h-6 w-6 text-purple-600" />
+            <div className="text-center">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-purple-200">
+                <CheckCircle className="h-8 w-8 text-purple-600" />
               </div>
-              <h3 className="font-semibold mb-2">3. Never Ask Again</h3>
-              <p className="text-sm text-gray-600">Everyone has the contacts, docs, and info they need</p>
+              <h3 className="font-semibold mb-2">Everyone knows everyone</h3>
+              <p className="text-sm text-gray-600">Searchable directory, wiki, map forever</p>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <div className="inline-block bg-blue-50 border border-blue-200 rounded-lg p-6">
+              <h4 className="font-semibold text-blue-900 mb-2">What you get for £5/year:</h4>
+              <div className="grid md:grid-cols-3 gap-4 text-sm text-blue-800">
+                <div className="flex items-center gap-2">
+                  <Users className="h-4 w-4" />
+                  <span>WHO these people are</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <FileText className="h-4 w-4" />
+                  <span>HOW to find info</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4" />
+                  <span>WHERE they are</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Core Functionality Section */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Everything WhatsApp Groups Are Missing
+              Core Toolbox - £5/year per group
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              The tools your group actually needs to stay organized and connected
+              The essential functionality every WhatsApp group needs
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index} className="text-center">
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            {coreFeatures.map((feature, index) => (
+              <Card key={index} className="text-center border-2 border-primary/20 bg-primary/5">
                 <CardHeader>
-                  <div className="mx-auto w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                    <feature.icon className="h-6 w-6 text-primary" />
+                  <div className="mx-auto w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4">
+                    <feature.icon className="h-8 w-8 text-white" />
+                  </div>
+                  <CardTitle className="text-2xl text-primary">{feature.title}</CardTitle>
+                  <div className="text-sm text-muted-foreground font-medium">{feature.benefit}</div>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-base">
+                    {feature.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <div className="inline-block bg-green-100 border border-green-200 rounded-lg p-4 mb-8">
+              <p className="text-green-800 font-semibold">
+                £5/year per group • Split 20 ways = 25p each • Less than a coffee, solves daily frustration
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Additional Features Section */}
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Additional Features
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Advanced tools to help your group thrive and stay engaged
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {additionalFeatures.map((feature, index) => (
+              <Card key={index} className="text-center relative">
+                <div className="absolute top-4 right-4">
+                  <Badge variant="outline" className="text-xs">
+                    {feature.status}
+                  </Badge>
+                </div>
+                <CardHeader>
+                  <div className="mx-auto w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
+                    <feature.icon className="h-6 w-6 text-secondary-foreground" />
                   </div>
                   <CardTitle>{feature.title}</CardTitle>
                 </CardHeader>
@@ -170,10 +260,10 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Works for Every WhatsApp Group
+              See Your Group Organized
             </h2>
             <p className="text-xl text-muted-foreground">
-              Try our demo groups - see what your group could look like
+              Try our demo groups - finally know who these people are
             </p>
           </div>
           
@@ -224,10 +314,10 @@ export default function Home() {
       <section className="py-20 px-4 text-center bg-gradient-to-r from-green-600 to-blue-600 text-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Stop Asking for Phone Numbers in Your WhatsApp Group
+            Stop Wondering "Which Sarah Is That?"
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Give your group the organization it deserves. Try GroupBio free with any WhatsApp group.
+            Give your WhatsApp group the toolbox it should have come with. £5/year per group.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/join">
@@ -237,13 +327,24 @@ export default function Home() {
             </Link>
             <Link href="/admin/create">
               <Button variant="outline" size="lg" className="text-lg px-8 border-white text-white hover:bg-white/10">
-                Set Up My Group
+                Create Your Group - £5/year
               </Button>
             </Link>
           </div>
-          <p className="text-sm mt-6 opacity-75">
-            Free to try • Works with any WhatsApp group • No app download required
-          </p>
+          <div className="mt-8 grid md:grid-cols-3 gap-4 text-sm opacity-90">
+            <div className="flex items-center justify-center gap-2">
+              <Users className="h-4 w-4" />
+              <span>Bios: WHO they are</span>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <FileText className="h-4 w-4" />
+              <span>Wiki: HOW to find info</span>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <MapPin className="h-4 w-4" />
+              <span>Maps: WHERE they are</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -254,7 +355,7 @@ export default function Home() {
             <MessageSquare className="h-4 w-4 text-green-600" />
             <span className="font-semibold">GroupBio</span>
           </div>
-          <p>&copy; 2024 GroupBio. The missing toolbox for WhatsApp groups.</p>
+          <p>&copy; 2024 GroupBio. The toolbox WhatsApp groups should have come with.</p>
         </div>
       </footer>
     </div>
