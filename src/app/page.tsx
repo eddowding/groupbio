@@ -5,6 +5,8 @@ import { Badge } from "@/components/ui/badge"
 import { Navbar } from "@/components/layout/navbar"
 import { Users, Shield, Settings, MapPin, FileText, MessageSquare, Zap, CheckCircle } from "lucide-react"
 import { dummyGroups } from "@/lib/dummy-data"
+import { TestimonialsColumn, testimonials } from "@/components/ui/testimonials-columns-1"
+import { motion } from "motion/react"
 
 export default function Home() {
   const features = [
@@ -111,36 +113,49 @@ export default function Home() {
               <div className="w-12 h-12 bg-[#25D366] rounded-xl flex items-center justify-center mx-auto mb-4">
                 <Settings className="h-6 w-6 text-white" />
               </div>
-              <h3 className="font-semibold mb-2">£5/Year</h3>
-              <p className="text-gray-600">Split 20 ways = 25p each</p>
+              <h3 className="font-semibold mb-2">Free Start</h3>
+              <p className="text-gray-600">10 people free, then £5/year</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Social Proof */}
+      {/* Testimonials */}
       <section className="py-20 px-4 bg-[#F6FDF8]">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-gray-900">
-            Try Our Demo Groups
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {dummyGroups.map((group) => (
-              <div key={group.id} className="bg-white rounded-2xl p-6 border border-gray-200">
-                <h3 className="font-semibold mb-2">{group.name}</h3>
-                <p className="text-sm text-gray-600 mb-4">{group.memberCount} members</p>
-                <div className="bg-[#25D366]/10 p-3 rounded-xl mb-4">
-                  <div className="text-xs text-[#075E54] font-mono font-bold">
-                    Code: {group.code}
-                  </div>
-                </div>
-                <Link href="/join">
-                  <Button variant="outline" size="sm" className="w-full">
-                    Explore Demo
-                  </Button>
-                </Link>
-              </div>
-            ))}
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <div className="inline-block border border-[#25D366]/30 py-2 px-4 rounded-full mb-6">
+              <span className="text-[#25D366] font-medium">Testimonials</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
+              What our users say
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Real stories from group admins who solved their "Which Sarah?" problem
+            </p>
+          </motion.div>
+
+          <div className="flex justify-center gap-6 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[600px] overflow-hidden">
+            <TestimonialsColumn 
+              testimonials={testimonials.slice(0, 2)} 
+              duration={15} 
+            />
+            <TestimonialsColumn 
+              testimonials={testimonials.slice(2, 4)} 
+              className="hidden md:block" 
+              duration={19} 
+            />
+            <TestimonialsColumn 
+              testimonials={testimonials.slice(4, 6)} 
+              className="hidden lg:block" 
+              duration={17} 
+            />
           </div>
         </div>
       </section>
@@ -149,10 +164,10 @@ export default function Home() {
       <section className="py-24 px-4 text-center bg-[#25D366] text-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
-            Stop wondering "Which Sarah is that?"
+            Get started free
           </h2>
           <p className="text-xl mb-12 opacity-95">
-            £5/year per group. Less than a coffee.
+            Every group can have 10 people for free. Upgrade to £5/year for unlimited members.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/join">
@@ -162,7 +177,7 @@ export default function Home() {
             </Link>
             <Link href="/auth">
               <Button variant="outline" size="lg" className="text-xl px-12 py-6 border-2 border-white text-white hover:bg-white/10 rounded-full font-medium">
-                Create Your Group
+                Create Free Group
               </Button>
             </Link>
           </div>
