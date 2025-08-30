@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Switch } from "@/components/ui/switch"
 import { Navbar } from "@/components/layout/navbar"
+import { GroupHeader } from "@/components/layout/group-header"
 import { 
   ArrowLeft,
   Shield,
@@ -23,13 +24,15 @@ import {
   CheckCircle,
   Info
 } from "lucide-react"
-import { getGroupById, getCurrentUser } from "@/lib/dummy-data"
+import { getGroupById, getCurrentUser, getGroupMembers } from "@/lib/dummy-data"
 
 export default function GroupSharingSettings() {
   const params = useParams()
   const groupId = params.id as string
   const group = getGroupById(groupId)
   const currentUser = getCurrentUser()
+  const members = getGroupMembers(groupId)
+  const currentMembership = members.find(m => m.id === currentUser?.id)?.membership
 
   // Mock current sharing settings - in real app this would come from API
   const [sharingSettings, setSharingSettings] = useState({
@@ -121,16 +124,11 @@ export default function GroupSharingSettings() {
     <div className="min-h-screen bg-background">
       <Navbar />
       
+      <GroupHeader group={group} currentMembership={currentMembership} />
+      
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
-          <Link href={`/groups/${group.id}`}>
-            <Button variant="ghost" size="sm" className="mb-4">
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to {group.name}
-            </Button>
-          </Link>
-          
           <div className="flex items-center gap-3 mb-4">
             <div className="p-3 rounded-full bg-blue-100">
               <Shield className="h-8 w-8 text-blue-600" />
@@ -297,12 +295,6 @@ export default function GroupSharingSettings() {
                   <Button variant="ghost" size="sm" className="w-full justify-start">
                     <User className="h-4 w-4 mr-2" />
                     Edit Profile Info
-                  </Button>
-                </Link>
-                <Link href={`/groups/${group.id}`}>
-                  <Button variant="ghost" size="sm" className="w-full justify-start">
-                    <ArrowLeft className="h-4 w-4 mr-2" />
-                    Back to Group
                   </Button>
                 </Link>
               </CardContent>

@@ -95,16 +95,14 @@ export default function Home() {
             <span className="font-bold"> Free for up to 10 members, £10/yr per group for unlimited.</span>
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link href="/demo/dashboard">
-              <Button size="lg" className="text-xl px-12 py-6 bg-primary hover:bg-primary/80 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-200">
-                Try Demo Group
-              </Button>
-            </Link>
+          <div className="flex flex-col items-center gap-4">
             <Link href="/signup">
-              <Button variant="outline" size="lg" className="text-xl px-12 py-6 border-2 border-gray-300 hover:border-primary text-gray-700 hover:text-primary rounded-full font-medium transition-all duration-200">
+              <Button size="lg" className="text-2xl px-16 py-8 bg-primary hover:bg-primary/80 text-white rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all duration-200 transform hover:scale-105">
                 Create Your Group
               </Button>
+            </Link>
+            <Link href="/dashboard" className="text-gray-600 hover:text-primary transition-colors duration-200 underline text-lg">
+              Try Demo Group
             </Link>
           </div>
         </div>
@@ -251,7 +249,7 @@ export default function Home() {
       <section className="py-24 px-4 text-center bg-[#111B21] text-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-8xl md:text-9xl font-bold mb-8 leading-tight">
-            Get started free
+            Add your group
           </h2>
           <p className="text-4xl mb-12 opacity-95">
             Every group: 10 people free, then £10/year for unlimited members.
@@ -259,7 +257,7 @@ export default function Home() {
           <div className="flex justify-center">
             <Link href="/auth">
               <Button size="lg" className="text-4xl px-32 py-12 bg-white text-[#111B21] hover:bg-gray-50 rounded-full font-medium shadow-xl hover:shadow-2xl transition-all duration-200">
-                Create Free Group
+                Get Started
               </Button>
             </Link>
           </div>

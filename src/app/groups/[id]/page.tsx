@@ -8,7 +8,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Navbar } from "@/components/layout/navbar"
 import { GroupHeader } from "@/components/layout/group-header"
 import { 
@@ -256,21 +255,9 @@ export default function GroupDetail() {
       
       <GroupHeader group={group} currentMembership={currentMembership} />
 
-      <Tabs defaultValue="members" className="w-full">
-        {/* Secondary Navigation Tabs */}
-        <div className="sticky top-[220px] z-30 bg-background border-b">
-          <div className="max-w-7xl mx-auto px-4">
-            <TabsList>
-              <TabsTrigger value="members">Members</TabsTrigger>
-              <TabsTrigger value="sharing">My Sharing</TabsTrigger>
-              <TabsTrigger value="info">Group Info</TabsTrigger>
-            </TabsList>
-          </div>
-        </div>
-
-        {/* Tab Content */}
-        <div className="max-w-7xl mx-auto px-4 py-8">
-          <TabsContent value="members">
+      {/* Members Content */}
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div>
             <div className="space-y-6">
               {/* Search and View Controls */}
               <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 mb-6">
@@ -330,81 +317,8 @@ export default function GroupDetail() {
                 </div>
               )}
             </div>
-          </TabsContent>
-
-          <TabsContent value="sharing">
-            <Card>
-              <CardHeader>
-                <CardTitle>Your Sharing Settings</CardTitle>
-                <CardDescription>
-                  Control what information you share with {group.name}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <Link href={`/groups/${group.id}/sharing`}>
-                    <Button size="lg">
-                      <Settings className="mr-2 h-4 w-4" />
-                      Manage Privacy Settings
-                    </Button>
-                  </Link>
-                  
-                  <div className="text-sm text-muted-foreground">
-                    Currently sharing {currentMembership?.sharedFields.length || 0} of {group.settings.requiredFields.length + group.settings.optionalFields.length} fields
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="info">
-            <div className="grid gap-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Group Information</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div>
-                    <h4 className="font-medium mb-2">Group Code</h4>
-                    <div className="font-mono text-lg bg-muted px-3 py-2 rounded inline-block">
-                      {group.code}
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-medium mb-2">Required Fields</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {group.settings.requiredFields.map((field) => (
-                        <Badge key={field} variant="default">{field}</Badge>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-medium mb-2">Optional Fields</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {group.settings.optionalFields.map((field) => (
-                        <Badge key={field} variant="outline">{field}</Badge>
-                      ))}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {group.settings.terms && (
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Group Guidelines</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">{group.settings.terms}</p>
-                  </CardContent>
-                </Card>
-              )}
-            </div>
-          </TabsContent>
         </div>
-      </Tabs>
+      </div>
     </div>
   )
 }

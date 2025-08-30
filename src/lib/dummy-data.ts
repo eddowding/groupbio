@@ -66,8 +66,8 @@ export const dummyUsers: User[] = [
     id: "1",
     name: "John Doe",
     email: "john@example.com",
-    phone: "+1 (555) 123-4567",
-    location: { address: "123 Main St, Anytown, USA", lat: 40.7589, lng: -73.9851 },
+    phone: "+44 1225 123-456",
+    location: { address: "12 Royal Crescent, Bath, UK", lat: 51.3758, lng: -2.3599 },
     bio: "Father of two, loves coaching little league",
     linkedin: "https://linkedin.com/in/johndoe",
     interests: ["Baseball", "Coaching", "Photography"],
@@ -114,7 +114,8 @@ export const dummyUsers: User[] = [
     id: "4",
     name: "Emma Thompson",
     email: "emma@example.com",
-    phone: "+1 (555) 456-7890",
+    phone: "+44 1225 456-789",
+    location: { address: "15 Circus Lane, Bath, UK", lat: 51.3832, lng: -2.3668 },
     bio: "Pediatric nurse and community volunteer",
     interests: ["Healthcare", "Volunteering", "Reading"],
     customFields: {
@@ -141,8 +142,8 @@ export const dummyUsers: User[] = [
     id: "6",
     name: "Lisa Rodriguez",
     email: "lisa@example.com",
-    phone: "+1 (555) 567-8901",
-    location: { address: "567 Broadway, Anytown, USA", lat: 40.7580, lng: -73.9857 },
+    phone: "+44 1225 567-890",
+    location: { address: "22 Pulteney Street, Bath, UK", lat: 51.3801, lng: -2.3594 },
     bio: "Teacher and mother of twins",
     interests: ["Education", "Reading", "Arts"],
     customFields: {
@@ -211,8 +212,8 @@ export const dummyUsers: User[] = [
     id: "11",
     name: "Steven Lee",
     email: "steven@example.com",
-    phone: "+1 (555) 012-3456",
-    location: { address: "678 3rd Ave, Anytown, USA", lat: 40.7523, lng: -73.9658 },
+    phone: "+44 1225 012-345",
+    location: { address: "8 Gay Street, Bath, UK", lat: 51.3814, lng: -2.3605 },
     bio: "Chef and cooking instructor",
     interests: ["Cooking", "Food Photography", "Travel"],
     customFields: {
@@ -281,8 +282,8 @@ export const dummyUsers: User[] = [
     id: "16",
     name: "Jessica White",
     email: "jessica@example.com",
-    phone: "+1 (555) 567-8902",
-    location: { address: "456 11th Ave, Anytown, USA", lat: 40.7621, lng: -73.9890 },
+    phone: "+44 1225 567-892",
+    location: { address: "31 Great Pulteney Street, Bath, UK", lat: 51.3777, lng: -2.3580 },
     bio: "Veterinarian and animal rescue volunteer",
     interests: ["Veterinary Medicine", "Animal Rescue", "Photography"],
     customFields: {
@@ -337,8 +338,8 @@ export const dummyUsers: User[] = [
     id: "20",
     name: "Laura Jackson",
     email: "laura@example.com",
-    phone: "+1 (555) 901-2346",
-    location: { address: "890 15th Ave, Anytown, USA", lat: 40.7454, lng: -73.9912 },
+    phone: "+44 1225 901-234",
+    location: { address: "5 Queen Square, Bath, UK", lat: 51.3823, lng: -2.3635 },
     bio: "Accountant and financial planner",
     interests: ["Accounting", "Financial Planning", "Reading"],
     customFields: {
@@ -393,8 +394,8 @@ export const dummyUsers: User[] = [
     id: "24",
     name: "Stephanie Hall",
     email: "stephanie@example.com",
-    phone: "+1 (555) 345-6792",
-    location: { address: "456 19th Ave, Anytown, USA", lat: 40.7543, lng: -73.9701 },
+    phone: "+44 1225 345-679",
+    location: { address: "14 Lansdown Road, Bath, UK", lat: 51.3889, lng: -2.3622 },
     bio: "Real estate agent and community volunteer",
     interests: ["Real Estate", "Community Service", "Interior Design"],
     customFields: {
@@ -477,8 +478,8 @@ export const dummyUsers: User[] = [
     id: "30",
     name: "Catherine Scott",
     email: "catherine@example.com",
-    phone: "+1 (555) 901-2348",
-    location: { address: "234 25th Ave, Anytown, USA", lat: 40.7487, lng: -73.9867 },
+    phone: "+44 1225 901-234",
+    location: { address: "19 The Paragon, Bath, UK", lat: 51.3861, lng: -2.3644 },
     bio: "Librarian and literacy advocate",
     interests: ["Literature", "Education", "Book Clubs"],
     customFields: {
@@ -505,8 +506,8 @@ export const dummyUsers: User[] = [
     id: "32",
     name: "Samantha Adams",
     email: "samantha@example.com",
-    phone: "+1 (555) 123-4572",
-    location: { address: "456 27th Ave, Anytown, USA", lat: 40.7545, lng: -73.9778 },
+    phone: "+44 1225 123-457",
+    location: { address: "27 Marlborough Buildings, Bath, UK", lat: 51.3795, lng: -2.3615 },
     bio: "Marketing manager and event planner",
     interests: ["Marketing", "Event Planning", "Travel"],
     customFields: {
@@ -561,8 +562,8 @@ export const dummyUsers: User[] = [
     id: "36",
     name: "Angela Carter",
     email: "angela@example.com",
-    phone: "+1 (555) 567-8906",
-    location: { address: "890 31st Ave, Anytown, USA", lat: 40.7589, lng: -73.9734 },
+    phone: "+44 1225 567-890",
+    location: { address: "42 Rivers Street, Bath, UK", lat: 51.3844, lng: -2.3587 },
     bio: "Psychologist and family counselor",
     interests: ["Psychology", "Counseling", "Mental Health"],
     customFields: {
@@ -589,8 +590,8 @@ export const dummyUsers: User[] = [
     id: "38",
     name: "Melissa Perez",
     email: "melissa@example.com",
-    phone: "+1 (555) 789-0128",
-    location: { address: "234 33rd Ave, Anytown, USA", lat: 40.7601, lng: -73.9823 },
+    phone: "+44 1225 789-012",
+    location: { address: "11 Alfred Street, Bath, UK", lat: 51.3753, lng: -2.3611 },
     bio: "Journalist and communications specialist",
     interests: ["Journalism", "Writing", "Current Events"],
     customFields: {
@@ -645,8 +646,8 @@ export const dummyUsers: User[] = [
     id: "42",
     name: "Heather Campbell",
     email: "heather@example.com",
-    phone: "+1 (555) 123-4574",
-    location: { address: "678 37th Ave, Anytown, USA", lat: 40.7634, lng: -73.9645 },
+    phone: "+44 1225 123-457",
+    location: { address: "6 Bennett Street, Bath, UK", lat: 51.3798, lng: -2.3641 },
     bio: "Scientist and environmental advocate",
     interests: ["Research", "Environmental Conservation", "Sustainability"],
     customFields: {
@@ -701,8 +702,8 @@ export const dummyUsers: User[] = [
     id: "46",
     name: "Sharon Collins",
     email: "sharon@example.com",
-    phone: "+1 (555) 567-8908",
-    location: { address: "234 41st Ave, Anytown, USA", lat: 40.7612, lng: -73.9723 },
+    phone: "+44 1225 567-890",
+    location: { address: "18 Sydney Place, Bath, UK", lat: 51.3781, lng: -2.3564 },
     bio: "Administrative assistant and PTA president",
     interests: ["Administration", "School Activities", "Organization"],
     customFields: {
@@ -729,8 +730,8 @@ export const dummyUsers: User[] = [
     id: "48",
     name: "Janet Sanchez",
     email: "janet@example.com",
-    phone: "+1 (555) 789-0130",
-    location: { address: "456 43rd Ave, Anytown, USA", lat: 40.7489, lng: -73.9778 },
+    phone: "+44 1225 789-013",
+    location: { address: "25 Camden Crescent, Bath, UK", lat: 51.3907, lng: -2.3651 },
     bio: "Social media manager and digital marketer",
     interests: ["Social Media", "Digital Marketing", "Content Creation"],
     customFields: {
@@ -757,8 +758,8 @@ export const dummyUsers: User[] = [
     id: "50",
     name: "Christine Rogers",
     email: "christine@example.com",
-    phone: "+1 (555) 901-2352",
-    location: { address: "678 45th Ave, Anytown, USA", lat: 40.7623, lng: -73.9689 },
+    phone: "+44 1225 901-235",
+    location: { address: "33 Brock Street, Bath, UK", lat: 51.3856, lng: -2.3679 },
     bio: "Event coordinator and party planner",
     interests: ["Event Planning", "Party Organization", "Decorating"],
     customFields: {
@@ -793,53 +794,13 @@ export const dummyGroups: Group[] = [
     }
   },
   {
-    id: "2", 
-    name: "FC Thunder Squad",
-    code: "THUND1",
-    description: "Youth soccer team for ages 8-10",
-    type: "sports",
-    adminId: "2",
-    memberCount: 16,
-    createdAt: "2024-02-01",
-    settings: {
-      requiredFields: ["name", "phone", "position"],
-      optionalFields: ["bio", "emergencyContact", "jerseyNumber"],
-      allowMap: true,
-      customFields: [
-        { id: "position", name: "Position", type: "select", required: true, options: ["Goalkeeper", "Defender", "Midfielder", "Forward"] },
-        { id: "jerseyNumber", name: "Jersey Number", type: "number", required: false },
-        { id: "emergencyContact", name: "Emergency Contact", type: "text", required: true }
-      ]
-    }
-  },
-  {
-    id: "3",
-    name: "TechCo Remote Team", 
-    code: "TECH01",
-    description: "Remote engineering team collaboration",
-    type: "professional",
-    adminId: "3",
-    memberCount: 12,
-    createdAt: "2024-01-08",
-    settings: {
-      requiredFields: ["name", "email", "role"],
-      optionalFields: ["linkedin", "website", "skillsets", "timezone"],
-      allowMap: false,
-      customFields: [
-        { id: "role", name: "Role", type: "text", required: true },
-        { id: "skillsets", name: "Tech Stack", type: "textarea", required: false },
-        { id: "timezone", name: "Timezone", type: "select", required: false, options: ["PST", "MST", "CST", "EST", "GMT"] }
-      ]
-    }
-  },
-  {
-    id: "4",
+    id: "2",
     name: "Downtown Book Club",
     code: "BOOK01", 
     description: "Monthly book discussions and literary events",
     type: "social",
     adminId: "4",
-    memberCount: 8,
+    memberCount: 15,
     createdAt: "2024-03-10",
     settings: {
       requiredFields: ["name", "email"],
@@ -849,27 +810,6 @@ export const dummyGroups: Group[] = [
         { id: "favoriteGenres", name: "Favorite Genres", type: "textarea", required: false },
         { id: "readingGoal", name: "Annual Reading Goal", type: "number", required: false }
       ]
-    }
-  },
-  {
-    id: "5", 
-    name: "Community Garden Collective",
-    code: "GARDEN1",
-    description: "Urban gardening enthusiasts and sustainability advocates",
-    type: "social",
-    adminId: "5",
-    memberCount: 15,
-    createdAt: "2024-03-15",
-    settings: {
-      requiredFields: ["name", "phone"],
-      optionalFields: ["location", "bio", "interests", "gardeningExperience"],
-      allowMap: true,
-      customFields: [
-        { id: "gardeningExperience", name: "Gardening Experience", type: "select", required: false, options: ["Beginner", "Intermediate", "Advanced", "Expert"] },
-        { id: "plotAssignment", name: "Plot Assignment", type: "text", required: false },
-        { id: "specialties", name: "Plant Specialties", type: "textarea", required: false }
-      ],
-      terms: "Members are responsible for maintaining their assigned plots and contributing to community areas."
     }
   }
 ]
@@ -1227,74 +1167,110 @@ export const dummyGroupMembers: GroupMember[] = [
     role: "member"
   },
 
-  // Group 2 (FC Thunder Squad)
-  {
-    userId: "2",
-    groupId: "2",
-    joinedAt: "2024-02-01",
-    sharedFields: ["name", "phone", "position", "emergencyContact"],
-    role: "admin"
-  },
-  {
-    userId: "5", 
-    groupId: "2",
-    joinedAt: "2024-02-03",
-    sharedFields: ["name", "phone", "bio", "position", "jerseyNumber"],
-    role: "member"
-  },
-
-  // Group 3 (TechCo Remote Team)
-  {
-    userId: "3",
-    groupId: "3",
-    joinedAt: "2024-01-08", 
-    sharedFields: ["name", "email", "linkedin", "website", "role", "skillsets"],
-    role: "admin"
-  },
-  {
-    userId: "1",
-    groupId: "3",
-    joinedAt: "2024-02-15",
-    sharedFields: ["name", "email", "linkedin"],
-    role: "member"
-  },
-
-  // Group 4 (Downtown Book Club)
+  // Group 2 (Downtown Book Club)
   {
     userId: "4",
-    groupId: "4",
-    joinedAt: "2024-03-10",
-    sharedFields: ["name", "email", "bio", "interests", "favoriteGenres"],
-    role: "admin"
-  },
-  {
-    userId: "1",
-    groupId: "4",
-    joinedAt: "2024-03-12",
-    sharedFields: ["name", "email", "bio", "interests"],
-    role: "member"
-  },
-
-  // Group 5 (Community Garden Collective)
-  {
-    userId: "5",
-    groupId: "5",
-    joinedAt: "2024-03-15",
-    sharedFields: ["name", "phone", "location", "bio", "gardeningExperience", "specialties"],
-    role: "admin"
-  },
-  {
-    userId: "1",
-    groupId: "5",
-    joinedAt: "2024-03-18",
-    sharedFields: ["name", "phone", "location", "bio", "interests"],
-    role: "member"
-  },
-  {
-    userId: "1", 
     groupId: "2",
-    joinedAt: "2024-02-20",
-    sharedFields: ["name", "phone", "bio"],
+    joinedAt: "2024-03-10",
+    sharedFields: ["name", "email", "bio", "interests", "favoriteGenres", "location"],
+    role: "admin"
+  },
+  {
+    userId: "1",
+    groupId: "2",
+    joinedAt: "2024-03-12",
+    sharedFields: ["name", "email", "bio", "interests", "location"],
+    role: "member"
+  },
+  {
+    userId: "6",
+    groupId: "2",
+    joinedAt: "2024-03-14",
+    sharedFields: ["name", "email", "bio", "interests", "favoriteGenres", "location"],
+    role: "member"
+  },
+  {
+    userId: "11",
+    groupId: "2",
+    joinedAt: "2024-03-16",
+    sharedFields: ["name", "email", "bio", "interests", "location"],
+    role: "member"
+  },
+  {
+    userId: "16",
+    groupId: "2",
+    joinedAt: "2024-03-18",
+    sharedFields: ["name", "email", "bio", "interests", "favoriteGenres", "location"],
+    role: "member"
+  },
+  {
+    userId: "20",
+    groupId: "2",
+    joinedAt: "2024-03-20",
+    sharedFields: ["name", "email", "bio", "interests", "location"],
+    role: "member"
+  },
+  {
+    userId: "24",
+    groupId: "2",
+    joinedAt: "2024-03-22",
+    sharedFields: ["name", "email", "bio", "interests", "favoriteGenres", "location"],
+    role: "member"
+  },
+  {
+    userId: "30",
+    groupId: "2",
+    joinedAt: "2024-03-24",
+    sharedFields: ["name", "email", "bio", "interests", "favoriteGenres", "location"],
+    role: "member"
+  },
+  {
+    userId: "32",
+    groupId: "2",
+    joinedAt: "2024-03-26",
+    sharedFields: ["name", "email", "bio", "interests", "location"],
+    role: "member"
+  },
+  {
+    userId: "36",
+    groupId: "2",
+    joinedAt: "2024-03-28",
+    sharedFields: ["name", "email", "bio", "interests", "favoriteGenres", "location"],
+    role: "member"
+  },
+  {
+    userId: "38",
+    groupId: "2",
+    joinedAt: "2024-03-30",
+    sharedFields: ["name", "email", "bio", "interests", "location"],
+    role: "member"
+  },
+  {
+    userId: "42",
+    groupId: "2",
+    joinedAt: "2024-04-01",
+    sharedFields: ["name", "email", "bio", "interests", "favoriteGenres", "location"],
+    role: "member"
+  },
+  {
+    userId: "46",
+    groupId: "2",
+    joinedAt: "2024-04-03",
+    sharedFields: ["name", "email", "bio", "interests", "location"],
+    role: "member"
+  },
+  {
+    userId: "48",
+    groupId: "2",
+    joinedAt: "2024-04-05",
+    sharedFields: ["name", "email", "bio", "interests", "favoriteGenres", "location"],
+    role: "member"
+  },
+  {
+    userId: "50",
+    groupId: "2",
+    joinedAt: "2024-04-07",
+    sharedFields: ["name", "email", "bio", "interests", "location"],
     role: "member"
   }
 ]
@@ -1309,28 +1285,10 @@ export const dummyWikiDocs: WikiDoc[] = [
     lastModifiedBy: "John Doe",
     category: "general"
   },
+  // Group 2 (Downtown Book Club) documents
   {
-    id: "2", 
+    id: "2",
     groupId: "2",
-    title: "Team Rules and Expectations",
-    content: "# FC Thunder Squad Rules\n\n## Practice Schedule\n- Tuesdays 6:00-7:30 PM\n- Saturdays 9:00-10:30 AM\n\n## Game Day Guidelines\n- Arrive 30 minutes early\n- Bring water bottle and snacks\n- Positive attitude only!\n\n## Parent Responsibilities\n- Volunteer for game snacks (sign up sheet coming soon)\n- Help with field setup when possible\n- Cheer positively for ALL players",
-    lastModified: "2024-02-10",
-    lastModifiedBy: "Sarah Wilson", 
-    category: "rules"
-  },
-  {
-    id: "3",
-    groupId: "3",
-    title: "Engineering Team Resources",
-    content: "# Development Resources\n\n## Code Style Guide\n- Use TypeScript for all new projects\n- Follow ESLint configuration\n- Write tests for critical functions\n\n## Tools & Access\n- GitHub: [team repo]\n- Slack: #engineering\n- Jira: [project board]\n\n## Meeting Schedule\n- Daily standups: 9 AM PST\n- Sprint planning: Every other Monday\n- Retrospectives: Last Friday of sprint",
-    lastModified: "2024-02-12",
-    lastModifiedBy: "Mike Chen",
-    category: "resources"
-  },
-  // Group 4 (Downtown Book Club) documents
-  {
-    id: "4",
-    groupId: "4",
     title: "Welcome to Downtown Book Club",
     content: "# Welcome to Our Literary Community! 📚\n\nWelcome to the Downtown Book Club! We're a passionate group of readers who love exploring diverse stories and engaging in thoughtful discussions.\n\n## About Us\nFounded in March 2024, we meet monthly to discuss our selected books. Our members bring different perspectives and reading experiences, making for rich conversations.\n\n## What We Offer\n- Monthly book discussions\n- Author events and readings\n- Book swaps and recommendations\n- Literary-themed social events\n- Online discussion forum\n\n## Meeting Details\n- **When**: Second Saturday of each month, 2:00 PM\n- **Where**: Downtown Public Library, Community Room B\n- **Duration**: 2 hours with optional coffee after\n\n## Getting Started\n1. Join our WhatsApp group for updates\n2. Check out our current book selection\n3. Attend your first meeting (newcomers always welcome!)\n4. Consider hosting a future discussion\n\nLooking forward to many great book discussions together!",
     lastModified: "2024-03-10",
@@ -1338,8 +1296,8 @@ export const dummyWikiDocs: WikiDoc[] = [
     category: "general"
   },
   {
-    id: "5",
-    groupId: "4",
+    id: "3",
+    groupId: "2",
     title: "Book Club Guidelines & Etiquette",
     content: "# Book Club Guidelines 📖\n\n## Discussion Rules\n- **Respect all opinions**: Every member's perspective is valuable\n- **No spoilers**: Always warn before discussing plot points\n- **Stay on topic**: Keep discussions focused on the current book\n- **Active listening**: Let everyone share their thoughts\n- **Be prepared**: Try to finish the book before our meeting\n\n## Meeting Etiquette\n- Arrive on time or message the group\n- Turn phones to silent during discussions\n- Bring your copy of the book for reference\n- Take turns speaking - don't dominate the conversation\n- Ask questions to encourage participation\n\n## Book Selection Process\n1. Suggestions are collected monthly\n2. We vote democratically on 3 finalist books\n3. Consider diverse authors and genres\n4. Keep books under 400 pages when possible\n5. Avoid books members have recently read\n\n## Hosting Guidelines\nWhen it's your turn to host a discussion:\n- Prepare 5-7 discussion questions\n- Research the author's background\n- Bring snacks or refreshments (optional)\n- Keep discussion flowing and inclusive\n- Send recap notes to the group afterward\n\n## Library Partnership\nThanks to our partnership with Downtown Public Library:\n- Multiple copies available for checkout\n- Quiet discussion space reserved monthly\n- Access to author biography resources\n- Book club discount at library café",
     lastModified: "2024-03-12",
@@ -1347,8 +1305,8 @@ export const dummyWikiDocs: WikiDoc[] = [
     category: "rules"
   },
   {
-    id: "6",
-    groupId: "4",
+    id: "4",
+    groupId: "2",
     title: "2024 Reading Schedule",
     content: "# 2024 Reading Calendar 📅\n\n## Completed Books\n\n### March - \"The Seven Husbands of Evelyn Hugo\" by Taylor Jenkins Reid\n- **Discussion Date**: March 16, 2024\n- **Host**: Emma Thompson\n- **Rating**: ⭐⭐⭐⭐⭐ (Group average: 4.2/5)\n- **Notes**: Fantastic debut book! Great discussion about Hollywood glamour and hidden truths.\n\n## Upcoming Books\n\n### April - \"Klara and the Sun\" by Kazuo Ishiguro\n- **Discussion Date**: April 13, 2024\n- **Host**: John Doe (volunteered!)\n- **Genre**: Science Fiction/Literary Fiction\n- **Pages**: 303\n- **Why we chose it**: Exploration of AI consciousness and human connection\n\n### May - \"The Midnight Library\" by Matt Haig\n- **Discussion Date**: May 11, 2024\n- **Host**: TBD\n- **Genre**: Contemporary Fiction/Philosophy\n- **Pages**: 288\n- **Why we chose it**: Thought-provoking concept about life choices\n\n### June - \"Educated\" by Tara Westover\n- **Discussion Date**: June 8, 2024\n- **Host**: TBD\n- **Genre**: Memoir\n- **Pages**: 334\n- **Why we chose it**: Powerful story of education and family\n\n## Book Selection Ideas for Later\n- \"Circe\" by Madeline Miller\n- \"The Invisible Bridge\" by Julie Orringer\n- \"Homegoing\" by Yaa Gyasi\n- \"The Silent Patient\" by Alex Michaelides\n- \"Anxious People\" by Fredrik Backman\n\n## Special Events\n- **May 25**: Author reading at Bookstore Downtown (optional group outing)\n- **July**: Summer picnic with book swap\n- **December**: Holiday party and book gift exchange",
     lastModified: "2024-03-25",
@@ -1356,8 +1314,8 @@ export const dummyWikiDocs: WikiDoc[] = [
     category: "general"
   },
   {
-    id: "7",
-    groupId: "4",
+    id: "5",
+    groupId: "2",
     title: "Discussion Questions: Klara and the Sun",
     content: "# Discussion Questions: \"Klara and the Sun\" 🤖\n\n*For our April 13th meeting - hosted by John*\n\n## Character & Perspective Questions\n1. What did you think of Ishiguro's choice to tell the story from Klara's perspective? How did this affect your reading experience?\n\n2. How did Klara's understanding of the world differ from human understanding? What did this reveal about both AI and human nature?\n\n3. Discuss Josie's character development. How did her illness shape her relationships and worldview?\n\n4. What role did the Mother play in the story? How did her fears and hopes drive the plot?\n\n## Themes & Ideas\n5. What does the novel suggest about the nature of love and sacrifice? Consider both Klara's sacrifices and those made by the human characters.\n\n6. How does the book explore themes of faith and belief? What different belief systems do we see?\n\n7. Discuss the concept of \"being lifted\" - what are the social implications of this genetic enhancement?\n\n8. What does the sun represent in the novel? How do different characters relate to it?\n\n## Broader Discussion\n9. How realistic did you find Ishiguro's vision of AI companionship? What aspects seemed most/least believable?\n\n10. What ethical questions does the book raise about AI consciousness and rights?\n\n11. How does this book compare to other AI fiction you've read or seen?\n\n12. What do you think the ending suggests about Klara's future and the nature of memory?\n\n## Fun Questions\n- If you could have an Artificial Friend like Klara, would you want one?\n- Which scene or passage affected you most emotionally?\n- What questions would you ask Kazuo Ishiguro about this book?\n\n*Bring your favorite quotes to share!*",
     lastModified: "2024-03-28",
@@ -1365,8 +1323,8 @@ export const dummyWikiDocs: WikiDoc[] = [
     category: "resources"
   },
   {
-    id: "8",
-    groupId: "4",
+    id: "6",
+    groupId: "2",
     title: "Book Recommendations & Reviews",
     content: "# Member Book Recommendations 💎\n\n*Books recommended by our members (not for club reading, just personal suggestions)*\n\n## Emma's Picks\n**\"The Atlas Six\" by Olivie Blake**\n- Genre: Dark Academia/Fantasy\n- Emma's review: \"Mind-bending magic system and complex characters. Perfect if you loved 'The Secret History'\"\n- Rating: ⭐⭐⭐⭐\n\n**\"Mexican Gothic\" by Silvia Moreno-Garcia**\n- Genre: Gothic Horror\n- Emma's review: \"Atmospheric and creepy. Great blend of horror and historical fiction.\"\n- Rating: ⭐⭐⭐⭐⭐\n\n## John's Picks\n**\"Project Hail Mary\" by Andy Weir**\n- Genre: Science Fiction\n- John's review: \"If you liked 'The Martian', you'll love this. Humor, science, and heart.\"\n- Rating: ⭐⭐⭐⭐⭐\n\n**\"The Thursday Murder Club\" by Richard Osman**\n- Genre: Mystery/Cozy Crime\n- John's review: \"Delightful characters and clever mysteries. Perfect comfort read.\"\n- Rating: ⭐⭐⭐⭐\n\n## Genre Wishlists\n\n### Historical Fiction Lovers\n- \"The Nightingale\" by Kristin Hannah\n- \"All the Light We Cannot See\" by Anthony Doerr\n- \"The Book Thief\" by Markus Zusak\n\n### Mystery/Thriller Fans\n- \"Gone Girl\" by Gillian Flynn\n- \"The Girl with the Dragon Tattoo\" by Stieg Larsson\n- \"In the Woods\" by Tana French\n\n### Literary Fiction\n- \"A Little Life\" by Hanya Yanagihara\n- \"The Goldfinch\" by Donna Tartt\n- \"Normal People\" by Sally Rooney\n\n### Non-Fiction\n- \"Sapiens\" by Yuval Noah Harari\n- \"Born a Crime\" by Trevor Noah\n- \"Wild\" by Cheryl Strayed\n\n## Book Swap Corner\n*Available for borrowing from members:*\n- \"Where the Crawdads Sing\" - Emma\n- \"The Vanishing Half\" - John\n- \"Dune\" (complete series) - Emma\n- \"Becoming\" by Michelle Obama - John\n\n*Want to add your books to the swap? Message the group!*",
     lastModified: "2024-03-30",
@@ -1374,13 +1332,68 @@ export const dummyWikiDocs: WikiDoc[] = [
     category: "resources"
   },
   {
-    id: "9",
-    groupId: "4",
+    id: "7",
+    groupId: "2",
     title: "Frequently Asked Questions",
     content: "# Book Club FAQ ❓\n\n## Getting Started\n\n**Q: I'm new to book clubs. What should I expect?**\nA: Book clubs are relaxed, friendly discussions! Come with an open mind, and don't worry if you haven't finished the book - we welcome all levels of participation.\n\n**Q: What if I didn't like the book?**\nA: That's perfectly fine! Differing opinions make for the best discussions. We value honest perspectives.\n\n**Q: Do I need to prepare anything before meetings?**\nA: Just read (or attempt to read) the book. If you want to take notes or mark passages, great! But it's not required.\n\n## Practical Questions\n\n**Q: What if I can't make a meeting?**\nA: No problem! We understand life happens. We'll send you a summary of the discussion.\n\n**Q: How are books chosen?**\nA: Members suggest books, we vote democratically, and try to rotate genres to keep things interesting.\n\n**Q: Can I bring a friend?**\nA: Absolutely! New members are always welcome. Just give us a heads up so we know to expect them.\n\n**Q: What about refreshments?**\nA: The host usually provides light snacks, but it's not required. We sometimes grab coffee together after meetings.\n\n## Book Selection\n\n**Q: How long should books be?**\nA: We try to keep them under 400 pages when possible, but we make exceptions for exceptional books.\n\n**Q: What genres do we read?**\nA: We read everything! Literary fiction, mysteries, sci-fi, memoirs, historical fiction - variety is key.\n\n**Q: Can we read classics?**\nA: Yes! We love revisiting classics with fresh eyes and adult perspectives.\n\n## Group Dynamics\n\n**Q: What if someone dominates the conversation?**\nA: Our hosts are trained to facilitate inclusive discussions. We encourage everyone to participate.\n\n**Q: Is there homework besides reading?**\nA: Nope! Just show up ready to chat about the book.\n\n**Q: How big is the group?**\nA: We currently have 8 active members, which is perfect for intimate discussions.\n\n*Have other questions? Don't hesitate to ask in our group chat!*",
     lastModified: "2024-03-15",
     lastModifiedBy: "Emma Thompson",
     category: "faq"
+  },
+  // Additional docs for Sunshine Nursery Parents (Group 1)
+  {
+    id: "10",
+    groupId: "1",
+    title: "Emergency Contact Information",
+    content: "# Emergency Contact Information 🚨\n\n## School Emergency Contacts\n**Sunshine Nursery School**\n- Main Office: (555) 123-4567\n- Director Sarah Matthews: (555) 123-4568\n- Assistant Director Mike Johnson: (555) 123-4569\n\n**After Hours Emergency**\n- School Emergency Line: (555) 123-HELP\n- Available 24/7 for urgent school-related matters\n\n## Medical Emergency\n- **Call 911 immediately for any life-threatening emergency**\n- Children's Hospital: (555) 234-5678\n- Poison Control: 1-800-222-1222\n\n## Parent Coordinators\n**Class Representatives:**\n- Morning Class (9am-12pm): Lisa Rodriguez (555) 567-8901\n- Afternoon Class (1pm-4pm): James Miller (555) 678-9012\n- Extended Day: Rachel Kim (555) 789-0123\n\n## Pickup Authorization\nReminder: Only authorized individuals can pick up your child. Update your pickup list with the office if you need to make changes.\n\n## Weather-Related Closures\n- Check school website: sunshirenursery.edu\n- Text alerts sent to all parents\n- Follow @SunshineNursery on social media\n\n## Important: Keep this information easily accessible!",
+    lastModified: "2024-03-20",
+    lastModifiedBy: "Lisa Rodriguez",
+    category: "resources"
+  },
+  {
+    id: "11",
+    groupId: "1",
+    title: "Daily Schedule & Drop-off Procedures",
+    content: "# Daily Schedule & Procedures ⏰\n\n## Morning Routine (9:00 AM Start)\n**8:45-9:00 AM: Drop-off Window**\n- Use main entrance only\n- Sign your child in at the front desk\n- Help child hang up backpack and lunch\n- Give hugs and say goodbye quickly (helps with separation!)\n\n## Daily Schedule\n**9:00-9:30 AM**: Circle time and morning songs\n**9:30-10:15 AM**: Free play stations\n**10:15-10:30 AM**: Snack time\n**10:30-11:15 AM**: Outdoor play (weather permitting)\n**11:15-11:45 AM**: Art & crafts\n**11:45 AM-12:00 PM**: Story time and cleanup\n\n## Pickup Procedures\n**12:00-12:15 PM: Pickup Window**\n- Wait in designated pickup area\n- Staff will call your child when you arrive\n- Sign child out at front desk\n- Collect any artwork or notes from teachers\n\n## Extended Day Program\n- Available until 4:00 PM\n- Includes lunch and quiet time\n- Additional activities: music, movement, nature exploration\n\n## What to Bring Daily\n- Named water bottle\n- Healthy snack in labeled container\n- Extra clothes in labeled bag\n- Comfort item if needed\n- Lunch (extended day children only)\n\n## Parking Notes\n- Please use visitor parking spots\n- Do not block fire lanes\n- Be mindful of neighbors when dropping off\n- Carpool arrangements welcome!",
+    lastModified: "2024-02-28",
+    lastModifiedBy: "Sarah Matthews",
+    category: "general"
+  },
+  {
+    id: "12",
+    groupId: "1",
+    title: "Birthday Party Guidelines",
+    content: "# Birthday Party Guidelines 🎂\n\n## School Birthday Celebrations\n**Classroom Celebrations**\n- Simple treats welcomed (nut-free required)\n- Coordinate with teacher at least 1 week ahead\n- Suggested items: mini cupcakes, fruit cups, or crackers\n- Special birthday crown provided by school\n- Songs and celebration during snack time\n\n## Outside Party Invitations\n**Invitation Distribution Policy**\n- If inviting entire class: distribute at school freely\n- If inviting select children: send invitations privately\n- Please don't distribute partial-class invitations at school\n\n## Party Planning Tips\n**Age-Appropriate Activities** (Ages 3-5)\n- Keep parties to 1.5-2 hours max\n- Simple games: musical chairs, freeze dance, treasure hunt\n- Craft activity: decorating picture frames or cookies\n- Avoid overstimulating activities\n\n**Timing Recommendations**\n- Weekend afternoons work best (2-4 PM)\n- Avoid nap times (12-2 PM typically)\n- Consider multiple mini-parties for large invite lists\n\n## Gift Guidelines\n- No pressure for expensive gifts\n- Suggested budget: $10-15\n- Books, art supplies, and puzzles are always hits\n- Gift receipts appreciated by parents\n\n## RSVPs & Planning\n- Always RSVP by requested date\n- Include any dietary restrictions/allergies\n- Confirm pickup time and location\n- Exchange contact info with hosting parents\n\n## Sibling Considerations\n- Ask if siblings are welcome before bringing them\n- Some parties are child-only events\n- Offer to help if bringing additional children\n\n**Remember: The goal is fun, not perfection! 🎉**",
+    lastModified: "2024-03-18",
+    lastModifiedBy: "Emma Thompson",
+    category: "general"
+  },
+  {
+    id: "13",
+    groupId: "1",
+    title: "Carpool Coordination",
+    content: "# Carpool Coordination 🚗\n\n## Current Carpool Groups\n\n**North Side Route** (Coordinator: James Miller)\n- James Miller (555) 678-9012\n- Rachel Kim (555) 789-0123\n- Tom Anderson (555) 890-1234\n- Maria Garcia (555) 901-2345\n\n**East Side Route** (Coordinator: Lisa Rodriguez)\n- Lisa Rodriguez (555) 567-8901\n- Steven Lee (555) 012-3456\n- Amanda Davis (555) 123-4568\n- Chris Johnson (555) 234-5679\n\n**West Side Route** (Coordinator: David Park)\n- David Park (555) 789-0123\n- Nicole Brown (555) 345-6790\n- Robert Taylor (555) 456-7891\n- Jessica White (555) 567-8902\n\n## How Carpool Works\n- Each family takes one week per month\n- Morning pickup starts at 8:30 AM\n- Afternoon dropoff after 12:15 PM\n- Extended day pickup at 4:00 PM\n\n## Carpool Guidelines\n**Safety First**\n- All children must use car seats/boosters\n- Driver must have valid license and insurance\n- Emergency contact info shared among group\n- No more than planned number of children\n\n**Communication**\n- Confirm pickup day before your week\n- Text group if running late (even 5 minutes)\n- Share any route changes in advance\n- Notify group of sick days immediately\n\n## Backup Plans\n- Each carpool has 1-2 backup drivers\n- School has list of authorized pickup people\n- Emergency contact tree established\n\n## Want to Join or Start a Carpool?\nContact your area coordinator or John Doe (555) 123-4567 to get connected with families in your area.\n\n**Benefits of Carpooling:**\n- Reduces daily driving\n- Builds friendships between families  \n- Helps in emergencies\n- Environmentally friendly\n- Kids love riding together!",
+    lastModified: "2024-03-22",
+    lastModifiedBy: "James Miller",
+    category: "resources"
+  },
+  {
+    id: "14",
+    groupId: "1",
+    title: "Volunteer Opportunities",
+    content: "# Volunteer Opportunities 🙋‍♀️\n\n## Current Volunteer Needs\n\n**Weekly Opportunities**\n- **Reading Volunteers**: Tuesday & Thursday 10:30-11:00 AM\n- **Garden Helpers**: Friday mornings (seasonal)\n- **Library Organization**: Ongoing, flexible schedule\n- **Playground Maintenance**: Saturday mornings monthly\n\n**Special Events**\n- **Spring Fair Committee** (April 20)\n  - Setup crew needed Friday evening\n  - Game booth volunteers Saturday 10 AM-2 PM\n  - Cleanup crew Saturday 2-4 PM\n\n- **Field Day Helpers** (May 15)\n  - Station leaders for outdoor games\n  - Snack coordination\n  - First aid volunteer (certification required)\n\n## Monthly Commitments\n\n**Room Parent Coordinators** (Still needed for 2 classes)\n- Organize class parties and celebrations\n- Coordinate teacher appreciation gifts\n- Communicate school news to class families\n- Time commitment: 2-3 hours monthly\n\n**Fundraising Committee**\n- Plan and execute 2-3 fundraising events yearly\n- Research grant opportunities\n- Coordinate with local businesses for donations\n- Meets monthly on first Tuesday\n\n## Skills-Based Volunteering\n\n**Marketing & Communications**\n- Social media management\n- Newsletter design\n- Website updates\n- Photography at events\n\n**Professional Services**\n- Legal advice (pro bono)\n- Accounting/bookkeeping support\n- IT and technical support\n- Grant writing assistance\n\n## How to Sign Up\n1. Contact volunteer coordinator Sarah Wilson (555) 234-5678\n2. Fill out volunteer application (background check required)\n3. Attend brief orientation session\n4. Choose opportunities that fit your schedule\n\n## Volunteer Appreciation\n- Monthly volunteer breakfast\n- End-of-year appreciation dinner\n- Volunteer appreciation certificates\n- Priority enrollment for returning families\n\n**Every contribution matters - thank you for supporting our school community! 💚**",
+    lastModified: "2024-03-25",
+    lastModifiedBy: "Sarah Wilson",
+    category: "general"
+  },
+  {
+    id: "15",
+    groupId: "1",
+    title: "Meal Planning & Allergy Information",
+    content: "# Meal Planning & Allergy Information 🥙\n\n## School Allergy Policy\n**Nut-Free Environment**\n- NO tree nuts or peanuts in any school meals\n- Check all packaged foods for \"may contain\" warnings\n- Common hidden sources: granola bars, cookies, bread\n- Alternative proteins: sunflower seed butter, soy butter\n\n## Current Class Allergies (Confidential - Parents Only)\n- **Severe nut allergy**: 3 children\n- **Dairy sensitivity**: 2 children  \n- **Gluten intolerance**: 1 child\n- **Egg allergy**: 1 child\n\n## Healthy Snack Ideas\n\n**Protein Options**\n- String cheese (if no dairy allergies in class)\n- Hard-boiled eggs (check with teacher first)\n- Hummus with vegetables\n- Sunflower seed butter with crackers\n\n**Fresh Fruits**\n- Apple slices with cinnamon\n- Berries (strawberries, blueberries, grapes - halved)\n- Banana with sunflower seed butter\n- Orange segments\n\n**Vegetable Options**\n- Carrot sticks with ranch dip\n- Cucumber rounds\n- Cherry tomatoes (halved)\n- Bell pepper strips\n\n**Whole Grains**\n- Whole grain crackers\n- Mini rice cakes\n- Homemade muffins (nut-free recipes available)\n- Pretzels\n\n## Lunch Ideas (Extended Day)\n\n**Sandwich Alternatives**\n- Sunbutter and jelly\n- Cream cheese and cucumber\n- Turkey and avocado wrap\n- Hummus and veggie pita\n\n**Hot Lunch Options**\n- Thermos soups (chicken noodle, tomato)\n- Mac and cheese (dairy-free version available)\n- Quesadillas (check cheese allergies)\n- Leftover dinner portions\n\n## Party & Celebration Foods\n**Always Safe Options**\n- Fresh fruit kabobs\n- Veggie tray with safe dips\n- Rice crackers with safe toppings\n- Homemade treats (recipe sharing encouraged)\n\n## Emergency Procedures\n- EpiPens stored in office and with child\n- All staff trained in allergy response\n- Emergency action plans posted in each classroom\n- Substitute teachers briefed on all allergies\n\n**Questions about allergies? Contact school nurse Jennifer Adams (555) 123-4570**",
+    lastModified: "2024-03-15",
+    lastModifiedBy: "Jennifer Adams",
+    category: "resources"
   }
 ]
 

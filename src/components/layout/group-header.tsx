@@ -11,7 +11,8 @@ import {
   Calendar, 
   Settings,
   FileText,
-  Crown
+  Crown,
+  Share2
 } from "lucide-react"
 
 interface GroupHeaderProps {
@@ -71,7 +72,7 @@ export function GroupHeader({ group, currentMembership }: GroupHeaderProps) {
           
           <div className="flex gap-3">
             {isAdmin && (
-              <Link href={`/demo/admin/groups/${group.id}`}>
+              <Link href={`/admin/groups/${group.id}`}>
                 <Button>
                   <Settings className="mr-2 h-4 w-4" />
                   Manage
@@ -86,9 +87,9 @@ export function GroupHeader({ group, currentMembership }: GroupHeaderProps) {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex gap-1">
           <Link 
-            href={`/demo/groups/${group.id}`}
+            href={`/groups/${group.id}`}
             className={`inline-flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors ${
-              pathname === `/demo/groups/${group.id}` 
+              pathname === `/groups/${group.id}` 
                 ? "border-primary text-primary" 
                 : "border-transparent text-muted-foreground hover:text-foreground hover:border-border"
             }`}
@@ -96,11 +97,23 @@ export function GroupHeader({ group, currentMembership }: GroupHeaderProps) {
             <Users className="h-4 w-4" />
             Members
           </Link>
+
+          <Link 
+            href={`/groups/${group.id}/sharing`}
+            className={`inline-flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors ${
+              pathname === `/groups/${group.id}/sharing` 
+                ? "border-primary text-primary" 
+                : "border-transparent text-muted-foreground hover:text-foreground hover:border-border"
+            }`}
+          >
+            <Share2 className="h-4 w-4" />
+            Sharing
+          </Link>
           
           <Link 
-            href={`/demo/groups/${group.id}/wiki`}
+            href={`/groups/${group.id}/wiki`}
             className={`inline-flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors ${
-              pathname.startsWith(`/demo/groups/${group.id}/wiki`) 
+              pathname.startsWith(`/groups/${group.id}/wiki`) 
                 ? "border-primary text-primary" 
                 : "border-transparent text-muted-foreground hover:text-foreground hover:border-border"
             }`}
@@ -111,9 +124,9 @@ export function GroupHeader({ group, currentMembership }: GroupHeaderProps) {
           
           {group.settings.allowMap && (
             <Link 
-              href={`/demo/groups/${group.id}/map`}
+              href={`/groups/${group.id}/map`}
               className={`inline-flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors ${
-                pathname.startsWith(`/demo/groups/${group.id}/map`) 
+                pathname.startsWith(`/groups/${group.id}/map`) 
                   ? "border-primary text-primary" 
                   : "border-transparent text-muted-foreground hover:text-foreground hover:border-border"
               }`}
