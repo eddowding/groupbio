@@ -10,10 +10,8 @@ import { Users, User, Settings, LogOut, Lightbulb, FileText, Map, Eye } from "lu
 import { getGroupById } from "@/lib/dummy-data"
 
 const navigation = [
-  { name: "Dashboard", href: "/dashboard" },
-  { name: "Groups", href: "/groups" },
-  { name: "Profile", href: "/profile" },
-  { name: "Ideas", href: "/ideas" },
+  { name: "Dashboard", href: "/demo/dashboard" },
+  { name: "Profile", href: "/demo/profile" },
 ]
 
 export function Navbar() {
@@ -22,7 +20,7 @@ export function Navbar() {
   const isPublic = pathname === "/" || pathname === "/join" || pathname === "/auth"
   
   // Check if we're on a group-specific page
-  const isGroupPage = pathname.startsWith('/groups/') && params?.id
+  const isGroupPage = pathname.startsWith('/demo/groups/') && params?.id
   const groupId = params?.id as string
   const group = isGroupPage ? getGroupById(groupId) : null
 
