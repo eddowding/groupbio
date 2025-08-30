@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { useParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -24,6 +24,17 @@ import {
   X
 } from "lucide-react"
 import { getGroupById, getGroupMembers, getCurrentUser } from "@/lib/dummy-data"
+import dynamic from "next/dynamic"
+
+// Dynamically import Leaflet to avoid SSR issues
+const Map = dynamic(() => import("./map-component"), { 
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[600px] bg-gray-100 animate-pulse flex items-center justify-center">
+      <div className="text-gray-500">Loading map...</div>
+    </div>
+  )
+})
 
 export default function GroupMap() {
   const params = useParams()
@@ -97,179 +108,6 @@ export default function GroupMap() {
   const centerLat = userLocation ? userLocation.lat : (membersWithLocation.length > 0 ? membersWithLocation.reduce((sum, member) => sum + member.location.lat, 0) / membersWithLocation.length : 40.7589)
   const centerLng = userLocation ? userLocation.lng : (membersWithLocation.length > 0 ? membersWithLocation.reduce((sum, member) => sum + member.location.lng, 0) / membersWithLocation.length : -73.9851)
 
-  // Simulate map view with positioned member cards
-  const MapView = () => (
-    <div className="relative bg-gradient-to-br from-green-50 via-blue-50 to-blue-100 rounded-lg overflow-hidden" style={{height: '600px'}}>
-      {/* Map Background Pattern */}
-      <div className="absolute inset-0 opacity-20">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#94a3b8" strokeWidth="1"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
-      </div>
-
-      {/* Street Lines */}
-      <div className="absolute inset-0">
-        <svg width="100%" height="100%" className="opacity-30">
-          <line x1="0" y1="150" x2="100%" y2="150" stroke="#64748b" strokeWidth="3"/>
-          <line x1="0" y1="350" x2="100%" y2="350" stroke="#64748b" strokeWidth="3"/>
-          <line x1="0" y1="450" x2="100%" y2="450" stroke="#64748b" strokeWidth="3"/>
-          <line x1="200" y1="0" x2="200" y2="100%" stroke="#64748b" strokeWidth="3"/>
-          <line x1="400" y1="0" x2="400" y2="100%" stroke="#64748b" strokeWidth="3"/>
-          <line x1="600" y1="0" x2="600" y2="100%" stroke="#64748b" strokeWidth="3"/>
-        </svg>
-      </div>
-
-      {/* User Location Pin (Your Location) */}
-      {userLocation && (
-        <div
-          className="absolute z-20"
-          style={{ left: 400, top: 300 }}
-        >
-          <div className="relative">
-            <div className="w-10 h-10 bg-red-500 rounded-full border-4 border-white shadow-lg flex items-center justify-center animate-pulse">
-              <div className="w-4 h-4 bg-white rounded-full"></div>
-            </div>
-            <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-red-500 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
-              Your Location
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Member Pins */}
-      {membersWithLocation.map((member, index) => {
-        // Position members based on their coordinates relative to center (user's location or calculated center)
-        const offsetX = ((member.location.lng - centerLng) * 1000)
-        const offsetY = ((centerLat - member.location.lat) * 1000)
-        
-        // Create a spread pattern around the center with some randomization for better visual distribution
-        const angle = (index * 2.5) + (Math.random() * 0.5 - 0.25) 
-        const radius = 50 + (index * 8) + (Math.random() * 30)
-        const x = 400 + offsetX * 0.3 + Math.cos(angle) * radius
-        const y = 300 + offsetY * 0.3 + Math.sin(angle) * radius
-        
-        return (
-          <div
-            key={member.id}
-            className="absolute cursor-pointer group z-10"
-            style={{ left: Math.max(20, Math.min(x, 750)), top: Math.max(20, Math.min(y, 500)) }}
-            onClick={() => setSelectedMember(selectedMember?.id === member.id ? null : member)}
-          >
-            {/* Pin */}
-            <div className="relative">
-              <div className="w-8 h-8 bg-primary rounded-full border-4 border-white shadow-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                <div className="w-3 h-3 bg-white rounded-full"></div>
-              </div>
-              
-              {/* Name Label */}
-              {showLabels && (
-                <div className="absolute top-10 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
-                  {member.name}
-                </div>
-              )}
-
-              {/* Distance from center */}
-              <div className="absolute -top-2 -right-2 bg-muted text-xs px-1.5 py-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                {(Math.random() * 3 + 0.5).toFixed(1)}mi
-              </div>
-            </div>
-
-            {/* Member Info Popup */}
-            {selectedMember?.id === member.id && (
-              <div className="absolute top-10 left-1/2 transform -translate-x-1/2 w-64 bg-white border shadow-lg rounded-lg p-4 z-10">
-                <div className="flex items-center gap-3 mb-3">
-                  <Avatar className="w-10 h-10">
-                    <AvatarFallback>
-                      {member.name.split(' ').map((n: string) => n[0]).join('').toUpperCase()}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <div className="font-medium">{member.name}</div>
-                    <div className="text-sm text-muted-foreground">{member.location.address}</div>
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
-                  {member.membership.sharedFields.includes("phone") && member.phone && (
-                    <div className="flex items-center gap-2 text-sm">
-                      <Phone className="h-4 w-4 text-muted-foreground" />
-                      <a href={`tel:${member.phone}`} className="text-primary hover:underline">
-                        {member.phone}
-                      </a>
-                    </div>
-                  )}
-                  {member.membership.sharedFields.includes("email") && (
-                    <div className="flex items-center gap-2 text-sm">
-                      <Mail className="h-4 w-4 text-muted-foreground" />
-                      <a href={`mailto:${member.email}`} className="text-primary hover:underline">
-                        {member.email}
-                      </a>
-                    </div>
-                  )}
-                </div>
-
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    setSelectedMember(null)
-                  }}
-                  className="absolute -top-2 -right-2 w-6 h-6 bg-muted rounded-full flex items-center justify-center text-xs hover:bg-muted/80"
-                >
-                  ×
-                </button>
-              </div>
-            )}
-          </div>
-        )
-      })}
-
-      {/* Map Controls */}
-      <div className="absolute top-4 right-4 flex flex-col gap-2">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => setShowLabels(!showLabels)}
-          className="bg-white"
-        >
-          {showLabels ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          className="bg-white"
-        >
-          <Locate className="h-4 w-4" />
-        </Button>
-      </div>
-
-      {/* Map Legend */}
-      <div className="absolute bottom-4 left-4 bg-white p-3 rounded-lg shadow">
-        <div className="text-sm font-medium mb-2">Legend</div>
-        <div className="space-y-1">
-          {userLocation && (
-            <div className="flex items-center gap-2 text-sm">
-              <div className="w-4 h-4 bg-red-500 rounded-full border-2 border-white animate-pulse"></div>
-              <span>Your Location</span>
-            </div>
-          )}
-          <div className="flex items-center gap-2 text-sm">
-            <div className="w-4 h-4 bg-primary rounded-full border-2 border-white"></div>
-            <span>Group Members ({membersWithLocation.length})</span>
-          </div>
-          {searchQuery && (
-            <div className="text-xs text-muted-foreground mt-1">
-              Filtered by: "{searchQuery}"
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  )
 
   return (
     <div className="min-h-screen bg-background">
@@ -334,7 +172,16 @@ export default function GroupMap() {
           <div className="lg:col-span-3">
             <Card>
               <CardContent className="p-6">
-                <MapView />
+                <Map 
+                  members={membersWithLocation}
+                  userLocation={userLocation}
+                  centerLat={centerLat}
+                  centerLng={centerLng}
+                  selectedMember={selectedMember}
+                  setSelectedMember={setSelectedMember}
+                  showLabels={showLabels}
+                  setShowLabels={setShowLabels}
+                />
               </CardContent>
             </Card>
           </div>

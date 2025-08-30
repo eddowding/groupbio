@@ -1,3 +1,4 @@
+@import 'leaflet/dist/leaflet.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -93,5 +94,18 @@
   
   .testimonial-section {
     @apply bg-green-50/30;
+  }
+  
+  /* Leaflet custom marker styles */
+  .custom-user-marker,
+  .custom-member-marker {
+    background: transparent !important;
+    border: none !important;
+  }
+  
+  .custom-user-marker .leaflet-div-icon,
+  .custom-member-marker .leaflet-div-icon {
+    background: transparent !important;
+    border: none !important;
   }
 }
