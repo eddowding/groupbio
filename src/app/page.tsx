@@ -92,7 +92,7 @@ export default function Home() {
           
           <p className="text-lg text-gray-700 mb-16">
             GroupBio adds profiles, maps, and wikis to any WhatsApp group in 60 seconds. <br/>
-            <span className="font-bold"> Free for up to 10 members, £10/yr for unlimited.</span>
+            <span className="font-bold"> Free for up to 10 members, £10/yr per group for unlimited.</span>
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -169,6 +169,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold mb-4">Unlimited</h3>
               <div className="text-3xl font-bold mb-4">£10<span className="text-lg">/year</span></div>
+              <p className="text-xs text-primary-200 -mt-2 mb-4">per group</p>
               <p className="text-primary-100 mb-6">For growing communities</p>
               <ul className="text-left space-y-2 mb-6">
                 <li className="flex items-center"><CheckCircle className="h-4 w-4 text-white mr-2" />Unlimited members</li>
@@ -206,7 +207,7 @@ export default function Home() {
                 <Settings className="h-6 w-6 text-white" />
               </div>
               <h3 className="font-semibold mb-2">Free Start</h3>
-              <p className="text-gray-600">10 people free, then £10/year</p>
+              <p className="text-gray-600">10 people free, then £10/year per group</p>
             </div>
           </div>
         </div>
@@ -253,7 +254,7 @@ export default function Home() {
             Get started free
           </h2>
           <p className="text-4xl mb-12 opacity-95">
-            Every group can have 10 people for free. Upgrade to £10/year for unlimited members.
+            Every group: 10 people free, then £10/year for unlimited members.
           </p>
           <div className="flex justify-center">
             <Link href="/auth">
