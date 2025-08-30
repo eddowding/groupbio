@@ -96,12 +96,12 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link href="/join">
+            <Link href="/demo/dashboard">
               <Button size="lg" className="text-xl px-12 py-6 bg-primary hover:bg-primary/80 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-200">
                 Try Demo Group
               </Button>
             </Link>
-            <Link href="/auth">
+            <Link href="/signup">
               <Button variant="outline" size="lg" className="text-xl px-12 py-6 border-2 border-gray-300 hover:border-primary text-gray-700 hover:text-primary rounded-full font-medium transition-all duration-200">
                 Create Your Group
               </Button>

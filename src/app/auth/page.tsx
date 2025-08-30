@@ -34,7 +34,7 @@ function AuthContent() {
   const handleSocialLogin = (provider: string) => {
     // Simulate redirect to dashboard
     setTimeout(() => {
-      window.location.href = "/dashboard"
+      window.location.href = "/demo/dashboard"
     }, 1000)
   }
 
@@ -184,7 +184,7 @@ function AuthContent() {
                   {group.settings.terms && " and group guidelines"}
                 </p>
                 
-                <Link href={`/dashboard?newGroup=${group.id}`}>
+                <Link href={`/demo/dashboard?newGroup=${group.id}`}>
                   <Button className="w-full" size="lg">
                     Continue to Dashboard
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -209,7 +209,7 @@ function AuthContent() {
           <p className="text-sm text-yellow-800 text-center mb-3">
             <strong>Demo Mode:</strong> Skip authentication and explore the app
           </p>
-          <Link href="/dashboard">
+          <Link href="/demo/dashboard">
             <Button variant="outline" className="w-full">
               Enter as Demo User (John Doe)
             </Button>
