@@ -62,7 +62,7 @@ export default function Home() {
       title: "Maps",
       description: "A simple group map shows where members are based (only if they choose to share). Perfect for carpools, local meetups, or finding the closest helping hand.",
       benefit: "Know who's nearby.",
-      image: "/map.jpg"
+      image: "/map.png"
     },
     {
       icon: FileText,
