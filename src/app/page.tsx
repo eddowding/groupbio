@@ -154,15 +154,33 @@ export default function Home() {
             <span className="font-bold"> Free for up to 10 members, £10/yr per group for unlimited.</span>
           </p>
 
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-6">
             <Link href="/signup">
               <Button size="lg" className="text-2xl px-16 py-8 bg-primary hover:bg-primary/80 text-white rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all duration-200 transform hover:scale-105">
                 Create Your Group
               </Button>
             </Link>
-            <Link href="/dashboard" className="text-gray-600 hover:text-primary transition-colors duration-200 underline text-lg">
-              Try Demo Group
-            </Link>
+            
+            <div className="flex flex-col items-center gap-4">
+              <p className="text-gray-600 text-lg">Try the demo:</p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link href="/join">
+                  <Button variant="outline" size="lg" className="text-base px-5 py-3 border-2 hover:bg-primary/10 hover:border-primary transition-all duration-200">
+                    Join as Member
+                  </Button>
+                </Link>
+                <Link href="/dashboard">
+                  <Button variant="outline" size="lg" className="text-base px-5 py-3 border-2 hover:bg-primary/10 hover:border-primary transition-all duration-200">
+                    View Dashboard
+                  </Button>
+                </Link>
+                <Link href="/admin/create">
+                  <Button variant="outline" size="lg" className="text-base px-5 py-3 border-2 hover:bg-primary/10 hover:border-primary transition-all duration-200">
+                    Create Group
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -342,15 +360,6 @@ export default function Home() {
             {faqs.map((faq, index) => (
               <FAQItem key={index} question={faq.question} answer={faq.answer} />
             ))}
-          </div>
-          
-          <div className="text-center mt-12">
-            <p className="text-gray-600 mb-4">Still have questions?</p>
-            <Link href="/auth">
-              <Button variant="outline" size="lg">
-                Get Started - It's Free
-              </Button>
-            </Link>
           </div>
         </div>
       </section>
