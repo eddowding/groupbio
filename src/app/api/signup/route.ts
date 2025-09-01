@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { writeFileSync, existsSync, readFileSync } from 'fs'
-import { join } from 'path'
+import { kv } from '@vercel/kv'
 
 export async function POST(request: NextRequest) {
   try {
@@ -27,25 +26,11 @@ export async function POST(request: NextRequest) {
       memberCount
     }
 
-    // File path for storing signups
-    const filePath = join(process.cwd(), 'signups.txt')
-    
-    // Format the data for text file
-    const formattedEntry = `${timestamp} | ${email} | ${phone} | ${groupName} | ${finalGroupType || groupType} | ${memberCount}\n`
-    
-    // Append to file (create if doesn't exist)
+    // Store signup in Vercel KV
     try {
-      let existingData = ''
-      if (existsSync(filePath)) {
-        existingData = readFileSync(filePath, 'utf8')
-      }
-      
-      // Add header if file is empty
-      const header = existingData.length === 0 ? 'Timestamp | Email | Phone | Group Name | Group Type | Member Count\n' : ''
-      
-      writeFileSync(filePath, header + existingData + formattedEntry)
-    } catch (fileError) {
-      console.error('Error writing to file:', fileError)
+      await kv.lpush('signups', dataEntry)
+    } catch (kvError) {
+      console.error('Error storing signup:', kvError)
       return NextResponse.json({ error: 'Failed to save data' }, { status: 500 })
     }
 

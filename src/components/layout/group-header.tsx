@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -36,9 +37,35 @@ interface GroupHeaderProps {
 export function GroupHeader({ group, currentMembership }: GroupHeaderProps) {
   const pathname = usePathname()
   const isAdmin = currentMembership?.role === "admin"
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [headerHeight, setHeaderHeight] = useState(0)
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY
+      const triggerPoint = 64 // navbar height (16 * 4px = 64px)
+      setIsScrolled(scrollPosition > triggerPoint)
+    }
+    
+    // Measure header height
+    const headerElement = document.querySelector('[data-group-header]')
+    if (headerElement) {
+      setHeaderHeight(headerElement.getBoundingClientRect().height)
+    }
+    
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
   
   return (
-    <div className="sticky top-16 z-40 bg-background border-b">
+    <>
+      {isScrolled && <div style={{ height: headerHeight }} />}
+      <div 
+        data-group-header
+        className={`transition-all duration-300 ease-in-out z-40 bg-background border-b ${
+          isScrolled ? 'fixed top-0 left-0 right-0' : 'sticky top-16'
+        }`}
+      >
       {/* Group Info Section */}
       <div className="max-w-7xl mx-auto px-4 py-6 border-b">
         <div className="flex items-start justify-between">
@@ -137,6 +164,7 @@ export function GroupHeader({ group, currentMembership }: GroupHeaderProps) {
           )}
         </div>
       </div>
-    </div>
+      </div>
+    </>
   )
 }

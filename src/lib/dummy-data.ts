@@ -774,7 +774,7 @@ export const dummyGroups: Group[] = [
   {
     id: "1",
     name: "Sunshine Nursery Parents",
-    code: "SUNNY1",
+    code: "GRP001",
     description: "Parent group for Sunshine Nursery School families",
     type: "parent",
     adminId: "1",
@@ -795,10 +795,10 @@ export const dummyGroups: Group[] = [
   },
   {
     id: "2",
-    name: "Downtown Book Club",
-    code: "BOOK01", 
-    description: "Monthly book discussions and literary events",
-    type: "social",
+    name: "Downtown Basketball League",
+    code: "GRP002", 
+    description: "Weekly basketball games and team social events",
+    type: "sports",
     adminId: "4",
     memberCount: 15,
     createdAt: "2024-03-10",
@@ -807,8 +807,28 @@ export const dummyGroups: Group[] = [
       optionalFields: ["bio", "interests", "favoriteGenres"],
       allowMap: true,
       customFields: [
-        { id: "favoriteGenres", name: "Favorite Genres", type: "textarea", required: false },
-        { id: "readingGoal", name: "Annual Reading Goal", type: "number", required: false }
+        { id: "position", name: "Preferred Position", type: "text", required: false },
+        { id: "experience", name: "Basketball Experience", type: "select", required: false, options: ["Beginner", "Intermediate", "Advanced"] }
+      ]
+    }
+  },
+  {
+    id: "3",
+    name: "TechStartup Team",
+    code: "GRP003",
+    description: "Professional networking for tech startup founders and employees",
+    type: "professional",
+    adminId: "2",
+    memberCount: 25,
+    createdAt: "2024-02-01",
+    settings: {
+      requiredFields: ["name", "email", "phone"],
+      optionalFields: ["bio", "interests", "linkedin", "website"],
+      allowMap: true,
+      customFields: [
+        { id: "company", name: "Company Name", type: "text", required: false },
+        { id: "role", name: "Job Title", type: "text", required: false },
+        { id: "techStack", name: "Tech Stack", type: "textarea", required: false }
       ]
     }
   }

@@ -19,14 +19,31 @@ export default function JoinGroup() {
     setGroupCode(value.toUpperCase())
     
     if (value.length === 6) {
-      setIsChecking(true)
-      setTimeout(() => {
-        const group = dummyGroups.find(g => g.code === value.toUpperCase())
-        setFoundGroup(group || null)
-        setIsChecking(false)
-      }, 800)
+      checkGroupCode(value.toUpperCase())
     } else {
       setFoundGroup(null)
+    }
+  }
+
+  const checkGroupCode = (code: string) => {
+    setIsChecking(true)
+    setTimeout(() => {
+      const group = dummyGroups.find(g => g.code === code)
+      setFoundGroup(group || null)
+      setIsChecking(false)
+    }, 800)
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (groupCode.length === 6) {
+      checkGroupCode(groupCode)
+    }
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && groupCode.length === 6) {
+      checkGroupCode(groupCode)
     }
   }
 
@@ -55,24 +72,41 @@ export default function JoinGroup() {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
-            <div>
-              <Label htmlFor="groupCode">Enter Group Code</Label>
-              <Input
-                id="groupCode"
-                placeholder="ABC123"
-                value={groupCode}
-                onChange={(e) => handleCodeChange(e.target.value)}
-                className="text-center text-2xl font-mono tracking-widest uppercase"
-                maxLength={6}
-              />
-            </div>
-
-            {isChecking && (
-              <div className="text-center py-8">
-                <div className="animate-spin w-8 h-8 border-2 border-primary border-t-transparent rounded-full mx-auto mb-2"></div>
-                <p className="text-muted-foreground">Checking group code...</p>
+            <form onSubmit={handleSubmit}>
+              <div className="space-y-4">
+                <div>
+                  <Label htmlFor="groupCode">Enter Group Code</Label>
+                  <Input
+                    id="groupCode"
+                    placeholder="ABC123"
+                    value={groupCode}
+                    onChange={(e) => handleCodeChange(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    className="text-center text-2xl font-mono tracking-widest uppercase"
+                    maxLength={6}
+                  />
+                </div>
+                
+                <Button 
+                  type="submit" 
+                  className="w-full" 
+                  disabled={groupCode.length !== 6 || isChecking}
+                >
+                  {isChecking ? (
+                    <>
+                      <div className="animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"></div>
+                      Checking Code...
+                    </>
+                  ) : (
+                    <>
+                      Check Group Code
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </>
+                  )}
+                </Button>
               </div>
-            )}
+            </form>
+
 
             {foundGroup && (
               <div className="space-y-4">

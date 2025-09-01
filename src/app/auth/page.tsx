@@ -32,9 +32,15 @@ function AuthContent() {
   }
 
   const handleSocialLogin = (provider: string) => {
-    // Simulate redirect to dashboard
+    // Simulate authentication and redirect to appropriate page
     setTimeout(() => {
-      window.location.href = "/dashboard"
+      if (group) {
+        // Redirect to profile setup for new group members
+        window.location.href = `/profile/setup?groupId=${group.id}`
+      } else {
+        // Redirect to dashboard for regular login
+        window.location.href = "/dashboard"
+      }
     }, 1000)
   }
 
@@ -184,9 +190,9 @@ function AuthContent() {
                   {group.settings.terms && " and group guidelines"}
                 </p>
                 
-                <Link href={`/dashboard?newGroup=${group.id}`}>
+                <Link href={`/profile/setup?groupId=${group.id}`}>
                   <Button className="w-full" size="lg">
-                    Continue to Dashboard
+                    Continue to Profile Setup
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
@@ -209,9 +215,9 @@ function AuthContent() {
           <p className="text-sm text-yellow-800 text-center mb-3">
             <strong>Demo Mode:</strong> Skip authentication and explore the app
           </p>
-          <Link href="/dashboard">
+          <Link href={group ? `/profile/setup?groupId=${group.id}` : "/dashboard"}>
             <Button variant="outline" className="w-full">
-              Enter as Demo User (John Doe)
+              {group ? `Enter Demo Profile Setup` : "Enter as Demo User (John Doe)"}
             </Button>
           </Link>
         </div>
