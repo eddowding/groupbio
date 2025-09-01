@@ -1,13 +1,16 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Navbar } from "@/components/layout/navbar"
-import { Users, Shield, Settings, MapPin, FileText, MessageSquare, Zap, CheckCircle } from "lucide-react"
+import { Users, Shield, Settings, MapPin, FileText, MessageSquare, Zap, CheckCircle, ChevronDown, ChevronUp } from "lucide-react"
 import { dummyGroups } from "@/lib/dummy-data"
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1"
 import { ParticlesBackground } from "@/components/ui/particles-background"
+import { useState } from "react"
 
 export default function Home() {
   const testimonials = [
@@ -48,6 +51,62 @@ export default function Home() {
       role: "Hiking Group Leader",
     },
   ];
+
+  const faqs = [
+    {
+      question: "Why do I need GroupBio for my WhatsApp group?",
+      answer: "WhatsApp groups are perfect for messaging, but terrible for knowing who's who. GroupBio adds the missing context - profiles, maps, and shared documents - so your group actually feels like a community, not just random phone numbers."
+    },
+    {
+      question: "How does GroupBio work with my existing WhatsApp group?",
+      answer: "GroupBio doesn't replace WhatsApp - it adds to it. You keep using WhatsApp exactly as before, but now members can click a shared link to see who's in the group, where people are located (if they choose to share), and access group documents."
+    },
+    {
+      question: "Is GroupBio secure and private?",
+      answer: "Yes, with full transparency. Members control exactly what information they share with each group, and you can delete your information at any time. We may use anonymized, aggregated data insights to improve our service and explore ethical monetization opportunities, but your personal information is never sold to third parties or used without your control."
+    },
+    {
+      question: "Do I really need to pay £10/year?",
+      answer: "Only if your group grows beyond 10 people. Groups with 10 or fewer members are completely free forever. For larger groups, £10/year per group (that's less than £1 per month) gets you unlimited members and priority support."
+    },
+    {
+      question: "How quickly can I set up my group?",
+      answer: "Literally 60 seconds. Create your group, customize your profile, share the join link in your WhatsApp group. Done. No complicated setup or training required."
+    },
+    {
+      question: "What if my group members aren't tech-savvy?",
+      answer: "GroupBio is designed to be ridiculously simple. If they can use WhatsApp, they can use GroupBio. The first time setup takes about 2 minutes - that's the hardest part. After that, checking the group directory or reading documents takes seconds. No app downloads, no passwords to remember, works on any device."
+    },
+    {
+      question: "Can I try GroupBio before committing?",
+      answer: "Yes! Every feature is free for groups up to 10 people. You can also explore our demo groups to see exactly how it works before creating your own."
+    }
+  ]
+
+  function FAQItem({ question, answer }: { question: string; answer: string }) {
+    const [isOpen, setIsOpen] = useState(false)
+    
+    return (
+      <div className="border-b border-gray-200 py-4">
+        <button
+          className="flex justify-between items-center w-full text-left py-2"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <h3 className="text-lg font-semibold text-gray-900 pr-4">{question}</h3>
+          {isOpen ? (
+            <ChevronUp className="h-5 w-5 text-gray-500 flex-shrink-0" />
+          ) : (
+            <ChevronDown className="h-5 w-5 text-gray-500 flex-shrink-0" />
+          )}
+        </button>
+        {isOpen && (
+          <div className="pt-2 pb-4">
+            <p className="text-gray-600 leading-relaxed">{answer}</p>
+          </div>
+        )}
+      </div>
+    )
+  }
 
   const features = [
     {
@@ -258,6 +317,38 @@ export default function Home() {
             <Link href="/auth">
               <Button size="lg" className="text-4xl px-32 py-12 bg-white text-[#111B21] hover:bg-gray-50 rounded-full font-medium shadow-xl hover:shadow-2xl transition-all duration-200">
                 Get Started
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="inline-block border border-primary/30 py-2 px-4 rounded-full mb-6">
+              <span className="text-primary font-medium">Got questions?</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Everything you need to know about GroupBio
+            </p>
+          </div>
+          
+          <div className="max-w-3xl mx-auto">
+            {faqs.map((faq, index) => (
+              <FAQItem key={index} question={faq.question} answer={faq.answer} />
+            ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <p className="text-gray-600 mb-4">Still have questions?</p>
+            <Link href="/auth">
+              <Button variant="outline" size="lg">
+                Get Started - It's Free
               </Button>
             </Link>
           </div>
