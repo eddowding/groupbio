@@ -72,6 +72,33 @@ export default function JoinGroup() {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
+            {/* Demo codes section - moved inside main card */}
+            <div className="p-4 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-lg">
+              <h3 className="font-semibold text-blue-800 mb-3 text-center">Try Demo Codes</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {dummyGroups.map((group) => (
+                  <button
+                    key={group.id}
+                    onClick={() => handleCodeChange(group.code)}
+                    className="text-left p-3 bg-white rounded border hover:border-primary transition-colors hover:shadow-sm"
+                  >
+                    <div className="font-mono font-bold text-primary text-lg">{group.code}</div>
+                    <div className="text-sm text-muted-foreground truncate">{group.name}</div>
+                  </button>
+                ))}
+              </div>
+              <p className="text-xs text-blue-600 text-center mt-2">Click any code above to auto-fill</p>
+            </div>
+
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t"></div>
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="bg-background px-3 text-muted-foreground">Or enter your own code</span>
+              </div>
+            </div>
+
             <form onSubmit={handleSubmit}>
               <div className="space-y-4">
                 <div>
@@ -192,21 +219,6 @@ export default function JoinGroup() {
           </div>
         </div>
 
-        <div className="mt-12 p-6 bg-secondary/50 rounded-lg">
-          <h3 className="font-medium mb-3">Try these demo codes:</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {dummyGroups.map((group) => (
-              <button
-                key={group.id}
-                onClick={() => handleCodeChange(group.code)}
-                className="text-left p-3 bg-white rounded border hover:border-primary transition-colors"
-              >
-                <div className="font-mono font-bold text-primary">{group.code}</div>
-                <div className="text-sm text-muted-foreground">{group.name}</div>
-              </button>
-            ))}
-          </div>
-        </div>
       </div>
     </div>
   )

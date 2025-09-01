@@ -99,6 +99,23 @@ function AuthContent() {
           </p>
         </div>
 
+        {/* Demo Mode - Moved to top and made more prominent */}
+        <div className="mb-8 p-6 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl shadow-sm">
+          <div className="text-center">
+            <h2 className="text-lg font-semibold text-green-800 mb-2">
+              Demo Mode Available
+            </h2>
+            <p className="text-sm text-green-700 mb-4">
+              Skip authentication and explore the app instantly
+            </p>
+            <Link href={group ? `/profile/setup?groupId=${group.id}` : "/dashboard"}>
+              <Button size="lg" className="w-full text-base py-3">
+                {group ? "Continue to Demo Profile Setup" : "Enter as Demo User (John Doe)"}
+              </Button>
+            </Link>
+          </div>
+        </div>
+
         {group && (
           <Card className="mb-6 border-primary/20 bg-primary/5">
             <CardContent className="pt-6">
@@ -210,17 +227,6 @@ function AuthContent() {
           </p>
         </div>
 
-        {/* Demo shortcut */}
-        <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-          <p className="text-sm text-yellow-800 text-center mb-3">
-            <strong>Demo Mode:</strong> Skip authentication and explore the app
-          </p>
-          <Link href={group ? `/profile/setup?groupId=${group.id}` : "/dashboard"}>
-            <Button variant="outline" className="w-full">
-              {group ? `Enter Demo Profile Setup` : "Enter as Demo User (John Doe)"}
-            </Button>
-          </Link>
-        </div>
       </div>
     </div>
   )
