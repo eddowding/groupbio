@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import dynamic from 'next/dynamic'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -25,11 +26,38 @@ import {
 import Link from "next/link"
 import Image from "next/image"
 
+// Dynamic import for Map component (client-side only)
+const MapComponent = dynamic(() => import('@/components/MapComponent'), { 
+  ssr: false,
+  loading: () => <div className="h-[200px] bg-gray-100 rounded-lg animate-pulse" />
+})
+
 export default function JohnDoeBioDemo() {
-  const [viewContext, setViewContext] = useState<'default' | 'parent' | 'soccer' | 'school'>('default')
+  const [viewContext, setViewContext] = useState<'public' | 'professional' | 'parent' | 'soccer' | 'school'>('public')
 
   const bioContexts = {
-    default: {
+    public: {
+      name: "John Doe",
+      title: "Product Manager & Soccer Dad",
+      bio: "Tech professional by day, youth soccer coach by evening, coffee enthusiast always. Living in SF with my family. Always happy to connect!",
+      location: "San Francisco",
+      email: null,
+      phone: null,
+      linkedin: null,
+      website: null,
+      whatsapp: null,
+      interests: ["Technology", "Youth Sports", "Community", "Coffee"],
+      showEmail: false,
+      showPhone: false,
+      showLinkedin: false,
+      showWebsite: false,
+      showWhatsApp: false,
+      showLocation: true,
+      showMap: false,
+      childAge: null,
+      customFields: []
+    },
+    professional: {
       name: "John Doe",
       title: "Senior Product Manager",
       bio: "Building products that people love at a growing tech startup. 8 years experience in product strategy, user research, and go-to-market. Always happy to chat about product management, career growth, or the startup ecosystem.",
@@ -129,13 +157,23 @@ export default function JohnDoeBioDemo() {
   const currentBio = bioContexts[viewContext]
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div 
+      className="min-h-screen relative overflow-hidden flex flex-col"
+      style={{
+        backgroundColor: '#ededff',
+        opacity: 0.8,
+        backgroundImage: 'linear-gradient(30deg, #ffffff 12%, transparent 12.5%, transparent 87%, #ffffff 87.5%, #ffffff), linear-gradient(150deg, #ffffff 12%, transparent 12.5%, transparent 87%, #ffffff 87.5%, #ffffff), linear-gradient(30deg, #ffffff 12%, transparent 12.5%, transparent 87%, #ffffff 87.5%, #ffffff), linear-gradient(150deg, #ffffff 12%, transparent 12.5%, transparent 87%, #ffffff 87.5%, #ffffff), linear-gradient(60deg, #ffffff77 25%, transparent 25.5%, transparent 75%, #ffffff77 75%, #ffffff77), linear-gradient(60deg, #ffffff77 25%, transparent 25.5%, transparent 75%, #ffffff77 75%, #ffffff77)',
+        backgroundSize: '20px 35px',
+        backgroundPosition: '0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px'
+      }}
+    >
+      
       {/* Header */}
-      <div className="bg-white border-b sticky top-0 z-10">
-        <div className="max-w-2xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/create-bio" className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors">
+      <div className="bg-white border-b sticky top-0 z-10 relative">
+        <div className="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
+          <Link href="/solo" className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors">
             <ArrowLeft className="h-4 w-4" />
-            Back to Create Bio
+            Back to Solo
           </Link>
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 bg-primary rounded-lg flex items-center justify-center">
@@ -147,27 +185,28 @@ export default function JohnDoeBioDemo() {
       </div>
 
       {/* Bio Content */}
-      <div className="max-w-2xl mx-auto px-4 py-8">
+      <div className="max-w-3xl mx-auto px-4 py-8 relative flex-1">
         {/* Demo Banner with Context Selector */}
-        <div className="mb-6 bg-primary/10 border border-primary/20 rounded-lg p-6">
-          <div className="text-center mb-6">
-            <p className="text-primary font-medium text-lg">
-              📍 Demo Profile - This is what your GroupBio would look like
-            </p>
-          </div>
-          
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 mb-3">
-              <Users className="h-5 w-5 text-gray-600" />
-              <Label className="text-sm font-medium text-gray-700">
-                View this profile as if you're in:
-              </Label>
-            </div>
-            
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="mb-6 bg-green-50 border border-green-200 rounded-lg p-4 shadow-sm">
+            <div className="space-y-3">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-primary font-medium">📍 Demo Profile</span>
+                <span className="text-gray-600 text-sm">- View as it appears to different groups John is a member of:</span>
+              </div>
+              
+              <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
               <Button
-                variant={viewContext === 'default' ? 'default' : 'outline'}
-                onClick={() => setViewContext('default')}
+                variant={viewContext === 'public' ? 'default' : 'outline'}
+                onClick={() => setViewContext('public')}
+                className="flex items-center justify-center gap-2 h-auto py-3"
+              >
+                <Globe className="h-4 w-4" />
+                <span className="text-sm">Public</span>
+              </Button>
+              
+              <Button
+                variant={viewContext === 'professional' ? 'default' : 'outline'}
+                onClick={() => setViewContext('professional')}
                 className="flex items-center justify-center gap-2 h-auto py-3"
               >
                 <Briefcase className="h-4 w-4" />
@@ -180,7 +219,7 @@ export default function JohnDoeBioDemo() {
                 className="flex items-center justify-center gap-2 h-auto py-3"
               >
                 <Users className="h-4 w-4" />
-                <span className="text-sm">Parent Group</span>
+                <span className="text-sm">Parents</span>
               </Button>
               
               <Button
@@ -189,7 +228,7 @@ export default function JohnDoeBioDemo() {
                 className="flex items-center justify-center gap-2 h-auto py-3"
               >
                 <Heart className="h-4 w-4" />
-                <span className="text-sm">Soccer Team</span>
+                <span className="text-sm">Soccer</span>
               </Button>
               
               <Button
@@ -198,14 +237,14 @@ export default function JohnDoeBioDemo() {
                 className="flex items-center justify-center gap-2 h-auto py-3"
               >
                 <User className="h-4 w-4" />
-                <span className="text-sm">School Class</span>
+                <span className="text-sm">School</span>
               </Button>
             </div>
           </div>
         </div>
 
         {/* Main Bio Card */}
-        <Card className="mb-6 shadow-lg">
+        <Card className="mb-6 shadow-lg relative">
           <CardContent className="pt-8">
             {/* Header */}
             <div className="text-center mb-6">
@@ -278,6 +317,40 @@ export default function JohnDoeBioDemo() {
               </div>
             )}
 
+            {/* Map Location - Now with real map */}
+            {currentBio.showMap && (
+              <div className="space-y-3 mb-8">
+                <h3 className="font-semibold text-gray-900 flex items-center gap-2">
+                  <MapPin className="h-4 w-4" />
+                  Location
+                </h3>
+                <div className="rounded-lg overflow-hidden border border-gray-200">
+                  <MapComponent 
+                    lat={37.7596} 
+                    lng={-122.4269} 
+                    zoom={14}
+                    markerText={currentBio.location}
+                    height="200px"
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Interests - Moved up before Additional Info */}
+            <div className="space-y-3 mb-8">
+              <h3 className="font-semibold text-gray-900 flex items-center gap-2">
+                <Heart className="h-4 w-4" />
+                Interests & Activities
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {currentBio.interests.map((interest, idx) => (
+                  <Badge key={idx} variant="secondary" className="text-sm py-1 px-3">
+                    {interest}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+
             {/* Custom Fields */}
             {currentBio.customFields && currentBio.customFields.length > 0 && (
               <div className="space-y-3 mb-8">
@@ -297,63 +370,6 @@ export default function JohnDoeBioDemo() {
                 </div>
               </div>
             )}
-
-            {/* Map Location */}
-            {currentBio.showMap && (
-              <div className="space-y-3 mb-8">
-                <h3 className="font-semibold text-gray-900 flex items-center gap-2">
-                  <MapPin className="h-4 w-4" />
-                  Location on Map
-                </h3>
-                <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
-                      <MapPin className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-blue-900">📍 Visible on Group Map</p>
-                      <p className="text-sm text-blue-700">Other members can see your general area for carpools and meetups</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Child Age */}
-            {currentBio.childAge && (
-              <div className="space-y-3 mb-8">
-                <h3 className="font-semibold text-gray-900 flex items-center gap-2">
-                  <Users className="h-4 w-4" />
-                  Family Info
-                </h3>
-                <div className="bg-green-50 rounded-lg p-4 border border-green-200">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">
-                      8
-                    </div>
-                    <div>
-                      <p className="font-medium text-green-900">Emma is {currentBio.childAge}</p>
-                      <p className="text-sm text-green-700">Perfect for connecting with other parents of similar-aged kids</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Interests */}
-            <div className="space-y-3">
-              <h3 className="font-semibold text-gray-900 flex items-center gap-2">
-                <Heart className="h-4 w-4" />
-                Interests & Activities
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {currentBio.interests.map((interest, idx) => (
-                  <Badge key={idx} variant="secondary" className="text-sm py-1 px-3">
-                    {interest}
-                  </Badge>
-                ))}
-              </div>
-            </div>
           </CardContent>
         </Card>
 
@@ -364,25 +380,27 @@ export default function JohnDoeBioDemo() {
         </div>
 
         {/* CTA */}
-        <div className="text-center space-y-4">
-          <p className="text-gray-600">Want a smart profile like this?</p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/profile/setup">
-              <Button size="lg" className="bg-primary hover:bg-primary/80 text-white">
-                Create Your Bio
+        <div className="bg-white rounded-lg shadow-sm p-6">
+          <div className="text-center space-y-4">
+            <p className="text-gray-600">Want a smart profile like this?</p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link href="/profile/setup">
+                <Button size="lg" className="bg-primary hover:bg-primary/80 text-white">
+                  Create Your Bio
+                </Button>
+              </Link>
+              <Button variant="outline" size="lg" className="flex items-center gap-2">
+                <Share className="h-4 w-4" />
+                Share This Demo
               </Button>
-            </Link>
-            <Button variant="outline" size="lg" className="flex items-center gap-2">
-              <Share className="h-4 w-4" />
-              Share This Demo
-            </Button>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Footer */}
-      <footer className="bg-white border-t mt-16 py-8">
-        <div className="max-w-2xl mx-auto px-4 text-center">
+      <footer className="bg-white border-t py-8 relative mt-auto">
+        <div className="max-w-3xl mx-auto px-4 text-center">
           <div className="flex items-center justify-center gap-3 mb-2">
             <div className="w-6 h-6 bg-primary rounded-lg flex items-center justify-center">
               <MessageSquare className="h-3 w-3 text-white" />
